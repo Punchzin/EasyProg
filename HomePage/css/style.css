@@ -37,7 +37,7 @@ ul{
 }
 
 ul li.itens a:hover{
-    color: #02a6cf;
+    color:	#00FFFF;
 }
 
 ul li.itens a{
@@ -65,3 +65,18 @@ ul li.itens a{
     display: block; /* Exibir a sobreposição quando a classe "active" é aplicada */
 }
 
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1001; /* Certifique-se de que o botão fique acima da sobreposição */
+    cursor: pointer;
+    height: 22px;
+    width: 8%;
+    border-radius: 6px;
+    align-items: center;
+}
+
+.button-open{
+    color: #00FFFF;
+}

@@ -1,0 +1,67 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    background: #232323;
+}
+
+nav.sidebar{
+    width: 70px;
+    height: 100%;
+    background: #f0f5f3;
+    padding: 40px 0 40px; 
+    position: fixed;
+    top: 0;
+    left: 0; 
+    /*overflow: hidden;*/
+}
+
+.logo{
+    width: 100%;
+    margin: 0 15px;
+}
+
+.logo > i{
+    color: black;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+ul{
+    height: 100%;
+    list-style-type: none;
+}
+
+ul li.itens a:hover{
+    color: #02a6cf;
+}
+
+ul li.itens a{
+    color: black;
+    text-decoration: none;
+    font-size: 2em;
+    padding: 4% 4%;
+    display: flex;
+    margin: 70px 15px 30px;
+    position: relative;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Cor e opacidade da sobreposição */
+    display: none;
+    z-index: 1000; /* Certifique-se de que a sobreposição fique acima de outros elementos */
+}
+
+.overlay.active {
+    display: block; /* Exibir a sobreposição quando a classe "active" é aplicada */
+}
+

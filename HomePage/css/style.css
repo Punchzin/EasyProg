@@ -51,13 +51,15 @@ ul li.itens a{
 }
 
 .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Cor e opacidade da sobreposição */
     display: none;
+    position: relative;
+    top: 15vh;
+    left: 5vw;
+    width: 20%;
+    height: 33%;
+    background-color: #111;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px; /* Cor e opacidade da sobreposição */
     z-index: 1000; /* Certifique-se de que a sobreposição fique acima de outros elementos */
 }
 

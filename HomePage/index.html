@@ -8,9 +8,10 @@
     <title>Menu Lateral</title>
 </head>
 <body>
-    <div class="overlay" id="overlay">
+    <div class="menu" id="menu">
         <button id="closeButton" class="close-button">Fechar Sobreposição</button>
         <a href="#" class="button-open">open file</a>
+        <hr>
     </div>
     <nav class="sidebar">
         <div class="logo">
@@ -18,46 +19,44 @@
         </div>
         <ul>
             <li class="itens">
-                <a href="#">
+                <a onclick="openMenu()" id="file" href="#">
                     <span class="icon"><i class="bi bi-files"></i></span>
                     <span class="text-link"></span>
                     
                 </a>
             </li>
             <li class="itens">
-                <a href="#">
+                <a onclick="openMenu()" id="config" href="#">
                     <span class="icon"><i class="bi bi-gear"></i></span>
                     <span class="text-link"></span>
                 </a>
             </li>
             <li class="itens">
-                <a href="#">
+                <a onclick="openMenu()" id="help" href="#">
                     <span class="icon"><i class="bi bi-question-circle"></i></span>
                     <span class="text-link"></span>
                 </a>
             </li>
             <li class="itens">
-                <a href="#">
+                <a onclick="openMenu()" id="run" href="#">
                     <span class="icon"><i class="bi bi-play"></i></span>
                     <span class="text-link"></span>
                 </a>
             </li>
             <li class="itens">
-                <a href="#">
+                <a onclick="openMenu()" id="pause" href="#">
                     <span class="icon"><i class="bi bi-pause"></i></span>
                     <span class="text-link"></span>
                 </a>
             </li>
             <li class="itens">
-                <a href="#">
+                <a onclick="openMenu()" id="reload" href="#">
                     <span class="icon"><i class="bi bi-arrow-clockwise"></i></i></span>
                     <span class="text-link"></span>
                 </a>
             </li>
         </ul>
     </nav>
-    
-
     <script src="sidebar.js"></script>
 </body>
 </html>

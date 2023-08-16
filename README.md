@@ -9,6 +9,7 @@ Esse pojeto foi desenvolvido durante o ano de 2023 com as seguintes tecnologias:
 - Git e Github
 - JavaScript
 - Python
+- React JS
 - Jupyter Notebook e Jupyter Lab
 - Chat-GPT
 - VSCode

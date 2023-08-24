@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Home from './pages/home/home.jsx'
 import './global/styles.global.css'
+import Authentication from './pages/Authentication/authentication'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Home />
+    <Authentication />
   </React.StrictMode>,
 )

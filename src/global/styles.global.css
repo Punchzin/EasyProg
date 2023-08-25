@@ -2,4 +2,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Space Grotesk", sans-serif;
+}
+
+#root, html {
+    background-color: #0F1923;
+    width: 100%;
+    min-height: 100vh;
 }

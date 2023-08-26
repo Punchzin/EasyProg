@@ -1,10 +1,22 @@
-import React from 'react'
+/* eslint-disable no-unused-vars */
+import React, { useState } from 'react';
 import * as Style from "./Authentication.styles";
-import EASYPROG_LOGO from "../../assets/images/easyprog-logo.svg"
-import EASYPROG_ROBOT from "../../assets/images/easybot.svg"
+import EASYPROG_LOGO from "../../assets/images/easyprog-logo.svg";
+import EASYPROG_ROBOT_SMILE from "../../assets/images/easybot.svg";
+import EASYPROG_ROBOT_DUBIOUS from "../../assets/images/easybot-register.svg";
 
 const Authentication = () => {
-    // Insert javascript here
+    const [screen, setScreen] = useState(0);
+    const [passwordView, setPasswordView] = useState(0);
+    const [passwordConfirmView, setPasswordConfirmView] = useState(0);
+    
+    const isRegister = screen == 1;
+
+    const AUTHENTICATION_TITLE       = !isRegister ? "Authentication" : "Registro"
+    const AUTHENTICATION_DESCRIPTION = !isRegister ? "Autentique-se" : "Registre-se"
+    const BUTTON_TEXT                = !isRegister ? "Cadastrar-se" : "Fazer login"
+    const EASYBOT_IMAGE              = !isRegister ? EASYPROG_ROBOT_SMILE : EASYPROG_ROBOT_DUBIOUS
+
     return (
         <Style.Main>
             <Style.Container>
@@ -17,52 +29,76 @@ const Authentication = () => {
                                 </Style.FormLogo>
                                 <Style.FormHeaderText>
                                     <p>EASYPROG</p>
-                                    <p>A Testing Framework</p>
+                                    <p>A Testing Tool</p>
                                 </Style.FormHeaderText>
                             </Style.FormHeader>
                             <Style.FormWrapper>
                                 <Style.FormAuthentication>
                                     <Style.FormAuthenticationText>
-                                        <img src={EASYPROG_ROBOT} alt="EasyBot" />
-                                        <h1>Authentication</h1>
-                                        <p>Autentique-se na plataforma para utilizar as <strong>ferramentas</strong>.</p>
+                                        <img src={EASYBOT_IMAGE} alt="EasyBot" />
+                                        <h1>{AUTHENTICATION_TITLE}</h1>
+                                        <p>{AUTHENTICATION_DESCRIPTION} na plataforma para utilizar a <strong>ferramenta</strong>.</p>
                                     </Style.FormAuthenticationText>
                                     <Style.FormBody>
                                         <Style.InputWrapper>
                                             <Style.InputLabel htmlFor='username'>Username</Style.InputLabel>
                                             <Style.InputItem>
-                                                <i class="ri-user-line"></i>
+                                                <i className="ri-user-line"></i>
                                                 <input type="text" placeholder='User' id='username' />
                                             </Style.InputItem>
                                         </Style.InputWrapper>
                                         <Style.InputWrapper>
                                             <Style.InputLabel htmlFor='password'>Senha</Style.InputLabel>
                                             <Style.InputItem>
-                                                <i class="ri-lock-2-line"></i>
+                                                <i className="ri-lock-2-line"></i>
                                                 <input
-                                                    type="text"
-                                                    placeholder='User'
+                                                    type={!passwordView ? "password" : "text"}
+                                                    placeholder='Password'
                                                     id='password'
                                                 />
-                                                <i class="ri-eye-line"></i>
+                                                <Style.InputIconButton onClick={() => setPasswordView(prev => !prev)}>
+                                                    <i className={!passwordView ? "ri-eye-line" : "ri-eye-off-line"}></i>
+                                                </Style.InputIconButton>
                                             </Style.InputItem>
                                         </Style.InputWrapper>
-                                        <Style.FormCheck>
-                                            <input
-                                                type="checkbox"
-                                                name='KeepConnected'
-                                                id='KeepConnected'
-                                            />
-                                            <label htmlFor="KeepConnected">
-                                                <i class="ri-check-line"></i>
-                                            </label>
-                                            <p>Manter-se conectado</p>
-                                        </Style.FormCheck>
+                                        {
+                                            isRegister && (
+                                                <Style.InputWrapper>
+                                                    <Style.InputLabel htmlFor='password'>Confimar senha</Style.InputLabel>
+                                                    <Style.InputItem>
+                                                        <i className="ri-lock-2-line"></i>
+                                                        <input
+                                                            type={!passwordConfirmView ? "password" : "text"}
+                                                            placeholder='Confirm password'
+                                                            id='password'
+                                                        />
+                                                        <Style.InputIconButton onClick={() => setPasswordConfirmView(prev => !prev)}>
+                                                            <i className={!passwordConfirmView ? "ri-eye-line" : "ri-eye-off-line"}></i>
+                                                        </Style.InputIconButton>
+                                                    </Style.InputItem>
+                                                </Style.InputWrapper>
+                                            )
+                                        }
+                                        {
+                                            !isRegister && (
+                                                <Style.FormCheck>
+                                                <input
+                                                    type="checkbox"
+                                                    name='KeepConnected'
+                                                    id='KeepConnected'
+                                                />
+                                                <label htmlFor="KeepConnected">
+                                                    <i className="ri-check-line"></i>
+                                                </label>
+                                                <p>Manter-se conectado</p>
+                                            </Style.FormCheck>
+                                            )
+                                        }
                                     </Style.FormBody>
                                 </Style.FormAuthentication>
                                 <Style.FormButtons>
-                                    <Style.ButtonRegister>
-                                        Cadastrar-se
+                                    <Style.ButtonRegister onClick={() => setScreen(prev => !prev)}>
+                                        {BUTTON_TEXT}
                                     </Style.ButtonRegister>
                                     <Style.ButtonContinue>
                                         Continuar

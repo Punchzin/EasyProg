@@ -199,6 +199,13 @@ export const InputItem = styled.div`
     }
 `;
 
+export const InputIconButton = styled.button `
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+`;
+
 export const FormCheck = styled.div`
     width: 100%;
     display: flex;
@@ -255,7 +262,10 @@ export const FormButtons = styled.div`
     justify-content: space-between;
 `;
 
-export const ButtonRegister = styled.div`
+export const ButtonRegister = styled.button`
+    background: transparent;
+    border: none;
+    outline: none;
     color: #0BF0D5;
     font-size: 12px;
     font-style: normal;
@@ -264,7 +274,9 @@ export const ButtonRegister = styled.div`
     cursor: pointer;
 `;
 
-export const ButtonContinue = styled.div`
+export const ButtonContinue = styled.button`
+    border: none;
+    outline: none;
     display: flex;
     width: 96px;
     height: 31px;

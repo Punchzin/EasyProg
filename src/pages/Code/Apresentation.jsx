@@ -7,83 +7,83 @@ const Apresentation = () => {
   return (
     <main>
       <aside>
-        <div className="aside-wrapper">
-          <div className="aside-brand">
+        <Style.AsideWrapper>
+          <Style.AsideBrand>
             <img src={EASYPROG_BRAND} alt="LogoTipo EasyPog" />
-          </div>
-          <div className="aside-divider"></div>
-          <div className="aside-actions">
-            <button className="aside-action">
+          </Style.AsideBrand>
+          <Style.AsideDivider>___</Style.AsideDivider>
+          <Style.AsideActions>
+            <Style.AsideAction>
               {/* File */}
               <i className="ri-file-3-line"></i>
-            </button>
-            <button className="aside-action">
+            </Style.AsideAction>
+            <Style.AsideAction>
               {/* Configuration */}
               <i className="ri-settings-3-line"></i>
-            </button>
-            <button className="aside-action">
+            </Style.AsideAction>
+            <Style.AsideAction>
               {/*Help*/}
               <i className="ri-question-line"></i>
-            </button>
-          </div>
-          <div className="aside-divider"></div>
-          <div className="aside-actions">
-            <button className="aside-action">
+            </Style.AsideAction>
+          </Style.AsideActions>
+          <Style.AsideDivider>___</Style.AsideDivider>
+          <Style.AsideActions>
+            <Style.AsideAction>
               {/*Run*/}
               <i className="ri-play-line"></i>
-            </button>
-            <button className="aside-action">
+              </Style.AsideAction>
+            <Style.AsideAction>
               {/*Pause*/}
               <i className="ri-pause-fill"></i>
-            </button>
-            <button className="aside-action">
+              </Style.AsideAction>
+            <Style.AsideAction>
               {/*Reload*/}
               <i className="ri-restart-line"></i>
-            </button>
-          </div>
-        </div>
-        <button className="aside-action">
+              </Style.AsideAction>
+          </Style.AsideActions>
+        </Style.AsideWrapper>
+        <Style.AsideAction>
           {/*Logout*/}
           <i className="ri-logout-box-r-line"></i>
-          </button>
+          </Style.AsideAction>
       </aside>
-      <div className="container">
-        <header className="header">
-          <div className="header-brand">
+      <Style.Container>
+        <Style.Header>
+          <Style.HeaderBrand>
             <h2>EASYPROG</h2>
-          </div>
-          <div className="header-actions">
-            <div className="keywords"></div>
-            <button className="login"></button>
-          </div>
-        </header>
-        <section className="content">
-          <div className="tab">
+          </Style.HeaderBrand>
+          <Style.HeaderActions>
+            <Style.Keywords>Keywords</Style.Keywords>
+            <Style.Login>Login</Style.Login>
+          </Style.HeaderActions>
+        </Style.Header>
+        <Style.Content>
+          <Style.Tab>
             <p>Página aberta</p>
-            <button className="close">X</button>
-          </div>
-          <div className="headline">
+            <Style.Close>X</Style.Close>
+          </Style.Tab>
+          <Style.HeadLine>
             <h2>Hey, Welcome!</h2>
             <h4>Escolha a linguagem.</h4>
-            <div className="robot">
+            <Style.Robot>
               <img src={EASYBOT_NORMAL} alt="EasyBot normal" />
-            </div>
-          </div>
-          <div className="wrapper">
-            <div className="chooser">
-              <div className="choose-item">Python</div>
-              <div className="choose-item">C#</div>
-              <div className="choose-item">JavaScript</div>
-            </div>
-            <div className="usemode">
+            </Style.Robot>
+          </Style.HeadLine>
+          <Style.Wrapper>
+            <Style.Chooser>
+              <Style.ChooseItem>Python</Style.ChooseItem>
+              <Style.ChooseItem>C#</Style.ChooseItem>
+              <Style.ChooseItem>JavaScript</Style.ChooseItem>
+            </Style.Chooser>
+            <Style.UseMode>
               Video
-            </div>
-          </div>
-        </section>
-        <div className="output">
+            </Style.UseMode>
+          </Style.Wrapper>
+        </Style.Content>
+        <Style.Output>
           saida de dados
-        </div>
-      </div>
+        </Style.Output>
+      </Style.Container>
     </main>
   );
 };

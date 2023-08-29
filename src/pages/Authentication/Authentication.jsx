@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import * as Style from "./Authentication.styles";
 import EASYPROG_LOGO from "../../assets/images/easyprog-logo.svg";
-import EASYPROG_ROBOT_SMILE from "../../assets/images/easybot.svg";
+import EASYPROG_ROBOT_SMILE from "../../assets/images/easybot-normal.svg";
 import EASYPROG_ROBOT_DUBIOUS from "../../assets/images/easybot-register.svg";
 
 const Authentication = () => {

@@ -1,0 +1,1 @@
+mongodb+srv://Punchzin:gabmeire12@cluster0.bqnixoy.mongodb.net/?retryWrites=true&w=majority

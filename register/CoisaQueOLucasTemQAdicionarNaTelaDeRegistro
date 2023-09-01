@@ -1,0 +1,32 @@
+const User = require('../register/User');
+
+const registrationForm = document.getElementById('registration-form');
+
+registrationForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  // Call the registration function with the email and password
+  await registerUser(email, password);
+});
+
+async function registerUser(email, password) {
+    try {
+      // Create a new user instance
+      const newUser = new User({
+        email,
+        password
+      });
+  
+      // Save the user to the database
+      await newUser.save();
+  
+      // Registration successful, redirect or show a success message
+      // ...
+    } catch (error) {
+      // Handle registration error, redirect or show an error message
+      // ...
+    }
+  }

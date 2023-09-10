@@ -10,3 +10,14 @@
     width: 100%;
     min-height: 100vh;
 }
+
+button {
+    background: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+button:focus {
+    outline: 1px solid #0BF0D5;
+}

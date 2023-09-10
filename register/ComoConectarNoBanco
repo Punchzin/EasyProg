@@ -1,0 +1,21 @@
+const { MongoClient } = require('mongodb');
+
+   // Connection URL and database name
+   const url = 'mongodb+srv://Punchzin:gabmeire12@cluster0.bqnixoy.mongodb.net/?retryWrites=true&w=majority';
+   const dbName = 'login';
+
+   // Create a new MongoClient
+   const client = new MongoClient(url);
+
+   // Connect to the MongoDB server
+   client.connect((err) => {
+     if (err) {
+       console.error('Failed to connect to the database:', err);
+       return;
+     }
+
+     console.log('Connected to the database');
+
+     // Call the registration function here
+     // ...
+   });

@@ -5,7 +5,8 @@
     font-family: "Space Grotesk", sans-serif;
 }
 
-#root, html {
+#root,
+html {
     background-color: #0F1923;
     width: 100%;
     min-height: 100vh;
@@ -18,6 +19,6 @@ button {
     cursor: pointer;
 }
 
-button:focus {
+/* button:focus {
     outline: 1px solid #0BF0D5;
-}
+} */

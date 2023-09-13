@@ -1,18 +1,8 @@
-import os
 import openai
 import json
-import re
 
 API_KEY = "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"
 openai.api_key = API_KEY
-
-def is_python_code(input_text):
-    # Define a regular expression pattern to match Python code
-    pattern = r""
-
-    # Check if the input text matches the pattern
-    match = re.match(pattern, input_text, re.MULTILINE)
-    return bool(match)
 
 # Opens the json file with incorrect code
 with open('incorrect_code.json', 'r') as f:
@@ -21,7 +11,6 @@ with open('incorrect_code.json', 'r') as f:
 # Get the code
 code = data['incorrect_code']
 
-user_input = code
 
 if is_python_code(user_input):
     # Call the GPT-4 API with the user's code
@@ -58,7 +47,3 @@ if is_python_code(user_input):
     # Get the corrected code content
     content = data['corrected_code']
     print(corrected_code)
-
-
-else:
-    print("Invalid input. Please provide valid Python code.")

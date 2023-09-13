@@ -15,4 +15,4 @@ const AsideAction = ({ actionIcon, actionTitle, actionIsSelected, onClick }) => 
     )
 }
 
-export default AsideAction;
+export default AsideAction; 

@@ -7,7 +7,7 @@ Esse pojeto foi desenvolvido durante o ano de 2023 com as seguintes tecnologias:
 - HTML
 - CSS
 - Git e Github
-- JavaScript
+- ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 - Python
 - React JS
 - Jupyter Notebook e Jupyter Lab

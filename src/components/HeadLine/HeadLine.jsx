@@ -1,6 +1,7 @@
 import EASYBOT_NORMAL from "../../assets/images/easybot-normal.svg";
 import * as Style from "./HeadLine.style";
 
+// eslint-disable-next-line react/prop-types
 const HeadLine = ({title, description}) => {
     return (
         <Style.HeadLineWrapper>

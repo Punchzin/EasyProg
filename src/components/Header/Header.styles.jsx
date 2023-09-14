@@ -9,7 +9,8 @@ export const Header = styled.header`
   align-items: center;
 
   border-bottom: 1px solid rgba(50, 59, 69, 0.80);
-  background: #0F1923;
+  background: rgba(15, 25, 35, .8);
+  backdrop-filter: blur(8px);
 `;
 
 export const HeaderBrand = styled.div`

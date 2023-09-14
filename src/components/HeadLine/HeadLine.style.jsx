@@ -4,17 +4,17 @@ export const HeadLineWrapper = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 1.5rem;
+  justify-content: flex-start;
+  position: relative;
 `;
 
 export const Texts = styled.div`
   display: flex;
   flex-direction: column;
-  gap: .5rem;
+  gap: 0.5rem;
 
   h2 {
-    color: #FFF;
+    color: #fff;
     font-family: Space Grotesk;
     font-size: 24px;
     font-style: normal;
@@ -23,7 +23,7 @@ export const Texts = styled.div`
   }
 
   h4 {
-    color: #B3CAE0;
+    color: #b3cae0;
     font-family: Space Grotesk;
     font-size: 14px;
     font-style: normal;
@@ -33,5 +33,28 @@ export const Texts = styled.div`
 `;
 
 export const Robot = styled.div`
-  transform: scale(0.8);
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: ping 2s ease infinite;
+  
+
+  img {
+    width: 58px;
+    height: 74px;
+    pointer-events: none;
+  }
+
+  @keyframes ping {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
 `;

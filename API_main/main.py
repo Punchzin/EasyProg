@@ -18,7 +18,7 @@ response = openai.ChatCompletion.create(
     messages=[
         {
             "role": "system",
-            "content": "You will be provided with a piece of Python code, and your task is to find and fix bugs in it."
+            "content": "You will be provided with a piece of Python code, and your task is to find and fix bugs in it. And then explain the bugs."
         },
         {
             "role": "user",

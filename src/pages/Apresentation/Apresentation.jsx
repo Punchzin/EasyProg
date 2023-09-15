@@ -1,11 +1,11 @@
 import * as Style from "./Apresentation.styles";
-import Aside from "../../components/Aside/Aside";
-import Header from "../../components/Header/Header";
-import Tab from "../../components/Tab/Tab";
-import Tabs from "../../components/Tabs/Tabs";
-import HeadLine from "../../components/HeadLine/HeadLine";
-import Chooser from "../../components/Chooser/Chooser";
-
+import Aside from "../../components/Aside/";
+import Header from "../../components/Header/";
+import Tab from "../../components/Tab/";
+import Tabs from "../../components/Tabs/";
+import HeadLine from "../../components/HeadLine/";
+import Chooser from "../../components/Chooser/";
+import Output from "../../components/Output/";
 
 const Apresentation = () => {
   // Insira seu javascript aqui
@@ -28,9 +28,7 @@ const Apresentation = () => {
               </Style.UseMode>
             </Style.Wrapper>
           </Style.ContentBody>
-          <Style.Output>
-            saida de dados
-          </Style.Output>
+          <Output />
         </Style.Content>
       </Style.Container>
     </Style.Main>

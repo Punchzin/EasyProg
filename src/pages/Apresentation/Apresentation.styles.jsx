@@ -66,18 +66,3 @@ export const UseMode = styled.div`
   background: rgba(26, 39, 52, 0.3);
   backdrop-filter: blur(4px);
 `;
-
-export const Output = styled.div`
-  display: flex;
-  width: 100%;
-  max-height: 213px;
-  height: 100%;
-  padding: 24px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
-  flex-shrink: 0;
-  border: 1px solid #323b45;
-  background: #19242f;
-  border-radius: 4px;
-`;

@@ -8,7 +8,7 @@ Esse pojeto foi desenvolvido durante o ano de 2023 com as seguintes tecnologias:
 ![CSS3](https://img.shields.io/badge/css3-0F1923?style=for-the-badge&logo=css3&logoColor=0BF0D5 ) 
 ![Python](https://img.shields.io/badge/python-0F1923?style=for-the-badge&logo=python&logoColor=0BF0D5) 
 ![JavaScript](https://img.shields.io/badge/javascript-0F1923?style=for-the-badge&logo=javascript&logoColor=0BF0D5 ) 
-![PHP](https://img.shields.io/badge/php-0F1923?style=for-the-badge&logo=php&logoColor=white) 
+![PHP](https://img.shields.io/badge/php-0F1923?style=for-the-badge&logo=php&logoColor=0BF0D5) 
 ![Express.js](https://img.shields.io/badge/express.js-0F1923?style=for-the-badge&logo=express&logoColor=0BF0D5 ) 
 ![NodeJS](https://img.shields.io/badge/node.js-0F1923?style=for-the-badge&logo=node.js&logoColor=0BF0D5 ) 
 ![GitHub](https://img.shields.io/badge/GitHub-0F1923?style=for-the-badge&logo=github&logoColor=0BF0D5 ) 

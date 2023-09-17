@@ -13,7 +13,7 @@ const PRESETS = {
   },
   javascript: {
     gradient: "linear-gradient(-45deg, #312905, #596036)",
-    languageColor: "#262303",
+    languageColor: "	#000000",
     languageBackgroundColor: "#B8AB3D",
   },
 };
@@ -61,6 +61,22 @@ export const ChooseItem = styled.button`
         : "black"};
     color: ${(props) =>
       props.preset in PRESETS ? PRESETS[props.preset].languageColor : "black"};
+  }
+`;
+
+export const Status = styled.div`
+  display: flex;
+  position: absolute;
+  pointer-events: none;
+
+  bottom: 1.2rem;
+  right: 1.5rem;
+
+  color: ${(props) =>
+    props.preset in PRESETS ? PRESETS[props.preset].languageColor : "black"};
+
+  i {
+    font-size: 1.3rem;
   }
 `;
 

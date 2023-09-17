@@ -20,5 +20,5 @@ Esse pojeto foi desenvolvido durante o ano de 2023 com as seguintes tecnologias:
 ![Postman](https://img.shields.io/badge/Postman-0F1923?style=for-the-badge&logo=postman&logoColor=0BF0D5 )
 Jupyter Notebook e Jupyter Lab
 Chat-GPT
-VSCode
+![VSCode](https://img.shields.io/badge/VSCode-0F1923?style=for-the-badge&logo=visualstudiocode&logoColor=white)
 

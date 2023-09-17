@@ -19,6 +19,6 @@ Esse pojeto foi desenvolvido durante o ano de 2023 com as seguintes tecnologias:
 ![Notion](https://img.shields.io/badge/Notion-0F1923?style=for-the-badge&logo=notion&logoColor=0BF0D5 ) 
 ![Postman](https://img.shields.io/badge/Postman-0F1923?style=for-the-badge&logo=postman&logoColor=0BF0D5 )
 Jupyter Notebook e Jupyter Lab
-Chat-GPT
+![ChatGPT](https://img.shields.io/badge/ChatGPT-0F1923?style=for-the-badge&logo=openai&logoColor=0BF0D5)
 ![VSCode](https://img.shields.io/badge/VSCode-0F1923?style=for-the-badge&logo=visualstudiocode&logoColor=0BF0D5 )
 

@@ -1,99 +1,58 @@
 const express = require('express');
-const MongoClient = require('mongodb').MongoClient;
+const mysql = require('mysql');
+const bodyParser = require('body-parser');
 
 const app = express();
-const port = 3000;
+app.use(bodyParser.json());
 
-// Connection URL
-const url = 'mongodb+srv://Punchzin:gabmeire12@cluster0.bqnixoy.mongodb.net/?retryWrites=true&w=majority';
+const db = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'bank_of_dades'
+});
 
-// Database Name
-const dbName = 'Cluster0';
-
-// Middleware to parse JSON requests
-app.use(express.json());
-
-// User registration route
-app.post('/register', (req, res) => {
-  const { email, password, confirmPassword } = req.body;
-
-  if (password !== confirmPassword) {
-    res.status(400).json({ error: 'Passwords do not match' });
+db.connect((err) => {
+  if (err) {
+    console.error('Erro ao conectar ao banco de dados:', err);
     return;
   }
-
-  // Connect to the MongoDB Atlas database
-  MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
-    if (err) {
-      console.error('Error connecting to the database:', err);
-      res.status(500).json({ error: 'Internal server error' });
-      return;
-    }
-
-    const db = client.db(dbName);
-    const usersCollection = db.collection('users');
-
-    // Check if the user already exists
-    usersCollection.findOne({ email }, (err, user) => {
-      if (err) {
-        console.error('Error finding user:', err);
-        res.status(500).json({ error: 'Internal server error' });
-        client.close();
-        return;
-      }
-
-      if (user) {
-        res.status(400).json({ error: 'User already exists' });
-        client.close();
-        return;
-      }
-
-      // Create a new user document
-      const newUser = { email, password };
-      usersCollection.insertOne(newUser, (err) => {
-        if (err) {
-          console.error('Error creating user:', err);
-          res.status(500).json({ error: 'Internal server error' });
-        } else {
-          res.status(201).json({ message: 'User registered successfully' });
-        }
-        client.close();
-      });
-    });
-  });
+  console.log('Conectado ao banco de dados MySQL.');
 });
 
-// User authentication route
+// Rota para login
 app.post('/login', (req, res) => {
-  const { email, password } = req.body;
-
-  // Connect to the MongoDB Atlas database
-  MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
+  const { email, senha } = req.body;
+  db.query('SELECT * FROM usuarios WHERE email = ? AND senha = ?', [email, senha], (err, result) => {
     if (err) {
-      console.error('Error connecting to the database:', err);
-      res.status(500).json({ error: 'Internal server error' });
-      return;
+      console.error('Erro ao efetuar o login:', err);
+      res.status(500).json({ error: 'Erro interno do servidor' });
+    } else if (result.length === 0) {
+      res.status(401).json({ message: 'Credenciais inválidas' });
+    } else {
+      res.status(200).json({ message: 'Login bem-sucedido' });
     }
-
-    const db = client.db(dbName);
-    const usersCollection = db.collection('users');
-
-    // Find the user by email and password
-    usersCollection.findOne({ email, password }, (err, user) => {
-      if (err) {
-        console.error('Error finding user:', err);
-        res.status(500).json({ error: 'Internal server error' });
-      } else if (!user) {
-        res.status(401).json({ error: 'Invalid email or password' });
-      } else {
-        res.status(200).json({ message: 'User authenticated successfully' });
-      }
-      client.close();
-    });
   });
 });
 
-// Start the server
+// Rota para registro de usuários
+app.post('/register', (req, res) => {
+  const { email, senha, confirmarSenha } = req.body;
+  if (senha !== confirmarSenha) {
+    res.status(400).json({ message: 'As senhas não coincidem' });
+    return;
+  }
+  db.query('INSERT INTO usuarios (email, senha) VALUES (?, ?)', [email, senha], (err, result) => {
+    if (err) {
+      console.error('Erro ao registrar o usuário:', err);
+      res.status(500).json({ error: 'Erro interno do servidor' });
+    } else {
+      res.status(200).json({ message: 'Usuário registrado com sucesso' });
+    }
+  });
+});
+
+const port = 3000;
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+  console.log('Servidor rodando na porta', port);
 });

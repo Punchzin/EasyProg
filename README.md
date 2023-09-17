@@ -4,7 +4,20 @@ Este é um projeto realizado para o Trabalho de Conclusão de Curso da Etec Uira
 # 🚀 Tecnologias
 Esse pojeto foi desenvolvido durante o ano de 2023 com as seguintes tecnologias:
 
-![HTML5](https://img.shields.io/badge/html5-0BF0D5.svg?style=for-the-badge&logo=html5&logoColor=black) ![CSS3](https://img.shields.io/badge/css3-0BF0D5.svg?style=for-the-badge&logo=css3&logoColor=black) ![Python](https://img.shields.io/badge/python-0BF0D5?style=for-the-badge&logo=python&logoColor=ffdd54) ![JavaScript](https://img.shields.io/badge/javascript-0BF0D5.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![PHP](https://img.shields.io/badge/php-0BF0D5.svg?style=for-the-badge&logo=php&logoColor=white) ![Express.js](https://img.shields.io/badge/express.js-0BF0D5.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) ![NodeJS](https://img.shields.io/badge/node.js-0BF0D5?style=for-the-badge&logo=node.js&logoColor=white) ![GitHub](https://img.shields.io/badge/GitHub-0BF0D5.svg?style=for-the-badge&logo=github&logoColor=white) ![React](https://img.shields.io/badge/react-0BF0D5?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![React Router](https://img.shields.io/badge/React_Router-0BF0D5?style=for-the-badge&logo=react-router&logoColor=white) ![MySQL](https://img.shields.io/badge/mysql-0BF0D5.svg?style=for-the-badge&logo=mysql&logoColor=white) ![GIT](https://img.shields.io/badge/Git-0BF0D5?style=for-the-badge&logo=git&logoColor=white) ![Notion](https://img.shields.io/badge/Notion-0BF0D5.svg?style=for-the-badge&logo=notion&logoColor=white) ![Postman](https://img.shields.io/badge/Postman-0BF0D5?style=for-the-badge&logo=postman&logoColor=white)
+![HTML5](https://img.shields.io/badge/html5-0F1923?style=for-the-badge&logo=html5&logoColor=0BF0D5 ) 
+![CSS3](https://img.shields.io/badge/css3-0F1923?style=for-the-badge&logo=css3&logoColor=0BF0D5 ) 
+![Python](https://img.shields.io/badge/python-0F1923?style=for-the-badge&logo=python&logoColor=0BF0D5) 
+![JavaScript](https://img.shields.io/badge/javascript-0F1923?style=for-the-badge&logo=javascript&logoColor=0BF0D5 ) 
+![PHP](https://img.shields.io/badge/php-0F1923?style=for-the-badge&logo=php&logoColor=white) 
+![Express.js](https://img.shields.io/badge/express.js-0F1923?style=for-the-badge&logo=express&logoColor=0BF0D5 ) 
+![NodeJS](https://img.shields.io/badge/node.js-0F1923?style=for-the-badge&logo=node.js&logoColor=0BF0D5 ) 
+![GitHub](https://img.shields.io/badge/GitHub-0F1923?style=for-the-badge&logo=github&logoColor=0BF0D5 ) 
+![React](https://img.shields.io/badge/react-0F1923?style=for-the-badge&logo=react&logoColor=0BF0D5 ) 
+![React Router](https://img.shields.io/badge/React_Router-0F1923?style=for-the-badge&logo=react-router&logoColor=0BF0D5 )
+![MySQL](https://img.shields.io/badge/mysql-0F1923?style=for-the-badge&logo=mysql&logoColor=0BF0D5 )
+![GIT](https://img.shields.io/badge/Git-0F1923?style=for-the-badge&logo=git&logoColor=0BF0D5 ) 
+![Notion](https://img.shields.io/badge/Notion-0F1923?style=for-the-badge&logo=notion&logoColor=0BF0D5 ) 
+![Postman](https://img.shields.io/badge/Postman-0F1923?style=for-the-badge&logo=postman&logoColor=0BF0D5 )
 Jupyter Notebook e Jupyter Lab
 Chat-GPT
 VSCode

@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.json());
 
-const db = mysql.createConnection('mysql://a1q5daxmfcor6w5eyibq:pscale_pw_aJneHS4TiyGKJxW33gbZR9mMO16FrUxTnIQAQl2pKNb@aws.connect.psdb.cloud/bank_of_dades?ssl={"rejectUnauthorized":true}');
+const db = mysql.createConnection('mysql://f87o41h10p7j8tqdab4v:pscale_pw_Ny3dKNmRNtP3pFqTO4rLyEs4BZVoyAp6JOUlg1iMyxt@aws.connect.psdb.cloud/bank_of_dades?ssl={"rejectUnauthorized":true}');
 
 db.connect((err) => {
   if (err) {

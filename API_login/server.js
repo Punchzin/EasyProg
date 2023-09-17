@@ -1,16 +1,11 @@
 const express = require('express');
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const bodyParser = require('body-parser');
 
 const app = express();
 app.use(bodyParser.json());
 
-const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'bank_of_dades'
-});
+const db = mysql.createConnection('mysql://a1q5daxmfcor6w5eyibq:pscale_pw_aJneHS4TiyGKJxW33gbZR9mMO16FrUxTnIQAQl2pKNb@aws.connect.psdb.cloud/bank_of_dades?ssl={"rejectUnauthorized":true}');
 
 db.connect((err) => {
   if (err) {

@@ -20,6 +20,6 @@ Esse pojeto foi desenvolvido durante o ano de 2023 com as seguintes tecnologias:
 ![Postman](https://img.shields.io/badge/Postman-0F1923?style=for-the-badge&logo=postman&logoColor=0BF0D5 )
 ![Jupyter Notebook](https://img.shields.io/badge/Jupyter%20Notebook-0F1923?style=for-the-badge&logo=jupyter&logoColor=0BF0D5)
 ![Jupyter Lab](https://img.shields.io/badge/Jupyter%20Lab-0F1923?style=for-the-badge&logo=jupyter&logoColor=0BF0D5)
-![ChatGPT](https://img.shields.io/badge/ChatGPT-0F1923?style=for-the-badge&logo=openai&logoColor=0BF0D5)
+![ChatGPT](https://img.shields.io/badge/GPT4-0F1923?style=for-the-badge&logo=openai&logoColor=0BF0D5)
 ![VSCode](https://img.shields.io/badge/VSCode-0F1923?style=for-the-badge&logo=visualstudiocode&logoColor=0BF0D5 )
 

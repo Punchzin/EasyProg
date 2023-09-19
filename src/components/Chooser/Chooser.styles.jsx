@@ -35,8 +35,7 @@ export const ChooseItem = styled.button`
   align-items: flex-end;
   overflow: hidden;
 
-  background-image: ${(props) =>
-    props.preset in PRESETS ? PRESETS[props.preset].gradient : "black"};
+  background-image: ${(props) => props.preset in PRESETS ? PRESETS[props.preset].gradient : "black"};
   opacity: 0.2px;
   border-radius: 4px;
   border: 1px solid rgba(50, 59, 69, 0.8);

@@ -1,8 +1,11 @@
+// import { useNavigate } from "react-router-dom";
 import * as Style from "./Header.styles";
 //import { useState } from "react";
 //import HeaderAction from "./HeaderAction";
 
 const Header = () => {
+  // const navigate = useNavigate();
+
   return (
     <Style.Header>
       <Style.HeaderBrand>
@@ -10,7 +13,9 @@ const Header = () => {
       </Style.HeaderBrand>
       <Style.HeaderActions>
         <Style.Keywords>Keywords</Style.Keywords>
-        <Style.Login>LOGIN</Style.Login>
+        {/* <Style.Login onClick={() => navigate('/login')}>
+          LOGIN
+        </Style.Login> */}
       </Style.HeaderActions>
     </Style.Header>
   );

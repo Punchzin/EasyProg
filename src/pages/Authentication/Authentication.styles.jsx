@@ -292,4 +292,10 @@ export const ButtonContinue = styled.button`
     font-style: normal;
     font-weight: 700;
     line-height: 140%;
+    transition: all .3s;
+
+    :disabled {
+        cursor: not-allowed;
+        opacity: .6;
+    }
 `;

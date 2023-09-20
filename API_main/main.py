@@ -2,7 +2,7 @@ import openai
 import json
 
 
-API_KEY = "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"
+API_KEY = "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"
 openai.api_key = API_KEY
 
 # Opens the json file with incorrect code

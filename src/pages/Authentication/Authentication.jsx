@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 import * as Style from "./Authentication.styles";
 import EASYPROG_LOGO from "../../assets/images/easyprog-logo.svg";
-import EASYPROG_ROBOT_SMILE from "../../assets/images/easybot-normal.svg";
-import EASYPROG_ROBOT_DUBIOUS from "../../assets/images/easybot-register.svg";
+import EASYPROG_ROBOT_SMILE from "../../assets/images/easybot-smile.svg";
+import EASYPROG_ROBOT_DUBIOUS from "../../assets/images/easybot-dubious.svg";
 
 const Authentication = () => {
   const navigate = useNavigate();
@@ -123,7 +123,7 @@ const Authentication = () => {
                         </Style.InputItem>
                       </Style.InputWrapper>
                     )}
-                    {!isRegister && (
+                    {/* {!isRegister && (
                       <Style.FormCheck>
                         <input
                           type="checkbox"
@@ -135,7 +135,7 @@ const Authentication = () => {
                         </label>
                         <p>Manter-se conectado</p>
                       </Style.FormCheck>
-                    )}
+                    )} */}
                   </Style.FormBody>
                 </Style.FormAuthentication>
                 <Style.FormButtons>
@@ -144,6 +144,8 @@ const Authentication = () => {
                   >
                     {BUTTON_TEXT}
                   </Style.ButtonRegister>
+                  
+                  <Style.ButtonContinueR onClick={() => navigate('/apresentation')}>Continuar sem conta</Style.ButtonContinueR>
                   <Style.ButtonContinue>Continuar</Style.ButtonContinue>
                 </Style.FormButtons>
               </Style.FormWrapper>

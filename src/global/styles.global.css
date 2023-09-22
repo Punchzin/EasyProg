@@ -24,6 +24,10 @@ button {
     cursor: pointer;
 }
 
+body{
+    overflow: hidden;
+}
+
 /* button:focus {
     outline: 1px solid #0BF0D5;
 } */

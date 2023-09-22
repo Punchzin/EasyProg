@@ -9,6 +9,7 @@ export const Main = styled.main`
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;
+ 
 `;
 
 export const Container = styled.div`

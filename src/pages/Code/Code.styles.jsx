@@ -43,10 +43,13 @@ export const ContentBody = styled.label`
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
-  background: #19242f;
-  border: 1px solid rgba(50, 59, 69, 0.8);
   border-radius: 4px;
+
   position: relative;
+  
+  background: rgba(26, 39, 52, 0.3);
+  border: 1px solid rgba(50, 59, 69, 0.8);
+  backdrop-filter: blur(10px);
 `;
 
 export const InputText = styled.label`

@@ -8,6 +8,7 @@ export const Aside = styled.aside`
   flex-direction: column;
   border-right: 1px solid rgba(50, 59, 69, 0.8);
   background: #0f1923;
+  position: relative;
 `;
 
 export const AsideWrapper = styled.div`

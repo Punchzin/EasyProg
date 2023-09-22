@@ -27,21 +27,6 @@ export const HeaderActions = styled.div`
   gap: 1rem;
 `;
 
-export const Keywords = styled.button`
-  height: 40px;
-  align-items: flex-start;
-  gap: 16px;
-  color: #FFF;
-  width: 247px;
-  padding: 8px 16px;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: line;
-
-  border-radius: 4px;
-  background: #0C1218;
-`;
-
 export const Login = styled.button`
   width: 150px;
   height: 40px;

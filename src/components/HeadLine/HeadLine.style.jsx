@@ -39,7 +39,7 @@ export const Robot = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: ping 2s ease infinite;
+  animation: ping 3.5s ease infinite;
   
 
   img {

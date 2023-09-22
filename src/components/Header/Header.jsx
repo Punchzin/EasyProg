@@ -12,7 +12,6 @@ const Header = () => {
         <h2>EASYPROG</h2>
       </Style.HeaderBrand>
       <Style.HeaderActions>
-        <Style.Keywords>Keywords</Style.Keywords>
         {/* <Style.Login onClick={() => navigate('/login')}>
           LOGIN
         </Style.Login> */}

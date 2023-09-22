@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import * as Style from "./Authentication.styles";
 import EASYPROG_LOGO from "../../assets/images/easyprog-logo.svg";
 import EASYPROG_ROBOT_SMILE from "../../assets/images/easybot-normal.svg";
@@ -17,16 +18,16 @@ const Authentication = () => {
   const [passwordView, setPasswordView] = useState(false);
   const [passwordConfirmView, setPasswordConfirmView] = useState(false);
 
-  const isRegister = screen == 1;
+  const isRegister = screen == 1;  
 
   const AUTHENTICATION_TITLE = !isRegister ? "Authentication" : "Registro";
-  const AUTHENTICATION_DESCRIPTION = !isRegister
-    ? "Autentique-se"
-    : "Registre-se";
+  const AUTHENTICATION_DESCRIPTION = !isRegister ? "Autentique-se" : "Registre-se";
   const BUTTON_TEXT = !isRegister ? "Cadastrar-se" : "Fazer login";
   const EASYBOT_IMAGE = !isRegister
     ? EASYPROG_ROBOT_SMILE
     : EASYPROG_ROBOT_DUBIOUS;
+
+    
 
   return (
     <Style.Main>

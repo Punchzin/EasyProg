@@ -15,3 +15,14 @@ db.connect(err=>{
     }
     console.log("Database connected");
 })
+
+const createTable = "CREATE TABLE inputs (inputId INT AUTO_INCREMENT, question TEXT, answer TEXT, PRIMARY KEY (inputId))";
+
+db.query(createTable, function(err, result) {
+   if(err) throw err;
+   console.log("Table created");
+});
+con.end(function(err) {
+    if(err) throw err;
+    console.log("Connection ended");
+ });

@@ -2,11 +2,10 @@ import EASYPROG_BRAND from "../../assets/images/easyprog-logo.svg";
 import AsideAction from "./AsideAction.jsx";
 import * as Style from "./Aside.styles";
 import { useState } from "react";
-import * as Popover  from "@radix-ui/react-popover";
 import './styles.css'
+import PopoverFile from "./Popovers/PopoverFile";
 
 const Aside = () => {
-  const [fileIsSelected, setFileIsSelected] = useState(false);
   const [settingIsSelected, setSettingIsSelected] = useState(false);
   const [helpIsSelected, setHelpIsSelected] = useState(false);
   const [playIsSelected, setPlayIsSelected] = useState(false);
@@ -16,7 +15,7 @@ const Aside = () => {
 
   const [fileModalIsOpen, setFileModalIsOpen] = useState(false);
   const [settingModalIsOpen, setSettingModalIsOpen] = useState(false);
-  
+
   return (
     <Style.Aside>
       <Style.AsideWrapper>
@@ -26,36 +25,9 @@ const Aside = () => {
         <Style.ActionsWrapper>
           <Style.AsideDivider />
           <Style.AsideActions>
-            <Popover.Root>
-              <Popover.Trigger asChild>
-                <AsideAction
-                  actionIcon="ri-file-3-line"
-                  actionTitle="Arquivo"
-                  onClick={() => setFileIsSelected((prev) => !prev)}
-                  actionIsSelected={fileIsSelected}
-                />
-              </Popover.Trigger>
-              <Popover.Portal>
-                <Popover.Content className="PopoverContent" sideOffset={5}>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-                    <p className="Text" style={{ marginBottom: 10 }}>
-                      Dimensions
-                    </p>
-                    <fieldset className="Fieldset">
-                      <label className="Label" htmlFor="width">
-                        Width
-                      </label>
-                      <input className="Input" id="width" defaultValue="100%" />
-                    </fieldset>
-                  </div>
-                  <Popover.Close className="PopoverClose" aria-label="Close">
-                    <i className="ri-close-line"></i>
-                  </Popover.Close>
-                  <Popover.Arrow className="PopoverArrow" />
-                </Popover.Content>
-              </Popover.Portal>
-            </Popover.Root>
-            
+
+            <PopoverFile />
+
             <AsideAction
               actionIcon="ri-settings-3-line"
               actionTitle="Configurações"

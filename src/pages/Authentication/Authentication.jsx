@@ -27,8 +27,6 @@ const Authentication = () => {
     ? EASYPROG_ROBOT_SMILE
     : EASYPROG_ROBOT_DUBIOUS;
 
-    
-
   return (
     <Style.Main>
       <Style.Container>
@@ -47,7 +45,9 @@ const Authentication = () => {
               <Style.FormWrapper>
                 <Style.FormAuthentication>
                   <Style.FormAuthenticationText>
+                    <Style.Robot>
                     <img src={EASYBOT_IMAGE} alt="EasyBot" />
+                    </Style.Robot>
                     <h1>{AUTHENTICATION_TITLE}</h1>
                     <p>
                       {AUTHENTICATION_DESCRIPTION} na plataforma para utilizar a{" "}

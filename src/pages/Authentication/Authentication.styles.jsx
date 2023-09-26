@@ -136,6 +136,25 @@ export const FormAuthenticationText = styled.div`
   }
 `;
 
+export const Robot = styled.div`
+width: 100%;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 0.5rem;
+
+animation: ping 3.5s ease infinite;
+
+@keyframes ping {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+`;
+
 export const FormBody = styled.div`
   width: 100%;
   display: flex;

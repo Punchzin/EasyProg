@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import BACKGROUND_LINES from "../../assets/images/background-lines.svg";
+import BACKGROUND_LINES from "../../assets/images/background-lines.svg"
 
 export const Main = styled.main`
   width: 100%;
@@ -9,9 +9,10 @@ export const Main = styled.main`
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;
+ 
 `;
 
-export const Wrapper = styled.div`
+export const Container = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
@@ -19,7 +20,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Content = styled.section`
-  max-width: 1580px;
+  max-width: 1440px;
   width: 100%;
   margin: 0 auto;
   margin-top: 2rem;
@@ -34,42 +35,26 @@ export const HeaderContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  position: relative;
 `;
 
-export const ContentBody = styled.label`
+
+export const ContentBody = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
-  border-radius: 4px;
-
-  position: relative;
-  
-  background: rgba(26, 39, 52, 0.3);
-  border: 1px solid rgba(50, 59, 69, 0.8);
-  backdrop-filter: blur(10px);
-`;
-
-export const InputText = styled.label`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-
-  top: 3rem;
-  left: 3rem;
+  gap: 1rem;
+  bgc
 `;
 
 export const Robot = styled.div`
   position: absolute;
-  right: 10rem;
-  top: 4rem;
+  right: 0;
+  bottom: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: ping 3.2s ease infinite;
+  animation: ping 3.5s ease infinite;
   
 
   img {
@@ -87,4 +72,13 @@ export const Robot = styled.div`
     }
   }
   
+`;
+
+export const Wrapper = styled.div`
+  width: 100%;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
 `;

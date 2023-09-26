@@ -76,6 +76,10 @@ export const AsideAction = styled.button`
   &:hover i {
     color: #7b8998;
   }
+
+  &:[data-isActived='true'] {
+    
+  }
 `;
 
 export const AsideActionSelected = styled.button`

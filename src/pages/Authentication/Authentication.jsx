@@ -145,7 +145,7 @@ const Authentication = () => {
                     {BUTTON_TEXT}
                   </Style.ButtonRegister>
                   
-                  <Style.ButtonContinueR onClick={() => navigate('/apresentation')}>Continuar sem conta</Style.ButtonContinueR>
+                  <Style.ButtonContinueR onClick={() => navigate('/code')}>Continuar sem conta</Style.ButtonContinueR>
                   <Style.ButtonContinue>Continuar</Style.ButtonContinue>
                 </Style.FormButtons>
               </Style.FormWrapper>

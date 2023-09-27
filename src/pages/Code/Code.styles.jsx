@@ -3,8 +3,8 @@ import BACKGROUND_LINES from "../../assets/images/background-lines.svg"
 
 export const Main = styled.main`
   width: 100%;
-  display: flex;
   height: 100vh;
+  display: flex;
   background: url(${BACKGROUND_LINES});
   background-position: bottom;
   background-repeat: no-repeat;
@@ -18,18 +18,6 @@ export const Wrapper = styled.div`
   flex-direction: column;
 `;
 
-export const Content = styled.section`
-  max-width: 1580px;
-  width: 100%;
-  margin: 0 auto;
-  margin-top: 2rem;
-  padding: 0 1.5rem;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  gap: 1rem;
-`;
-
 export const HeaderContainer = styled.div`
   width: 100%;
   display: flex;
@@ -37,7 +25,47 @@ export const HeaderContainer = styled.div`
   position: relative;
 `;
 
-export const ContentBody = styled.label`
+export const Robot = styled.div`
+  position: absolute;
+  right: 14rem;
+  top: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: ping 3.2s ease infinite;
+
+  z-index: 1;
+  
+  img {
+    width: 58px;
+    height: 74px;
+    pointer-events: none;
+  }
+  @keyframes ping {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+`;
+
+export const Content = styled.section`
+  max-width: 1440px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  margin-top: 2rem;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+`;
+
+export const ContentBody = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
@@ -53,7 +81,7 @@ export const ContentBody = styled.label`
   }
   
   ::-webkit-scrollbar-track {
-    background-color: #2c2c31;
+    background-color: rgba(50, 59, 69, 0.8);
     border-radius: 4px;
   }
   
@@ -79,27 +107,3 @@ export const InputText = styled.textarea`
   cursor: pointer;
 `;
 
-export const Robot = styled.div`
-  position: absolute;
-  right: 10rem;
-  top: 4rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: ping 3.2s ease infinite;
-  
-  img {
-    width: 58px;
-    height: 74px;
-    pointer-events: none;
-  }
-  @keyframes ping {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
-  
-`;

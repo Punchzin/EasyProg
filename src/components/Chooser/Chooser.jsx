@@ -12,7 +12,7 @@ const Chooser = () => {
         <Style.ChooseItem 
             preset={item.preset} 
             key={item.id} 
-            onClick={() => navigate('/overview')}
+            onClick={() => navigate('/code')}
           >
           <Style.ChooseBody>  
             <Style.Lang>{item.type}</Style.Lang>

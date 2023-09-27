@@ -3,8 +3,8 @@ import BACKGROUND_LINES from "../../assets/images/background-lines.svg"
 
 export const Main = styled.main`
   width: 100%;
-  display: flex;
   height: 100vh;
+  display: flex;
   background: url(${BACKGROUND_LINES});
   background-position: bottom;
   background-repeat: no-repeat;

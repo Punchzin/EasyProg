@@ -9,9 +9,9 @@ import { useState } from "react";
 import { useRef } from "react";
 
 const Code = () => {
-  const [texto, setTexto] = useState('');
+  const [texto, setTexto] = useState();
 
-  const handleChange = (event) => {
+  const inpText = (event) => {
     setTexto(event.target.value);
   };  
 
@@ -37,7 +37,7 @@ const Code = () => {
         </Style.HeaderContainer>
         <Style.Content>
           <Style.ContentBody>
-          <Style.InputText placeholder="Insira o código" value={texto} onChange={handleChange}/>
+          <Style.InputText placeholder="Insira o código" value={texto} onChange={inpText}/>
           </Style.ContentBody>
           <Output />
         </Style.Content>

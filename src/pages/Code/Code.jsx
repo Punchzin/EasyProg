@@ -7,22 +7,22 @@ import Output from "../../components/Output/";
 import EASYBOT_NORMAL from "../../assets/images/easybot-normal.svg";
 import { useState } from "react";
 import { useRef } from "react";
+import { saveAs } from 'file-saver';
 
 const Code = () => {
-  const [texto, setTexto] = useState();
+  const [text, setTexto] = useState();
 
   const inpText = (event) => {
     setTexto(event.target.value);
+  };
+
+  
+    const CopyToPyFile = () => {
+    const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+    saveAs(blob, 'arquivo.py');
+    const retorno = {console:log("deu certo")};
   };  
-
-  function CopyToAPI() {
-    const textareaRef = useRef(null);
-
-    const handleCopy = () => {
-      const textToCopy = textareaRef.current.value;
-      navigator.clipboard.writeText(textToCopy);
-    };
-  }
+ 
 
   return (
     <Style.Main>
@@ -37,7 +37,7 @@ const Code = () => {
         </Style.HeaderContainer>
         <Style.Content>
           <Style.ContentBody>
-          <Style.InputText placeholder="Insira o código" value={texto} onChange={inpText}/>
+            <Style.InputText placeholder="Insira o código" value={text} onChange={inpText} />
           </Style.ContentBody>
           <Output />
         </Style.Content>
@@ -45,5 +45,4 @@ const Code = () => {
     </Style.Main>
   );
 };
-
 export default Code;

@@ -1,51 +1,36 @@
 import EASYPROG_BRAND from "../../assets/images/easyprog-logo.svg";
 import AsideAction from "./AsideAction.jsx";
-import handleCopyToAPI from "./texte";
-import * as Style from "./Aside.styles";
 import { useState } from "react";
-import './styles.css'
+import { useNavigate } from "react-router-dom";
+import * as Style from "./Aside.styles";
+import handleCopyToAPI from "./texte";
 import PopoverFile from "./Popovers/PopoverFile";
-import express from 'express';
-import fs from 'fs';
+import './styles.css'
 
 const Aside = () => {
-  const [settingIsSelected, setSettingIsSelected] = useState(false);
+  const navigate = useNavigate();
+
+
   const [helpIsSelected, setHelpIsSelected] = useState(false);
-  const [playIsSelected, setPlayIsSelected] = useState(false);
+  const [playIsSelected, /*setPlayIsSelected*/] = useState(false);
   const [pauseIsSelected, setPauseIsSelected] = useState(false);
   const [restartIsSelected, setRestartIsSelected] = useState(false);
   const [logoutIsSelected, setLogoutIsSelected] = useState(false);
 
-  const [fileModalIsOpen, setFileModalIsOpen] = useState(false);
-  const [settingModalIsOpen, setSettingModalIsOpen] = useState(false);
+  //const [fileModalIsOpen, setFileModalIsOpen] = useState(false);
+  //const [settingModalIsOpen, setSettingModalIsOpen] = useState(false);
 
-
- 
-  const app = express();
-  
-  app.post('/api/save-python-file', (req, res) => {
-    const { content } = req.body; // Conteúdo do arquivo Python enviado pelo cliente
-  
-    fs.writeFile('../../API/arquivo.py', content, (err) => {
-      if (err) {
-        console.error(err);
-        res.status(500).send('Erro ao salvar o arquivo Python.');
-      } else {
-        res.send('Arquivo Python salvo com sucesso.');
-      }
-    });
-  });
-  
-  app.listen(3000, () => {
-    console.log('Servidor backend está rodando na porta 3000.');
-  });
-
+  const handleOpenTutorial = () => window.open('https://example.com/1234', '_blank')
 
   return (
     <Style.Aside>
       <Style.AsideWrapper>
         <Style.AsideBrand title="Página inicial">
-          <img src={EASYPROG_BRAND} alt="LogoTipo EasyPog" />
+          <img 
+          src={EASYPROG_BRAND} 
+          alt="LogoTipo EasyPog" 
+          onClick={() => navigate('/overview')} 
+          />
         </Style.AsideBrand>
         <Style.ActionsWrapper>
           <Style.AsideDivider />
@@ -56,7 +41,7 @@ const Aside = () => {
             <AsideAction
               actionIcon="ri-question-line"
               actionTitle="Ajuda"
-              onClick={() => setHelpIsSelected((prev) => !prev)}
+              onClick={() => [setHelpIsSelected((prev) => !prev), handleOpenTutorial()]}
               actionIsSelected={helpIsSelected}
             />
           </Style.AsideActions>

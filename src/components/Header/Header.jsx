@@ -1,9 +1,10 @@
- import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import * as Style from "./Header.styles";
 import { useState } from "react";
-import HeaderAction from "./HeaderAction";
 
 const Header = () => {
+  const [themeSelected, setThemeSelected] = useState("");
+
   const navigate = useNavigate();
 
   return (
@@ -12,9 +13,12 @@ const Header = () => {
         <h2>EASYPROG</h2>
       </Style.HeaderBrand>
       <Style.HeaderActions>
-        <Style.Login onClick={() => navigate('/login')}>
-          LOGIN
-        </Style.Login>
+        <Style.InputIconButton
+          onClick={() => setThemeSelected((prev) => !prev)}
+        >
+          <i className={!themeSelected ? "ri-sun-fill" : "ri-moon-fill"}></i>
+        </Style.InputIconButton>
+        <Style.Login onClick={() => navigate("/login")}>LOGIN</Style.Login>
       </Style.HeaderActions>
     </Style.Header>
   );

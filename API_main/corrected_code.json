@@ -1,3 +1,0 @@
-{
-    "corrected_code": "name = \"John\"\nage = 25\nprint(\"My name is \" + name + \" and I am \" + str(age) + \" years old.\")"
-}

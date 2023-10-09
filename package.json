@@ -1,29 +1,9 @@
 {
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.20.2",
-    "dotenv": "^16.3.1",
-    "ejs": "^3.1.9",
-    "express": "^4.18.2",
-    "express-session": "^1.17.3",
-    "jsonwebtoken": "^9.0.2",
-    "mongodb": "^6.0.0",
-    "mongoose": "^7.5.0",
-    "mysql": "^2.18.1",
-    "mysql2": "^3.6.1",
-    "nodejs": "^0.0.0",
-    "passport": "^0.6.0",
-    "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^8.0.0",
-    "railway": "^2.0.17"
-  },
-  "name": "easyprog",
-  "description": "Este é um projeto realizado para o Trabalho de Conclusão de Curso da Etec Uirapuru, onde temos o propósito de desenvolver uma ferramenta web de teste de software para Python. Nosso objetivo é auxiliar devs que apresentam dificuldades em seus códigos, corrigindo e apontando onde estão seus erros, melhorando sua produtividade e tempo de serviço.",
+  "name": "register-login-system-backend",
+  "author": "gabs",
   "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC"
+  "dependencies": {
+    "bcryptjs": "2.4.3",
+    "jsonwebtoken": "9.0.2"
+  }
 }

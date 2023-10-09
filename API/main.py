@@ -1,5 +1,9 @@
+
+from flask import Flask, request
 import openai
 import mysql.connector
+
+app = Flask(__name__)
 
 # Database config
 db_config = {
@@ -10,12 +14,8 @@ db_config = {
     "database": "easyprog"
 }
 
-# MySQL connection
-conn = mysql.connector.connect(**db_config)
-cursor = conn.cursor()
-
 # OpenAI GPT-3.5-turbo API credentials
-openai.api_key = "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"
+openai.api_key = "sk-4XLAc2lya6fw89Hzh04IT3BlbkFJahB7tLSIrmfk"
 
 # Function to correct Python code using OpenAI GPT-3.5-turbo API
 def correct_python_code(code):
@@ -31,22 +31,29 @@ def correct_python_code(code):
     corrected_code = response.choices[0].text.strip()
     return corrected_code
 
-# Get the incorrect Python code from the user
-incorrect_code = input("Enter the incorrect Python code:\n")
+@app.route('/api/send', methods=['POST'])
+def receive_code():
+    # Get the incorrect Python code from the user
+    incorrect_code = request.json.get('data')
+    
+    # MySQL connection
+    conn = mysql.connector.connect(**db_config)
+    cursor = conn.cursor()
 
-# Correct the Python code using OpenAI GPT-3.5-turbo API
-corrected_code = correct_python_code(incorrect_code)
+    # Correct the Python code using OpenAI GPT-3.5-turbo API
+    corrected_code = correct_python_code(incorrect_code)
 
-# Save the incorrect and corrected code to the database
-query = "INSERT INTO inputs (question, answer) VALUES (%s, %s)"
-values = (incorrect_code, corrected_code)
-cursor.execute(query, values)
-conn.commit()
+    # Save the incorrect and corrected code to the database
+    query = "INSERT INTO inputs (question, answer) VALUES (%s, %s)"
+    values = (incorrect_code, corrected_code)
+    cursor.execute(query, values)
+    conn.commit()
 
-# Display the corrected code
-print("Corrected code:")
-print(corrected_code)
+    # Close the MySQL connection
+    cursor.close()
+    conn.close()
 
-# Close the MySQL connection
-cursor.close()
-conn.close()
+    return {"message": "Code received and corrected"}
+
+if __name__ == "__main__":
+    app.run(debug=True, port=5000)

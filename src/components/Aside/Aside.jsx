@@ -7,6 +7,10 @@ import * as Style from "./Aside.styles";
 import axios from 'axios';
 import PopoverFile from "./Popovers/PopoverFile";
 import './styles.css'
+import { useContext } from 'react';
+import { CodeContext } from '../../pages/Code/Code';
+
+
 
 const Aside = () => {
   const navigate = useNavigate();
@@ -19,6 +23,12 @@ const Aside = () => {
   const [logoutIsSelected, setLogoutIsSelected] = useState(false);
 
   const handleOpenTutorial = () => window.open('https://www.youtube.com', '_blank');
+
+  const ChildComponent = () => {
+    const { handleCopyToAPI } = useContext(CodeContext);
+  
+    // Now you can use handleCopyToAPI() anywhere within this component
+  }
 
   return (
     <Style.Aside>
@@ -45,15 +55,10 @@ const Aside = () => {
           </Style.AsideActions>
           <Style.AsideDivider />
           <Style.AsideActions>
-            <input
-              type="text"
-              value={formValue}
-              onChange={e => setFormValue(e.target.value)}
-            />
             <AsideAction
               actionIcon="ri-play-line"
               actionTitle="Iniciar"
-              onClick={handleCopyToAPI}
+              onClick={ChildComponent.handleCopyToAPI}
               actionIsSelected={playIsSelected}
             />
             <AsideAction

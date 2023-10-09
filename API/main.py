@@ -21,7 +21,7 @@ openai.api_key = "sk-4XLAc2lya6fw89Hzh04IT3BlbkFJahB7tLSIrmfk"
 def correct_python_code(code):
     response = openai.Completion.create(
         engine="text-davinci-003",
-        prompt=code,
+        prompt=incorrect_code,
         temperature=0.6,
         max_tokens=100,
         top_p=1.0,

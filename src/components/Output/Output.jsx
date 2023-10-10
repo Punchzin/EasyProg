@@ -1,6 +1,7 @@
 import * as Style from "./Output.style";
 
 const Output = () => {
+  
   return (
     <Style.OutputWrapper>
       <Style.OutputHeaderWrapper>

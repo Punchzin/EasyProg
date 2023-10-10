@@ -59,7 +59,14 @@ const PopoverFile = () => {
           </Style.WrapperHeader>
           <Style.Buttons>
             <Style.Button onClick={() => navigate('/code')}>Novo arquivo</Style.Button>
-            <Style.Button>Carregar arquivo</Style.Button>
+            <Style.Button>
+            <Style.ButtonUpload htmlFor="file-upload">Carregar arquivo</Style.ButtonUpload>
+              <Style.InputUpload
+                id="file-upload"
+                type="file"
+                style={{ display: "none" }}
+              />
+              </Style.Button>
             <Style.Button>Salvar arquivo</Style.Button>
           </Style.Buttons>
         </Style.WrapperButton>

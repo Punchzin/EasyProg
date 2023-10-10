@@ -82,3 +82,16 @@ export const Button = styled.button`
   font-family: "Space Grotesk", sans-serif;
   font-size: 12px;
 `;
+
+export const ButtonUpload = styled.label`
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const InputUpload = styled.input`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;

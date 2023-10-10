@@ -17,8 +17,6 @@ const Aside = () => {
   const [restartIsSelected, setRestartIsSelected] = useState(false);
   const [logoutIsSelected, setLogoutIsSelected] = useState(false);
 
-  //const [fileModalIsOpen, setFileModalIsOpen] = useState(false);
-  //const [settingModalIsOpen, setSettingModalIsOpen] = useState(false);
 
   const handleOpenTutorial = () => window.open('https://example.com/1234', '_blank')
 
@@ -71,7 +69,7 @@ const Aside = () => {
       <AsideAction
         actionIcon="ri-logout-box-r-line"
         actionTitle="Desconectar"
-        onClick={() => setLogoutIsSelected((prev) => !prev)}
+        onClick={() => [setLogoutIsSelected((prev) => !prev), navigate('/login')]}
         actionIsSelected={logoutIsSelected}
       />
     </Style.Aside>

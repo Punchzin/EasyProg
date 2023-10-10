@@ -1,24 +1,32 @@
+import React, {useState} from 'react';
 import EASYPROG_BRAND from "../../assets/images/easyprog-logo.svg";
 import AsideAction from "./AsideAction.jsx";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import * as Style from "./Aside.styles";
-import handleCopyToAPI from "./texte";
+// Importing an axios instance or the direct axios library itself
+import axios from 'axios';
 import PopoverFile from "./Popovers/PopoverFile";
 import './styles.css'
+import { useContext } from 'react';
+import { CodeContext } from '../../pages/Code/Code';
+
+
 
 const Aside = () => {
   const navigate = useNavigate();
 
-
+  //const [formValue, setFormValue] = useState('');
   const [helpIsSelected, setHelpIsSelected] = useState(false);
   const [playIsSelected, /*setPlayIsSelected*/] = useState(false);
   const [pauseIsSelected, setPauseIsSelected] = useState(false);
   const [restartIsSelected, setRestartIsSelected] = useState(false);
   const [logoutIsSelected, setLogoutIsSelected] = useState(false);
 
+  const handleOpenTutorial = () => window.open('https://www.youtube.com', '_blank');
 
-  const handleOpenTutorial = () => window.open('https://example.com/1234', '_blank')
+  const ChildComponent = () => {
+    const { handleCopyToAPI } = useContext(CodeContext);
+  }
 
   return (
     <Style.Aside>
@@ -48,7 +56,7 @@ const Aside = () => {
             <AsideAction
               actionIcon="ri-play-line"
               actionTitle="Iniciar"
-              onClick={handleCopyToAPI}
+              onClick={ChildComponent.handleCopyToAPI}
               actionIsSelected={playIsSelected}
             />
             <AsideAction

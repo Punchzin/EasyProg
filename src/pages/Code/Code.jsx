@@ -21,7 +21,7 @@ const Code = () => {
   };
 
   const handleCopyToAPI = () => {
-    axios.post('http://localhost:5000/api/send', {data: inputText})
+    axios.post('http://127.0.0.1:5000/api/send', {data: inputText})
       .then(response => {
         console.log(response.data);
       })

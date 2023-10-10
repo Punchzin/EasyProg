@@ -6,8 +6,6 @@ import Tabs from "../../components/Tabs/";
 import Output from "../../components/Output/";
 import EASYBOT_NORMAL from "../../assets/images/easybot-normal.svg";
 import { useState, createContext, useContext } from "react";
-import { useRef } from "react";
-import { saveAs } from 'file-saver';
 import axios from 'axios';
 
 // Create Context object

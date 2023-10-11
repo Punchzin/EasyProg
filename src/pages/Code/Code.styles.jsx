@@ -62,14 +62,13 @@ export const Content = styled.section`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-
+  position: relative;
 `;
 
 export const ContentBody = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: column;
   gap: 0.2rem;
   background: #19242f;
   border: 1px solid rgba(50, 59, 69, 0.8);
@@ -107,3 +106,42 @@ export const InputText = styled.textarea`
   cursor: pointer;
 `;
 
+export const CodeActions = styled.div`
+  width: 10%;
+  display: flex;
+  gap: .1rem;
+  position: absolute;
+  right: 0;
+  float: right;  
+  margin-left: auto;
+`;
+
+export const CodeAction = styled.button`
+  display: flex;
+  width: 100%;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+  border-left: 1px solid transparent;
+  transition: all 0.3s;
+
+  &:hover {
+    border: 1px solid #0bf0d5;
+    color: #0bf0d5;
+    background-color: #0bf0d5;
+  }
+
+  i {
+    font-size: 1.3rem;
+    color: #515c67;
+    transition: all 0.3s;
+  }
+
+  &:hover i {
+    color: #7b8998;
+  }
+
+  &:[data-isActived='true'] {
+    
+  }
+`;

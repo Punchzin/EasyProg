@@ -17,16 +17,9 @@ const Aside = () => {
 
   //const [formValue, setFormValue] = useState('');
   const [helpIsSelected, setHelpIsSelected] = useState(false);
-  const [playIsSelected, /*setPlayIsSelected*/] = useState(false);
-  const [pauseIsSelected, setPauseIsSelected] = useState(false);
-  const [restartIsSelected, setRestartIsSelected] = useState(false);
   const [logoutIsSelected, setLogoutIsSelected] = useState(false);
 
   const handleOpenTutorial = () => window.open('https://www.youtube.com', '_blank');
-
-  const ChildComponent = () => {
-    const { handleCopyToAPI } = useContext(CodeContext);
-  }
 
   return (
     <Style.Aside>
@@ -52,26 +45,6 @@ const Aside = () => {
             />
           </Style.AsideActions>
           <Style.AsideDivider />
-          <Style.AsideActions>
-            <AsideAction
-              actionIcon="ri-play-line"
-              actionTitle="Iniciar"
-              onClick={ChildComponent.handleCopyToAPI}
-              actionIsSelected={playIsSelected}
-            />
-            <AsideAction
-              actionIcon="ri-pause-fill"
-              actionTitle="Pausar"
-              onClick={() => setPauseIsSelected((prev) => !prev)}
-              actionIsSelected={pauseIsSelected}
-            />
-            <AsideAction
-              actionIcon="ri-restart-line"
-              actionTitle="Reiniciar"
-              onClick={() => setRestartIsSelected((prev) => !prev)}
-              actionIsSelected={restartIsSelected}
-            />
-          </Style.AsideActions>
         </Style.ActionsWrapper>
       </Style.AsideWrapper>
       <AsideAction

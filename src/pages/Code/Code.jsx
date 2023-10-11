@@ -1,4 +1,5 @@
 import * as Style from "./Code.styles";
+import CodeButtons from "./CodeButtons";
 import Aside from "../../components/Aside/";
 import Header from "../../components/Header/";
 import Tab from "../../components/Tab/";
@@ -47,6 +48,7 @@ const Code = () => {
           </Style.HeaderContainer>
           <Style.Content>
             <Style.ContentBody>
+                <CodeButtons />
               <Style.InputText placeholder="Insira o código" onChange={handleChange} />
             </Style.ContentBody>
             <Output />

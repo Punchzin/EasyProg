@@ -35,7 +35,7 @@ const Authentication = () => {
             <Style.Form>
               <Style.FormHeader>
                 <Style.FormLogo>
-                  <img src={EASYPROG_LOGO} alt="logo EasyProg" />
+                  <img src={EASYPROG_LOGO} alt="logo EasyProg"/>
                 </Style.FormLogo>
                 <Style.FormHeaderText>
                   <p>EASYPROG</p>
@@ -46,7 +46,7 @@ const Authentication = () => {
                 <Style.FormAuthentication>
                   <Style.FormAuthenticationText>
                     <Style.Robot>
-                    <img src={EASYBOT_IMAGE} alt="EasyBot" />
+                    <img src={EASYBOT_IMAGE} alt="EasyBot" onClick={() => navigate("/overview")}/>
                     </Style.Robot>
                     <h1>{AUTHENTICATION_TITLE}</h1>
                     <p>
@@ -144,8 +144,7 @@ const Authentication = () => {
                   >
                     {BUTTON_TEXT}
                   </Style.ButtonRegister>
-                  
-                  <Style.ButtonContinueR onClick={() => navigate('/code')}>Continuar sem conta</Style.ButtonContinueR>
+                
                   <Style.ButtonContinue>Continuar</Style.ButtonContinue>
                 </Style.FormButtons>
               </Style.FormWrapper>

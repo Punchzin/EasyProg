@@ -1,14 +1,15 @@
-import React, {useState} from 'react';
+//import React, {useState} from 'react';
 import EASYPROG_BRAND from "../../assets/images/easyprog-logo.svg";
 import AsideAction from "./AsideAction.jsx";
 import {useNavigate} from "react-router-dom";
+import { useState } from "react";
 import * as Style from "./Aside.styles";
-// Importing an axios instance or the direct axios library itself
-import axios from 'axios';
 import PopoverFile from "./Popovers/PopoverFile";
 import './styles.css'
-import { useContext } from 'react';
-import { CodeContext } from '../../pages/Code/Code';
+// Importing an axios instance or the direct axios library itself
+//import axios from 'axios';
+//import { useContext } from 'react';
+//import { CodeContext } from '../../pages/Code/Code';
 
 
 

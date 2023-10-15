@@ -46,8 +46,8 @@ export const HeaderContainer = styled.div`
 
 export const Robot = styled.div`
   position: absolute;
-  right: 14rem;
-  top: 4rem;
+  right: 9rem;
+  top: 6rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -143,7 +143,7 @@ export const InputText = styled.textarea`
   outline: none;
   border: none;
   cursor: pointer;
-  caret-color: #0BF0D5;
+  
 `;
 
 export const InputHeader = styled.div`
@@ -230,4 +230,5 @@ export const CodeSection = styled(CodeEditor)`
   background-color: transparent !important;
   font-size: 14px !important;
   font-family: "Space Grotesk", sans-serif !important;
+  caret-color: #0BF0D5;
 `;

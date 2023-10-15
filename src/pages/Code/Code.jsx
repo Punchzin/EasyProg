@@ -1,5 +1,4 @@
 import * as Style from "./Code.styles";
-import CodeButtons from "./CodeButtons";
 import Aside from "../../components/Aside/";
 import Header from "../../components/Header/";
 import Tab from "../../components/Tab/";
@@ -8,88 +7,97 @@ import Output from "../../components/Output/";
 import CodeAction from "./CodeAction";
 import EASYBOT_NORMAL from "../../assets/images/easybot-normal.svg";
 import { useState, createContext } from "react";
-import axios from 'axios';
+import axios from "axios";
+import Constants from './Code.constants';
 
 // Create Context object
 export const CodeContext = createContext();
 
 const Code = () => {
-  const [inputText, setInputText] = useState("");
-
+  const [inputText, setInputText] = useState(Constants.FakeCode);
   const [playIsSelected, setPlayIsSelected] = useState(false);
-  const [pauseIsSelected, setPauseIsSelected] = useState(false);
-  const [restartIsSelected, setRestartIsSelected] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  const handleChange = (event) => {
-    setInputText(event.target.value);
-  };
-
+  const handleOpen = () => {
+    setIsOpen((prev) => !prev);
+  }
+  
   const handleCopyToAPI = () => {
     // Verifique se o inputText não está vazio antes de fazer a solicitação
-    if (inputText.trim() !== '') {
-      axios.post('http://127.0.0.1:5000/api/send', { data: inputText })
-        .then(response => {
-          console.log(response.data);
-          console.log("ENVIADO");
-        })
-        .catch(error => {
-          console.error('There was an error!', error);
-        });
+    if (inputText.trim() !== "") {
+      axios
+      .post("http://127.0.0.1:5000/api/send", { data: inputText })
+      .then((response) => {
+        console.log(response.data);
+        console.log("ENVIADO");
+      })
+      .catch((error) => {
+        console.error("There was an error!", error);
+      });
     }
   };
-
-  // Value to be passed to Provider must be an object
+  
   const contextValue = {
-    handleCopyToAPI
+    handleCopyToAPI,
   };
-
+  
   return (
     <CodeContext.Provider value={contextValue}>
+      <Style.GlobalStyles />
       <Style.Main>
         <Aside />
-        <Style.Wrapper>
-          <Style.HeaderContainer>
-            <Header />
-            <Style.Robot>
-              <img src={EASYBOT_NORMAL} alt="EasyBot normal" />
-            </Style.Robot>
-            <Tabs><Tab /></Tabs>
-          </Style.HeaderContainer>
+      <Style.Wrapper>
+        <Style.HeaderContainer>
+          <Header />
+          <Style.Robot>
+            <img src={EASYBOT_NORMAL} alt="EasyBot normal" />
+          </Style.Robot>
+          <Tabs>
+            <Tab />
+          </Tabs>
+        </Style.HeaderContainer>
           <Style.Content>
-            <Style.ContentBody>
-              <Style.CodeActions>
-                <CodeAction
-                  actionIcon="ri-play-line"
-                  actionTitle="Iniciar"
-                  type="button"
-                  onClick={() => {
-                    setPlayIsSelected((prev) => !prev);
-                    handleCopyToAPI(); // Chame a função de envio quando o botão "Iniciar" for clicado
-                  }}
-                  actionIsSelected={playIsSelected}
+            <Style.Container className={isOpen && 'inputOpened'}>
+              <Style.WrapperItem>
+                <Style.InputHeader>
+                  <p>Linguagem escolhida: <span>Python</span></p>
+                  <h1>
+                    Análises de Códigos
+                  </h1>
+                </Style.InputHeader>
+                <Style.CodeActions>
+                  <Style.TextButton>
+                    <CodeAction
+                      actionIcon="ri-play-fill"
+                      actionTitle="Iniciar"
+                      type="button"
+                      onClick={() => {
+                        setPlayIsSelected((prev) => !prev);
+                        handleCopyToAPI(); // Chame a função de envio quando o botão "Iniciar" for clicado
+                      }}
+                      actionIsSelected={playIsSelected}
+                    />
+                    <p>Executar código</p>
+                  </Style.TextButton>
+                </Style.CodeActions>
+              </Style.WrapperItem>
+              <Style.ContentBody>
+                <Style.CodeSection
+                  value={inputText}
+                  language="python"
+                  placeholder="Insira seu código Python."
+                  onChange={(evn) => setInputText(evn.target.value)}
+                  padding={24}
                 />
-
-                <CodeAction
-                  actionIcon="ri-pause-fill"
-                  actionTitle="Pausar"
-                  onClick={() => setPauseIsSelected((prev) => !prev)}
-                  actionIsSelected={pauseIsSelected}
-                />
-                <CodeAction
-                  actionIcon="ri-restart-line"
-                  actionTitle="Reiniciar"
-                  onClick={() => setRestartIsSelected((prev) => !prev)}
-                  actionIsSelected={restartIsSelected}
-                />
-              </Style.CodeActions>
-              <Style.InputText placeholder="Insira o código" onChange={handleChange} />
-            </Style.ContentBody>
-            <Output />
+              </Style.ContentBody>
+            </Style.Container>
+            <Output isOpen={isOpen} handleOpen={handleOpen} />
           </Style.Content>
         </Style.Wrapper>
       </Style.Main>
     </CodeContext.Provider>
-  );
-};
-
-export default Code;
+    );
+  };
+  
+  export default Code;
+  

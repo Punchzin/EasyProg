@@ -1,5 +1,24 @@
-import { styled } from "styled-components";
+import { createGlobalStyle, styled } from "styled-components";
 import BACKGROUND_LINES from "../../assets/images/background-lines.svg"
+import CodeEditor from '@uiw/react-textarea-code-editor';
+
+export const GlobalStyles = createGlobalStyle`
+  .w-tc-editor-text {
+    z-index: 200 !important;
+  }
+
+  .w-tc-editor-preview {
+    position: absolute !important;
+  }
+
+  .w-tc-editor {
+    overflow-y: auto !important;
+  }
+
+  .inputOpened {
+    transform: scale(.95);
+  }
+`;
 
 export const Main = styled.main`
   width: 100%;
@@ -41,6 +60,7 @@ export const Robot = styled.div`
     height: 74px;
     pointer-events: none;
   }
+  
   @keyframes ping {
     0%, 100% {
       transform: translateY(0);
@@ -65,34 +85,53 @@ export const Content = styled.section`
   position: relative;
 `;
 
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: .5rem;
+  transition: all .3s;
+`;
+
+export const WrapperItem = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
 export const ContentBody = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
   gap: 0.2rem;
   background: #19242f;
   border: 1px solid rgba(50, 59, 69, 0.8);
   border-radius: 4px;
   position: relative;
+  transition: all .5s;
+  opacity: 1;
 
   ::-webkit-scrollbar {
     width: 8px;
   }
   
   ::-webkit-scrollbar-track {
-    background-color: rgba(50, 59, 69, 0.8);
+    background-color: #19222C;
     border-radius: 4px;
   }
   
   ::-webkit-scrollbar-thumb {
-    background-color: #9e9ea0;
+    background-color: rgba(50, 59, 69, 0.8);
     border-radius: 4px;
   }
 `;
 
 export const InputText = styled.textarea`
-  width: 96%;
-  height: 89%;
+  width: 100%;
+  height: 100%;
+  font-size: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -104,44 +143,91 @@ export const InputText = styled.textarea`
   outline: none;
   border: none;
   cursor: pointer;
+  caret-color: #0BF0D5;
+`;
+
+export const InputHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .2rem;
+
+  p {
+    font-size: 12px;
+    font-weight: 600;
+    color: #9e9ea0;
+
+    span {
+      color: rgba(11, 240, 213, 1)
+    }
+  }
+
+  h1 {
+    font-size: 22px
+  }
+`;
+
+export const DescriCode = styled.div`
+  color: #FFF;
+  font-size: 14px;
+  display: flex;
 `;
 
 export const CodeActions = styled.div`
-  width: 10%;
   display: flex;
   gap: .1rem;
-  position: absolute;
-  right: 0;
-  float: right;  
-  margin-left: auto;
 `;
 
 export const CodeAction = styled.button`
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  
   display: flex;
   width: 100%;
-  height: 30px;
   justify-content: center;
   align-items: center;
   border-left: 1px solid transparent;
   transition: all 0.3s;
 
-  &:hover {
-    border: 1px solid #0bf0d5;
-    color: #0bf0d5;
-    background-color: #0bf0d5;
-  }
-
   i {
-    font-size: 1.3rem;
-    color: #515c67;
+    font-size: 1.4rem;
+    color: #FFF;
     transition: all 0.3s;
   }
 
-  &:hover i {
-    color: #7b8998;
-  }
+`;
 
-  &:[data-isActived='true'] {
-    
+export const TextButton = styled.button`
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: .2rem;
+  cursor: pointer;
+  padding: .25rem .4rem .25rem .2rem;
+  z-index: 99; 
+  
+  white-space: nowrap;
+  transition: all .3s;
+  
+  opacity: 0.6;
+  border-radius: 4px;
+  border: 1px solid #0bf0d5;
+  color: #ffff;
+  background: rgba(11, 240, 213, 0.2);
+  transition: all 0.3s;
+
+  &:hover{
+    opacity: 1;
   }
+`;
+
+export const CodeSection = styled(CodeEditor)`
+  width: 100% !important;
+  height: 100% !important;
+  background-color: transparent !important;
+  font-size: 14px !important;
+  font-family: "Space Grotesk", sans-serif !important;
 `;

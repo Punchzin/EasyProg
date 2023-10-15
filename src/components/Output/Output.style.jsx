@@ -1,16 +1,29 @@
 import { styled } from "styled-components";
 
+export const OutputContainer = styled.div`
+  width: 100%;
+  height: 220px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex-shrink: 0;
+`;
+
 export const OutputWrapper = styled.div`
   display: flex;
   width: 100%;
-  max-height: 213px;
-  height: 100%;
   padding: 1.5rem;
   flex-direction: column;
   gap: 0.5rem;
   border: 1px solid #323b45;
   background: #19242f;
   border-radius: 4px;
+  z-index: 999;
+  transition: all 1s cubic-bezier(.6, -0.35, .1, 1.35);
+  transition-delay: .3s;
+  
+  position: absolute;
 `;
 
 export const OutputHeaderWrapper = styled.div`

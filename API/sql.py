@@ -15,9 +15,11 @@ conn = mysql.connector.connect(**config)
 cursor = conn.cursor()
 
 # Execute a SQL query to fetch data from the "inputs" table
-query = '''CREATE TABLE codeuncorrected (
+query = '''CREATE TABLE codecorrections (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    incorrectedcode TEXT NOT NULL
+    codeuncorrected_id INT,
+    correctedcode TEXT NOT NULL,
+    FOREIGN KEY (codeuncorrected_id) REFERENCES codeuncorrected(id)
 );'''
 cursor.execute(query)
 cursor.close()

@@ -2,8 +2,8 @@ import openai
 import mysql.connector
 from mysql.connector import Error
 
-# Set API key (Replace 'your-openai-api-key' with your actual key)
-openai.api_key = 'your-openai-api-key'
+# Set API key (Replace 'openai-api-key' with your actual key)
+openai.api_key = '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'
 
 # Database configurations
 db_config = {
@@ -16,9 +16,17 @@ db_config = {
 
 def correct_code(incorrected_code, engine="text-davinci-001"):
     try:
+        prompt = f"""
+        The following Python code contains an error:
+
+        {incorrected_code}
+
+        Please correct it and explain the error.
+        """
+
         response = openai.Completion.create(
             engine=engine,
-            prompt=incorrected_code,
+            prompt=prompt,
             temperature=0.5,
             max_tokens=500
         )
@@ -31,7 +39,6 @@ def read_incorrected_code_from_db():
         connection = mysql.connector.connect(**db_config)
         if connection.is_connected():
             cursor = connection.cursor()
-            # Assuming that there is a table named 'codeuncorrected' with a column named 'incorrectedcode'
             query = "SELECT incorrectedcode FROM codeuncorrected LIMIT 1"
             cursor.execute(query)
             result = cursor.fetchall()
@@ -51,7 +58,6 @@ def write_to_database(corrected_code):
         connection = mysql.connector.connect(**db_config)
         if connection.is_connected():
             cursor = connection.cursor()
-            # Assuming that a table named 'codecorrections' exists with a column named 'correctedcode'
             query = "INSERT INTO codecorrections (correctedcode) VALUES (%s)"
             cursor.execute(query, (corrected_code, ))
             connection.commit()

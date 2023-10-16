@@ -15,16 +15,10 @@ conn = mysql.connector.connect(**config)
 cursor = conn.cursor()
 
 # Execute a SQL query to fetch data from the "inputs" table
-query = "SELECT * FROM inputs"
+query = '''CREATE TABLE codeuncorrected (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    incorrectedcode TEXT NOT NULL
+);'''
 cursor.execute(query)
-
-# Fetch all rows from the result set
-rows = cursor.fetchall()
-
-# Print the table data
-for row in rows:
-    print(row)
-
-# Close the cursor and connection
 cursor.close()
 conn.close()

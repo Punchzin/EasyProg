@@ -10,16 +10,16 @@ app.post('/executar-comando', (req, res) => {
       res.status(500).send('Erro ao executar o comando');
       return;
     }
-    exec('python3 main.py', (error, stdout, stderr) => {
-      if (error){
-        console.error(`Erro ao executar api: ${error}`);
-        res.status(500).send('Erro ao executar o comando');
-        return;
-      }
-    })
     console.log(`Comando executado: ${stdout}`);
     res.status(200).send('Comando executado com sucesso');
   });
+  exec('python3 main.py', (error, stdout, stderr) => {
+    if (error){
+      console.error(`Erro ao executar api: ${error}`);
+      res.status(500).send('Erro ao executar o comando');
+      return;
+    }
+  })
 });
 
 app.listen(3000, () => {

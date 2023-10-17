@@ -22,27 +22,23 @@ const Code = () => {
     setIsOpen((prev) => !prev);
   }
   
-  const handleCopyToAPI = () => {
+  const execute = () => {
     // Verifique se o inputText não está vazio antes de fazer a solicitação
     if (inputText.trim() !== "") {
       axios
-      .post("http://127.0.0.1:5000/api/send", { data: inputText })
+      .post("/executar-comando")
       .then((response) => {
         console.log(response.data);
-        console.log("ENVIADO");
       })
       .catch((error) => {
-        console.error("There was an error!", error);
+        console.error(error);
       });
     }
   };
-  
-  const contextValue = {
-    handleCopyToAPI,
-  };
+
   
   return (
-    <CodeContext.Provider value={contextValue}>
+    <CodeContext.Provider>
       <Style.GlobalStyles />
       <Style.Main>
         <Aside />
@@ -73,7 +69,7 @@ const Code = () => {
                       type="button"
                       onClick={() => {
                         setPlayIsSelected((prev) => !prev);
-                        handleCopyToAPI(); // Chame a função de envio quando o botão "Iniciar" for clicado
+                        execute; // Chame a função de envio quando o botão "Iniciar" for clicado
                       }}
                       actionIsSelected={playIsSelected}
                     />

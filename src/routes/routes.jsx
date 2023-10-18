@@ -8,9 +8,6 @@ import Code from "../pages/Code";
 const RoutesApp = () => {
   return (
      <Routes>
-              {/* <Style.AsideAction isSelected={actionIsSelected} title={actionTitle} onClick={onClick}>
-        <i className={actionIcon}></i>
-        </Style.AsideAction> */}
        <Route path='/' element={<Navigate to="/overview" />}/>
        <Route path='/login' element={<Authentication />}/>
        <Route path='/overview' element={<Apresentation />}/>

@@ -178,7 +178,7 @@ export const CodeActions = styled.div`
   gap: .1rem;
 `;
 
-export const CodeAction = styled.button`
+export const CodeAction = styled.div`
   padding: 0;
   margin: 0;
   border: none;

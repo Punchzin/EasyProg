@@ -1,81 +1,69 @@
 import { styled } from "styled-components";
+import BACKGROUND_LINES from "../../assets/images/background-lines.svg"
 
-export const Main = styled.main `
+export const Main = styled.main`
   width: 100%;
-  display: flex;
   height: 100vh;
+  display: flex;
+  background: url(${BACKGROUND_LINES});
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+ 
 `;
 
 export const Container = styled.div`
-
-`;
-
-export const Header = styled.header`
-
-`;
-
-export const HeaderBrand = styled.div`
-  color: #FFF;
-  font-family: Space Grotesk;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-`;
-
-export const HeaderActions = styled.div`
-
-`;
-
-export const Keywords = styled.button`
-
-`;
-
-export const Login = styled.button`
-
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const Content = styled.section`
-
-`;
-
-export const Tab = styled.div`
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 2rem;
+  padding: 0 1.5rem;
   display: flex;
-  width: 242px;
-  padding: 8px 16px 8px 24px;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  gap: 1rem;
 `;
 
-export const Close = styled.button`
-
-`;
-
-export const HeadLine = styled.div`
-  width: 244px;
-  height: 52px;
-`;
-
-export const Robot = styled.div`
-
+export const HeaderContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const Wrapper = styled.div`
-
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+  gap: 1rem;
 `;
 
-export const Chooser = styled.div`
-
-`;
-
-export const ChooseItem = styled.div`
-
+export const ContentBody = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 `;
 
 export const UseMode = styled.div`
+  display: flex;
+  width: 100%;
+  padding: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
 
-`;
-
-export const Output = styled.div`
-
+  border-radius: 4px;
+  border: 2px dashed rgba(50, 59, 69, 0.5);
+  background: rgba(26, 39, 52, 0.3);
+  backdrop-filter: blur(4px);
 `;

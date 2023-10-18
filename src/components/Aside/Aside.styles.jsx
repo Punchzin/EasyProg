@@ -8,6 +8,7 @@ export const Aside = styled.aside`
   flex-direction: column;
   border-right: 1px solid rgba(50, 59, 69, 0.8);
   background: #0f1923;
+  position: relative;
 `;
 
 export const AsideWrapper = styled.div`
@@ -75,6 +76,10 @@ export const AsideAction = styled.button`
   &:hover i {
     color: #7b8998;
   }
+
+  &: [data-isActived= "true"] {
+
+  }
 `;
 
 export const AsideActionSelected = styled.button`
@@ -83,14 +88,12 @@ export const AsideActionSelected = styled.button`
   height: 60px;
   justify-content: center;
   align-items: center;
-
   border-left: 1px solid #0bf0d5;
   background: linear-gradient(
     90deg,
     rgba(11, 240, 213, 0.2) 0.72%,
     rgba(11, 240, 213, 0) 97.83%
   );
-
   i {
     font-size: 1.3rem;
     color: white;

@@ -3,13 +3,18 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Space Grotesk", sans-serif;
+    color: #FFF;
 }
 
-#root,
+
 html {
     background-color: #0F1923;
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
+}
+
+#root {
+    height: 100%;
 }
 
 button {
@@ -17,6 +22,10 @@ button {
     outline: none;
     border: none;
     cursor: pointer;
+}
+
+body{
+    overflow: hidden;
 }
 
 /* button:focus {

@@ -1,17 +1,11 @@
 import * as Style from "./Aside.styles.jsx";
 
 // Props = Propriedades
-const AsideAction = ({ actionIcon, actionTitle, actionIsSelected, onClick }) => {
+const AsideAction = ({ actionIcon, actionTitle, actionIsSelected = false, onClick }) => {
     return (
-        actionIsSelected ? (
-            <Style.AsideActionSelected title={actionTitle} onClick={onClick}>
-                <i className={actionIcon}></i>
-            </Style.AsideActionSelected>
-        ) : (
-            <Style.AsideAction title={actionTitle} onClick={onClick}>
-                <i className={actionIcon}></i>
-            </Style.AsideAction>
-        )
+        <Style.AsideAction title={actionTitle} onClick={onClick}>
+            <i className={actionIcon}></i>
+        </Style.AsideAction>
     )
 }
 

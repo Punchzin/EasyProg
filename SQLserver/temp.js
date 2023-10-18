@@ -1,18 +1,45 @@
-const mysql = require('mysql');
+const express = require('express');
+const app = express();
+const mysql = require('mysql2');
+const cors = require('cors'); // Importe o pacote 'cors'
 
-const connection = mysql.createConnection({
-    host:"cluster.cdxnv8oe5mq3.sa-east-1.rds.amazonaws.com",
-    port:"3306",
-    user:"admin",
-    password:"easyprogefoda",
-    database: "easyprog",
+// Configurar as opções CORS (substitua '*' pelo domínio apropriado em produção)
+const corsOptions = {
+  origin: '*',
+  methods: ['GET', 'POST'],
+};
+
+app.use(cors(corsOptions)); // Use o middleware 'cors'
+
+const dbConfig = {
+  host: 'cluster.cdxnv8oe5mq3.sa-east-1.rds.amazonaws.com',
+  user: 'admin',
+  password: 'easyprogefoda',
+  database: 'easyprog',
+};
+
+const connection = mysql.createConnection(dbConfig);
+
+app.use(express.json());
+
+app.post('/inserir-dados', (req, res) => {
+  const { inputText } = req.body;
+
+  const sql = 'INSERT INTO codeuncorrected (incorrectedcode) VALUES (?)';
+  
+  connection.query(sql, [inputText], (error, results) => {
+    if (error) {
+      console.error('Erro ao inserir dados no banco de dados:', error);
+      res.status(500).send('Erro ao inserir dados');
+    } else {
+      console.log('Dados inseridos com sucesso');
+      res.status(200).send('Dados inseridos com sucesso');
+    }
+  });
 });
 
-connection.connect(function(err) {
-    if (err) {
-        console.error('An error occurred while connecting to the DB: ' + err.stack);
-        return;
-    }
+const PORT = 3000;
 
-    console.log('Connected to the database as id ' + connection.threadId);
+app.listen(PORT, () => {
+  console.log(`Servidor iniciado na porta ${PORT}`);
 });

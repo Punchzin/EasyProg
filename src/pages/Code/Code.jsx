@@ -10,6 +10,7 @@ import { useState, createContext } from "react";
 import axios from "axios";
 import Constants from './Code.constants';
 
+
 // Create Context object
 export const CodeContext = createContext();
 
@@ -21,18 +22,18 @@ const Code = () => {
   const handleOpen = () => {
     setIsOpen((prev) => !prev);
   }
+
   
   const execute = () => {
-    // Verifique se o inputText não está vazio antes de fazer a solicitação
     if (inputText.trim() !== "") {
       axios
-      .post("/executar-comando")
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+        .post("https://3000-punchzin-easyprog-y7310iw047q.ws-us105.gitpod.io/inserir-dados", { inputText })
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     }
   };
 
@@ -45,16 +46,16 @@ const Code = () => {
       <Style.GlobalStyles />
       <Style.Main>
         <Aside />
-      <Style.Wrapper>
-        <Style.HeaderContainer>
-          <Header />
-          <Style.Robot>
-            <img src={EASYBOT_NORMAL} alt="EasyBot normal" />
-          </Style.Robot>
-          <Tabs>
-            <Tab />
-          </Tabs>
-        </Style.HeaderContainer>
+        <Style.Wrapper>
+          <Style.HeaderContainer>
+            <Header />
+            <Style.Robot>
+              <img src={EASYBOT_NORMAL} alt="EasyBot normal" />
+            </Style.Robot>
+            <Tabs>
+              <Tab />
+            </Tabs>
+          </Style.HeaderContainer>
           <Style.Content>
             <Style.Container className={isOpen && 'inputOpened'}>
               <Style.WrapperItem>
@@ -95,8 +96,7 @@ const Code = () => {
         </Style.Wrapper>
       </Style.Main>
     </CodeContext.Provider>
-    );
-  };
-  
-  export default Code;
-  
+  );
+};
+
+export default Code;

@@ -36,9 +36,12 @@ const Code = () => {
     }
   };
 
-  
+  const contextValue = {
+    execute
+  };
+
   return (
-    <CodeContext.Provider>
+    <CodeContext.Provider value={contextValue}>
       <Style.GlobalStyles />
       <Style.Main>
         <Aside />
@@ -69,7 +72,7 @@ const Code = () => {
                       type="button"
                       onClick={() => {
                         setPlayIsSelected((prev) => !prev);
-                        execute; // Chame a função de envio quando o botão "Iniciar" for clicado
+                        execute();
                       }}
                       actionIsSelected={playIsSelected}
                     />

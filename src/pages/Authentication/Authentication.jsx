@@ -2,13 +2,31 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import * as Style from "./Authentication.styles";
 import EASYPROG_LOGO from "../../assets/images/easyprog-logo.svg";
 import EASYPROG_ROBOT_SMILE from "../../assets/images/easybot-smile.svg";
 import EASYPROG_ROBOT_DUBIOUS from "../../assets/images/easybot-dubious.svg";
+import { auth } from "../../services/firebaseConfig";
 
 const Authentication = () => {
   const navigate = useNavigate();
+
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [
+    createUserWithEmailAndPassword,
+    user,
+    loading,
+    error,
+  ] = useCreateUserWithEmailAndPassword(auth);
+      function handleSignOut(e) {
+        e.preventDefault();
+        createUserWithEmailAndPassword(email, password);
+      }
+
 
   const [screen, setScreen] = useState(0);
   const [usernameField, setUsernameField] = useState("");
@@ -56,23 +74,23 @@ const Authentication = () => {
                   </Style.FormAuthenticationText>
                   <Style.FormBody>
                     <Style.InputWrapper>
-                      <Style.InputLabel htmlFor="username">
-                        Username
+                      <Style.InputLabel htmlFor="email">
+                        Email
                       </Style.InputLabel>
                       <Style.InputItem>
                         <i className="ri-user-line"></i>
                         <input
                           type="text"
-                          placeholder="User"
-                          id="username"
-                          onChange={(e) => setUsernameField(e.target.value)}
+                          placeholder="Email"
+                          id="email"
+                          onChange={(e) => setEmail(e.target.value)}
                         />
                       </Style.InputItem>
                     </Style.InputWrapper>
                     <Style.InputWrapper>
                       <Style.InputLabel
                         htmlFor="password"
-                        onChange={(e) => setPasswordField(e.target.value)}
+                        onChange={(e) => setPassword(e.target.value)}
                       >
                         Senha
                       </Style.InputLabel>
@@ -145,7 +163,7 @@ const Authentication = () => {
                     {BUTTON_TEXT}
                   </Style.ButtonRegister>
                 
-                  <Style.ButtonContinue>Continuar</Style.ButtonContinue>
+                  <Style.ButtonContinue onClick={handleSignOut}>Continuar</Style.ButtonContinue>
                 </Style.FormButtons>
               </Style.FormWrapper>
             </Style.Form>

@@ -28,7 +28,7 @@ const Apresentation = () => {
               </Style.UseMode>
             </Style.Wrapper>
           </Style.ContentBody>
-          <Output />
+          <Output hasContent={false} />
         </Style.Content>
       </Style.Container>
     </Style.Main>

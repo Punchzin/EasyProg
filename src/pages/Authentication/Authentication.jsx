@@ -123,19 +123,6 @@ const Authentication = () => {
                         </Style.InputItem>
                       </Style.InputWrapper>
                     )}
-                    {/* {!isRegister && (
-                      <Style.FormCheck>
-                        <input
-                          type="checkbox"
-                          name="KeepConnected"
-                          id="KeepConnected"
-                        />
-                        <label htmlFor="KeepConnected">
-                          <i className="ri-check-line"></i>
-                        </label>
-                        <p>Manter-se conectado</p>
-                      </Style.FormCheck>
-                    )} */}
                   </Style.FormBody>
                 </Style.FormAuthentication>
                 <Style.FormButtons>

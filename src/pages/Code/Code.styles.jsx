@@ -113,19 +113,6 @@ export const ContentBody = styled.div`
   transition: all .5s;
   opacity: 1;
 
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background-color: #19222C;
-    border-radius: 4px;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background-color: rgba(50, 59, 69, 0.8);
-    border-radius: 4px;
-  }
 `;
 
 export const InputText = styled.textarea`

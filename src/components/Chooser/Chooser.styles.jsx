@@ -19,11 +19,11 @@ const PRESETS = {
 };
 
 export const Choose = styled.div`
-  max-width: 280px;
-  width: 100%;
+  width: 280px;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  flex-shrink: 0;
 `;
 
 export const ChooseItem = styled.button`
@@ -34,6 +34,7 @@ export const ChooseItem = styled.button`
   height: 160px;
   align-items: flex-end;
   overflow: hidden;
+  flex-shrink: 0;
 
   background-image: ${(props) => props.preset in PRESETS ? PRESETS[props.preset].gradient : "black"};
   opacity: 0.2px;

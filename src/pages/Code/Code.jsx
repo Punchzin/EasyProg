@@ -23,7 +23,6 @@ const Code = () => {
     setIsOpen((prev) => !prev);
   }
 
-  
   const execute = () => {
     if (inputText.trim() !== "") {
       axios

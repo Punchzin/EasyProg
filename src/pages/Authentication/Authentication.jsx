@@ -1,6 +1,13 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import {logInWithEmailAndPassword} from "../../firebase/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import {
+  auth,
+  registerWithEmailAndPassword,
+  signInWithGoogle,
+} from "../../firebase/firebase";
 
 import * as Style from "./Authentication.styles";
 import EASYPROG_LOGO from "../../assets/images/easyprog-logo.svg";
@@ -10,15 +17,24 @@ import EASYPROG_ROBOT_DUBIOUS from "../../assets/images/easybot-dubious.svg";
 const Authentication = () => {
   const navigate = useNavigate();
 
+  const SCREENS = {
+    login: 0, 
+    register: 1
+  }
+
   const [screen, setScreen] = useState(0);
   const [usernameField, setUsernameField] = useState("");
   const [passwordField, setPasswordField] = useState("");
+
   const [confirmPasswordField, setConfirmPasswordField] = useState("");
 
   const [passwordView, setPasswordView] = useState(false);
   const [passwordConfirmView, setPasswordConfirmView] = useState(false);
 
-  const isRegister = screen == 1;  
+  const [user, loading, error] = useAuthState(auth);
+  
+
+  const isRegister = screen === SCREENS.register;  
 
   const AUTHENTICATION_TITLE = !isRegister ? "Authentication" : "Registro";
   const AUTHENTICATION_DESCRIPTION = !isRegister ? "Autentique-se" : "Registre-se";
@@ -27,6 +43,24 @@ const Authentication = () => {
     ? EASYPROG_ROBOT_SMILE
     : EASYPROG_ROBOT_DUBIOUS;
 
+    handleRegister = () => {
+        const register = registerWithEmailAndPassword(email, password);
+      useEffect(() => {
+        if (loading) return;
+      }, [user, loading]);
+  
+    };
+
+    handleLogin = () => {
+      const login = logInWithEmailAndPassword(email,password);
+
+      useEffect(() => {
+        if (loading) {
+          return;
+        }
+      }, [user, loading]);
+    };
+   
   return (
     <Style.Main>
       <Style.Container>

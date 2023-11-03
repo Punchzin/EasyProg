@@ -1,7 +1,7 @@
 // https://blog.logrocket.com/user-authentication-firebase-react-apps/
 
 import { initializeApp } from "firebase/app";
-import {GoogleAuthProvider, getAuth, signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut}
+import {GoogleAuthProvider, getAuth, signInWithPopup, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut}
 from "firebase/auth";
 import {getFirestore,query,getDocs,collection,where,addDoc,} 
 from "firebase/firestore";
@@ -76,6 +76,15 @@ const logInWithEmailAndPassword = async (email, password) => {
     }
   };
 
+  const checkUserSession = () => {
+    try {
+      
+    } catch (error) {
+      console.error(error);
+      alert(error.message);
+    }
+  }
+
   const logout = () => {
     signOut(auth);
   };
@@ -87,5 +96,6 @@ const logInWithEmailAndPassword = async (email, password) => {
     logInWithEmailAndPassword,
     registerWithEmailAndPassword,
     sendPasswordReset,
+    checkUserSession,
     logout,
   };

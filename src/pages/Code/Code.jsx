@@ -1,3 +1,5 @@
+
+import React from 'react';
 import * as Style from "./Code.styles";
 import Aside from "../../components/Aside/";
 import Header from "../../components/Header/";
@@ -41,7 +43,7 @@ const Code = () => {
   };
 
   return (
-    <CodeContext.Provider value={contextValue}>
+    <React.Fragment>
       <Style.GlobalStyles />
       <Style.Main>
         <Aside />
@@ -94,7 +96,7 @@ const Code = () => {
           </Style.Content>
         </Style.Wrapper>
       </Style.Main>
-    </CodeContext.Provider>
+    </React.Fragment>
   );
 };
 

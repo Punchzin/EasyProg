@@ -8,7 +8,6 @@ Esse pojeto foi desenvolvido durante o ano de 2023 com as seguintes tecnologias:
 ![CSS3](https://img.shields.io/badge/css3-0F1923?style=for-the-badge&logo=css3&logoColor=0BF0D5 ) 
 ![Python](https://img.shields.io/badge/python-0F1923?style=for-the-badge&logo=python&logoColor=0BF0D5) 
 ![JavaScript](https://img.shields.io/badge/javascript-0F1923?style=for-the-badge&logo=javascript&logoColor=0BF0D5 ) 
-![PHP](https://img.shields.io/badge/php-0F1923?style=for-the-badge&logo=php&logoColor=0BF0D5) 
 ![Express.js](https://img.shields.io/badge/express.js-0F1923?style=for-the-badge&logo=express&logoColor=0BF0D5 ) 
 ![NodeJS](https://img.shields.io/badge/node.js-0F1923?style=for-the-badge&logo=node.js&logoColor=0BF0D5 ) 
 ![GitHub](https://img.shields.io/badge/GitHub-0F1923?style=for-the-badge&logo=github&logoColor=0BF0D5 ) 
@@ -18,8 +17,6 @@ Esse pojeto foi desenvolvido durante o ano de 2023 com as seguintes tecnologias:
 ![GIT](https://img.shields.io/badge/Git-0F1923?style=for-the-badge&logo=git&logoColor=0BF0D5 ) 
 ![Notion](https://img.shields.io/badge/Notion-0F1923?style=for-the-badge&logo=notion&logoColor=0BF0D5 ) 
 ![Postman](https://img.shields.io/badge/Postman-0F1923?style=for-the-badge&logo=postman&logoColor=0BF0D5 )
-![Jupyter Notebook](https://img.shields.io/badge/Jupyter%20Notebook-0F1923?style=for-the-badge&logo=jupyter&logoColor=0BF0D5)
-![Jupyter Lab](https://img.shields.io/badge/Jupyter%20Lab-0F1923?style=for-the-badge&logo=jupyter&logoColor=0BF0D5)
 ![ChatGPT](https://img.shields.io/badge/GPT4-0F1923?style=for-the-badge&logo=openai&logoColor=0BF0D5)
 ![VSCode](https://img.shields.io/badge/VSCode-0F1923?style=for-the-badge&logo=visualstudiocode&logoColor=0BF0D5 )
 

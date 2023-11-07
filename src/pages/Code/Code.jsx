@@ -11,6 +11,10 @@ import EASYBOT_NORMAL from "../../assets/images/easybot-normal.svg";
 import { useState, createContext } from "react";
 import axios from "axios";
 import Constants from './Code.constants';
+import { OpenAI } from 'openai';
+
+
+
 
 
 // Create Context object
@@ -24,6 +28,9 @@ const Code = () => {
   const handleOpen = () => {
     setIsOpen((prev) => !prev);
   }
+
+
+
 
   const execute = () => {
     if (inputText.trim() !== "") {
@@ -74,7 +81,7 @@ const Code = () => {
                       type="button"
                       onClick={() => {
                         setPlayIsSelected((prev) => !prev);
-                        execute();
+                        correctCode();
                       }}
                       actionIsSelected={playIsSelected}
                     />

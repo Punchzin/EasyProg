@@ -1,6 +1,7 @@
 import React from "react";
 import * as Style from "./Output.style";  
-import { corrected } from "../../pages/Code/Code";
+// import { useInputText } from 'path_to_Code_component';
+
 
 // eslint-disable-next-line react/prop-types
 const Output = ({ isOpen, handleOpen, hasContent = true }) => {
@@ -24,7 +25,7 @@ const Output = ({ isOpen, handleOpen, hasContent = true }) => {
             </Style.OutputHeaderWrapper>
             <Style.OutputText>
               <p>
-                {corrected}
+                {/* {corrected} */}
                 <br />
                 módulo requests esteja instalado corretamente antes de
                 importá-lo.

@@ -77,7 +77,6 @@ const Authentication = () => {
                       <img
                         src={EASYBOT_IMAGE}
                         alt="EasyBot"
-                        onClick={() => navigate("/overview")}
                       />
                     </Style.Robot>
                     <h1>{AUTHENTICATION_TITLE}</h1>

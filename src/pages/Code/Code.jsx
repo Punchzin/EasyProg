@@ -8,15 +8,12 @@ import Tabs from "../../components/Tabs/";
 import Output from "../../components/Output/";
 import CodeAction from "./CodeAction";
 import EASYBOT_NORMAL from "../../assets/images/easybot-normal.svg";
-import { useState, createContext } from "react";
+import { useState, createContext, useContext } from "react";
 import Constants from './Code.constants';
 import { OpenAI } from 'openai';
+import correctCode from './CodeCorrect';
 
 
-
-export const corrected = response.choices[0].text;
-
-// Create Context object
 export const CodeContext = createContext();
 
 const Code = () => {
@@ -28,23 +25,21 @@ const Code = () => {
     setIsOpen((prev) => !prev);
   }
 
-  const openai = new OpenAI({ apiKey: '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', dangerouslyAllowBrowser: true });
-  async function correctCode() {
-    const prompt = `correct and explain the errors of the following incorrect python code:\n\n${inputText}`;
+  // const openai = new OpenAI({ apiKey: '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', dangerouslyAllowBrowser: true });
+  // async function correctCode() {
+  //   const prompt = `correct and explain the errors of the following incorrect python code:\n\n${inputText}`;
 
-    const response = await openai.complete({
-      engine: 'text-davinci-003', // or 'gpt-3.5-turbo'
-      prompt: prompt,
-      maxTokens: 500,
-    });
-    console.log(response.choices[0].text);
-  }
+  //   const response = await openai.complete({
+  //     engine: 'text-davinci-003', // or 'gpt-3.5-turbo'
+  //     prompt: prompt,
+  //     maxTokens: 500,
+  //   });
+  //   console.log(response.choices[0].text);
+  // }
 
-  const contextValue = {
-    execute
-  };
 
   return (
+    <CodeContext.Provider value={{ inputText, setInputText }}>
     <React.Fragment>
       <Style.GlobalStyles />
       <Style.Main>
@@ -99,7 +94,16 @@ const Code = () => {
         </Style.Wrapper>
       </Style.Main>
     </React.Fragment>
+    </CodeContext.Provider>
   );
+};
+// Create a custom hook to access the inputText variable from other components
+export const useInputText = () => {
+  const context = useContext(CodeContext);
+  if (!context) {
+    throw new Error('useInputText must be used within a CodeProvider');
+  }
+  return context;
 };
 
 export default Code;

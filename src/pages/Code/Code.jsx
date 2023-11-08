@@ -9,13 +9,12 @@ import Output from "../../components/Output/";
 import CodeAction from "./CodeAction";
 import EASYBOT_NORMAL from "../../assets/images/easybot-normal.svg";
 import { useState, createContext } from "react";
-import axios from "axios";
 import Constants from './Code.constants';
 import { OpenAI } from 'openai';
 
 
 
-
+export const corrected = response.choices[0].text;
 
 // Create Context object
 export const CodeContext = createContext();
@@ -29,21 +28,17 @@ const Code = () => {
     setIsOpen((prev) => !prev);
   }
 
+  const openai = new OpenAI({ apiKey: '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', dangerouslyAllowBrowser: true });
+  async function correctCode() {
+    const prompt = `correct and explain the errors of the following incorrect python code:\n\n${inputText}`;
 
-
-
-  const execute = () => {
-    if (inputText.trim() !== "") {
-      axios
-        .post("https://3000-punchzin-easyprog-y7310iw047q.ws-us105.gitpod.io/inserir-dados", { inputText })
-        .then((response) => {
-          console.log(response.data);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }
-  };
+    const response = await openai.complete({
+      engine: 'text-davinci-003', // or 'gpt-3.5-turbo'
+      prompt: prompt,
+      maxTokens: 500,
+    });
+    console.log(response.choices[0].text);
+  }
 
   const contextValue = {
     execute

@@ -1,9 +1,9 @@
 import { OpenAi } from 'openai';
-import { InputText } from './Code.styles';
+import Code from './Code';
 
 // openai connection
 const openai = new OpenAi({ apiKey: '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', dangerouslyAllowBrowser: true });
-async function correctCode(inputText) {
+async function correctCode() {
   const prompt = `correct and explain the errors of the following incorrect python code:\n\n${inputText}`;
 
   const response = await openai.complete({

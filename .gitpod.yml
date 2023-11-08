@@ -6,6 +6,6 @@
 
 tasks:
   - init: npm install && npm run build
-    command: pyenv install 3.11.0 && pyenv global 3.11.0 && npm run dev 
+    command: npm run dev 
 
 

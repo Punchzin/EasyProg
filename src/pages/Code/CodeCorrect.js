@@ -1,12 +1,12 @@
 import { OpenAI } from 'openai';
-import { useInputText } from './Code';
+import { useInputText } from './useInputText';
 
 // openai connection
 
 async function correctCode() {
   const { inputText, setInputText } = useInputText();
 
-  const openai = new OpenAI({ apiKey: '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', dangerouslyAllowBrowser: true });
+  const openai = new OpenAI({ apiKey: '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', dangerouslyAllowBrowser: true });
   const prompt = `correct and explain the errors of the following incorrect python code:\n\n${inputText}`;
 
   const response = await openai.complete({

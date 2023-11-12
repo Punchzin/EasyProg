@@ -1,5 +1,11 @@
-import { styled } from "styled-components";
+import { styled, createGlobalStyle } from "styled-components";
 import backgroundRobots from "../../assets/images/robots-background.svg";
+
+export const GlobalStyles = createGlobalStyle`
+  .MuiCircularProgress-root, .MuiCircularProgress-colorPrimary, .MuiCircularProgress-svg {
+      color: black !important;
+  }
+`;
 
 export const Main = styled.main`
   width: 100%;
@@ -33,8 +39,8 @@ export const AuthenticationWrapper = styled.div`
 `;
 
 export const AuthenticationBackground = styled.div`
-  width: 80%;
-  height: 80%;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -91,7 +97,7 @@ export const FormHeaderText = styled.div`
 `;
 
 export const FormWrapper = styled.div`
-  width: 420px;
+  width: 400px;
   border-radius: 8px;
   border: 1px solid rgba(50, 59, 69, 0.8);
   background: #19242f;
@@ -137,22 +143,23 @@ export const FormAuthenticationText = styled.div`
 `;
 
 export const Robot = styled.div`
-width: 100%;
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 0.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
 
-animation: ping 3.5s ease infinite;
+  animation: ping 3.5s ease infinite;
 
-@keyframes ping {
-  0%, 100% {
-    transform: translateY(0);
+  @keyframes ping {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
   }
-  50% {
-    transform: translateY(-10px);
-  }
-}
 `;
 
 export const FormBody = styled.div`
@@ -337,7 +344,7 @@ export const ButtonContinueR = styled.button`
   gap: 10px;
   flex-shrink: 0;
   color: #0bf0d5;
-  
+
   font-size: 12px;
   font-style: normal;
   font-weight: 700;

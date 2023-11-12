@@ -16,9 +16,7 @@ const Header = () => {
         <Style.InputIconButton
           onClick={() => setThemeSelected((prev) => !prev)}
         >
-          <i className={!themeSelected ? "ri-moon-fill" : "ri-sun-fill"}></i>
         </Style.InputIconButton>
-        <Style.Login onClick={() => navigate("/login")}>LOGIN</Style.Login>
       </Style.HeaderActions>
     </Style.Header>
   );

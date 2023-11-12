@@ -1,3 +1,5 @@
+
+import React from 'react';
 import * as Style from "./Code.styles";
 import Aside from "../../components/Aside/";
 import Header from "../../components/Header/";
@@ -6,12 +8,13 @@ import Tabs from "../../components/Tabs/";
 import Output from "../../components/Output/";
 import CodeAction from "./CodeAction";
 import EASYBOT_NORMAL from "../../assets/images/easybot-normal.svg";
-import { useState, createContext } from "react";
-import axios from "axios";
+import { useState, createContext, useContext } from "react";
 import Constants from './Code.constants';
+import { OpenAI } from 'openai';
+// import correctCode from './CodeCorrect';
 
 
-// Create Context object
+
 export const CodeContext = createContext();
 
 const Code = () => {
@@ -23,26 +26,46 @@ const Code = () => {
     setIsOpen((prev) => !prev);
   }
 
-  
-  const execute = () => {
-    if (inputText.trim() !== "") {
-      axios
-        .post("https://3000-punchzin-easyprog-y7310iw047q.ws-us105.gitpod.io/inserir-dados", { inputText })
-        .then((response) => {
-          console.log(response.data);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }
+  function useVentilador(data) {
+    const [ventilador, setVentilador] = useState(data);
+    return [ventilador, setVentilador];
   };
 
-  const contextValue = {
-    execute
-  };
+  const API_KEY = "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";
+  async function callOpenAIAPI() {
+    console.log("Calling the OpenAI API");
+
+      
+
+    const APIBody = {
+      "model": "text-davinci-003",
+      "prompt": "Explain the errors of this python code. If this is not a python code, just say: This is not a Python code. " + inputText,
+      "temperature": 0,
+      "max_tokens": 60,
+      "top_p": 1.0,
+      "frequency_penalty": 0.0,
+      "presence_penalty": 0.0
+    }
+
+    await fetch("https://api.openai.com/v1/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + API_KEY
+      },
+      body: JSON.stringify(APIBody)
+    }).then((data) => {
+      return data.json();
+    }).then((data) => {
+      console.log(data.choices[0].text);
+    });
+
+  }
+  const ventilador = "a";
 
   return (
-    <CodeContext.Provider value={contextValue}>
+    <CodeContext.Provider value={{ ventilador }}>
+    <React.Fragment>
       <Style.GlobalStyles />
       <Style.Main>
         <Aside />
@@ -73,7 +96,7 @@ const Code = () => {
                       type="button"
                       onClick={() => {
                         setPlayIsSelected((prev) => !prev);
-                        execute();
+                        callOpenAIAPI();
                       }}
                       actionIsSelected={playIsSelected}
                     />
@@ -95,8 +118,9 @@ const Code = () => {
           </Style.Content>
         </Style.Wrapper>
       </Style.Main>
+    </React.Fragment>
     </CodeContext.Provider>
   );
 };
-
+// Create a custom hook to access the inputText variable from other components
 export default Code;

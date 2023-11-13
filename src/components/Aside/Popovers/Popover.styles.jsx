@@ -65,7 +65,7 @@ export const Buttons = styled.div`
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  gap: 0.5rem;
+  gap: 0.5rem; 
 `;
 
 export const Button = styled.button`

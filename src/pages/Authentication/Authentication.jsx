@@ -154,20 +154,6 @@ const Authentication = () => {
                             </Style.InputIconButton>
                           </Style.InputItem>
                         </Style.InputWrapper>
-                        <Style.InputWrapper>
-                          <Style.InputItem>
-                            <i className="ri-file-user-line"></i>
-                            <input
-                              type="text"
-                              placeholder="Primeiro nome"
-                              id="name"
-                              onChange={(e) =>
-                                handleChangeForm("name", e.target.value)
-                              }
-                              required
-                            />
-                          </Style.InputItem>
-                        </Style.InputWrapper>
                       </React.Fragment>
                     )}
                   </Style.FormBody>

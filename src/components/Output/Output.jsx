@@ -1,13 +1,11 @@
 import React from "react";
 import * as Style from "./Output.style";  
-import { CodeContext } from "../../pages/Code/Code";
-import { useResponse } from "../../pages/Code/useInputText";
+
+
 
 
 // eslint-disable-next-line react/prop-types
 const Output = ({ isOpen, handleOpen, hasContent = true }) => {
-
-  const ventilador = useResponse
 
   return (
     <Style.OutputContainer>
@@ -29,119 +27,7 @@ const Output = ({ isOpen, handleOpen, hasContent = true }) => {
             </Style.OutputHeaderWrapper>
             <Style.OutputText>
               <p>
-                {ventilador}
-                <br />
-                módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />
-                módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />
-                módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />
-                módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />
-                módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />
-                módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />
-                módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />
-                módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />
-                módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />
-                módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />
-                módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />
-                módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />
-                módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />
-                módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />
-                módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />  
+                
               </p>
             </Style.OutputText>
             <Style.OutputTextOverlay isOpen={isOpen} />

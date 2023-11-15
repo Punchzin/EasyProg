@@ -15,6 +15,14 @@ const Authentication = () => {
   const [passwordView, setPasswordView] = useState(false);
   const [passwordConfirmView, setPasswordConfirmView] = useState(false);
 
+  const [inputReset, setInputReset] = useState("");
+
+  const handleReset = () => {
+    document.querySelectorAll('input').forEach((input) => {
+      input.value = '';
+    });
+  };
+
   const {
     CanLogin,
     CanRegister,
@@ -33,13 +41,13 @@ const Authentication = () => {
       setIsLoading(true);
       if (isRegister) {
         await handleRegister();
-        navigate('/overview');
+        navigate("/overview");
       } else {
         await handleLogin();
-        navigate('/overview');
+        navigate("/overview");
       }
-    } catch(error) {
-      console.log(error)
+    } catch (error) {
+      console.log(error);
     } finally {
       setIsLoading(false);
     }
@@ -74,10 +82,7 @@ const Authentication = () => {
                 <Style.FormAuthentication>
                   <Style.FormAuthenticationText>
                     <Style.Robot>
-                      <img
-                        src={EASYBOT_IMAGE}
-                        alt="EasyBot"
-                      />
+                      <img src={EASYBOT_IMAGE} alt="EasyBot" />
                     </Style.Robot>
                     <h1>{AUTHENTICATION_TITLE}</h1>
                     <p>
@@ -93,6 +98,7 @@ const Authentication = () => {
                           type="text"
                           placeholder="E-mail"
                           id="email"
+                         
                           onChange={(e) =>
                             handleChangeForm("email", e.target.value)
                           }
@@ -106,6 +112,7 @@ const Authentication = () => {
                         <input
                           type={!passwordView ? "password" : "text"}
                           placeholder="Password"
+                
                           onChange={(e) =>
                             handleChangeForm("password", e.target.value)
                           }
@@ -132,6 +139,7 @@ const Authentication = () => {
                               type={!passwordConfirmView ? "password" : "text"}
                               placeholder="Confirm password"
                               id="password"
+                            
                               onChange={(e) =>
                                 handleChangeForm(
                                   "passwordConfirm",
@@ -156,17 +164,21 @@ const Authentication = () => {
                         </Style.InputWrapper>
                       </React.Fragment>
                     )}
-                  </Style.FormBody>
+                  </Style.FormBody> 
                 </Style.FormAuthentication>
                 <Style.FormButtons>
                   <Style.ButtonRegister
-                    onClick={() => setIsRegister((prev) => !prev)}
+                    onClick={() => [setIsRegister((prev) => !prev), handleReset()]}
                   >
                     {BUTTON_TEXT}
                   </Style.ButtonRegister>
                   <Style.ButtonContinue
                     type="submit"
-                    disabled={isLoading || (isRegister && !CanRegister) || (!isRegister && !CanLogin)}
+                    disabled={
+                      isLoading ||
+                      (isRegister && !CanRegister) ||
+                      (!isRegister && !CanLogin)
+                    }
                     onClick={() => handleSubmit()}
                   >
                     {isLoading ? (

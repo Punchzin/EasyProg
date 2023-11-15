@@ -20,7 +20,7 @@ const Chooser = () => {
           <motion.div key={item.id} variants={Fade.ChildFade}>
             <Style.ChooseItem
               preset={item.preset}
-              onClick={() => navigate("/code")}
+              onClick={item.id === 0 ? () => navigate("/code") : null}
             >
               <Style.ChooseBody>
                 <Style.Lang>{item.type}</Style.Lang>

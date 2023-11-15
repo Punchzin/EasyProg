@@ -3,13 +3,13 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { CircularProgress } from "@mui/material";
-import * as Style from "./Authentication.styles";
+import * as Style from "./Auth.styles";
 import EASYPROG_LOGO from "../../assets/images/easyprog-logo.svg";
 import EASYPROG_ROBOT_SMILE from "../../assets/images/easybot-smile.svg";
 import EASYPROG_ROBOT_DUBIOUS from "../../assets/images/easybot-dubious.svg";
 import useAuth from "../../hooks/useAuth";
 
-const Authentication = () => {
+const Auth = () => {
   const navigate = useNavigate();
 
   const [passwordView, setPasswordView] = useState(false);
@@ -201,4 +201,4 @@ const Authentication = () => {
   );
 };
 
-export default Authentication;
+export default Auth;

@@ -1,12 +1,14 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import Apresentation from "../pages/Apresentation";
-import Authentication from "../pages/Authentication";
+import { Navigate, Route, Routes } from "react-router-dom";
+import Overview from "../pages/Overview";
+import Auth from "../pages/Auth";
 import Code from "../pages/Code/Code";
 import useAuth from "../hooks/useAuth";
 import { auth } from "../firebase/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useState } from "react";
 import { useEffect } from "react";
+import LandingPage from "../pages/LandingPage";
+import NotFound from "../pages/NotFound";
 
 const Privated = ({ Item }) => {
   const [user, loading, error] = useAuthState(auth);
@@ -28,12 +30,13 @@ const Privated = ({ Item }) => {
 
 const RoutesApp = () => {
   return (
-      <Routes>
-        <Route path="/" element={<Navigate to="/overview" />} />
-        <Route path="/login" element={<Authentication />} />
-        <Route path="/overview" element={< Apresentation />} />
-        <Route path="/code" element={<Code />} />
-      </Routes>
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/auth" element={<Auth />} />
+      <Route path="/overview" element={<Overview />} />
+      <Route path="/code" element={<Code />} />
+      <Route path="/*" element={<NotFound />} />
+    </Routes>
   );
 };
 

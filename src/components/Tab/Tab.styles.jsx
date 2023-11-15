@@ -32,7 +32,7 @@ export const CloseConfirm = styled.div`
   width: 20rem;
   border-radius: 0.75rem;
   border: 1px solid #323b45;
-  background: #0F1923;
+  background: #0f1923;
   display: flex;
   flex-direction: column;
   align-items: center;

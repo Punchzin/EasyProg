@@ -55,9 +55,7 @@ export const HeaderAction = styled.button`
     transition: all 0.3s;
   }
   i:hover {
-    i {
       color: white;
-    }
   }
 `;
 
@@ -65,7 +63,7 @@ export const Buttons = styled.div`
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  gap: 0.5rem; 
+  gap: 0.5rem;
 `;
 
 export const Button = styled.button`
@@ -81,6 +79,13 @@ export const Button = styled.button`
 
   font-family: "Space Grotesk", sans-serif;
   font-size: 12px;
+
+  &:hover {
+    color: #fff;
+    border: 1px solid #0bf0d5;
+    background: rgba(11, 240, 213, 0.2);
+    transition: all 0.3s;
+  }
 `;
 
 export const ButtonUpload = styled.label`

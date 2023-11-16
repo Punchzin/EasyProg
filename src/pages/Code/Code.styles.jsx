@@ -44,34 +44,6 @@ export const HeaderContainer = styled.div`
   position: relative;
 `;
 
-export const Robot = styled.div`
-  position: absolute;
-  right: 9rem;
-  top: 6rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: ping 3.2s ease infinite;
-
-  z-index: 1;
-  
-  img {
-    width: 58px;
-    height: 74px;
-    pointer-events: none;
-  }
-  
-  @keyframes ping {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
-  
-`;
-
 export const Content = styled.section`
   max-width: 1440px;
   width: 100%;
@@ -215,7 +187,7 @@ export const CodeSection = styled(CodeEditor)`
   width: 100% !important;
   height: 100% !important;
   background-color: transparent !important;
-  font-size: 14px !important;
+  font-size: 18px !important;
   font-family: "Space Grotesk", sans-serif !important;
   caret-color: #0BF0D5;
 `;

@@ -38,10 +38,10 @@ export const OutputElement = styled.div`
   align-items: center;
   gap: 0.5rem;
   
-  i {
+  img {
     display: flex;
-    width: 48px;
-    height: 48px;
+    width: 38px;
+    height: 38px;
     padding: 8px;
     justify-content: center;
     align-items: center;

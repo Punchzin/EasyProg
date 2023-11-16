@@ -1,7 +1,7 @@
 import * as Styles from "./LandingPage.styles";
 import EASY_LOGO from "../../assets/images/easyprog-logo.svg";
 import EASY_BOT from "../../assets/images/easybot-normal.svg";
-import EASY_PREVIEW from "../../assets/images/landingpage-preview.svg";
+import EASY_PREVIEW from "../../assets/images/overview.svg";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 

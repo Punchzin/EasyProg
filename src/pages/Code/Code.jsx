@@ -6,24 +6,20 @@ import Tab from "../../components/Tab/";
 import Tabs from "../../components/Tabs/";
 import Output from "../../components/Output/";
 import CodeAction from "./CodeAction";
-import EASYBOT_NORMAL from "../../assets/images/easybot-normal.svg";
 import { useState, createContext } from "react";
-import Constants from "./Code.constants";
-
+// import Constants from "./Code.constants";
 // import correctCode from './CodeCorrect';
 
 export const CodeContext = createContext();
 
 const Code = () => {
-  const [inputText, setInputText] = useState(Constants.FakeCode);
+  const [inputText, setInputText] = useState("");
   const [playIsSelected, setPlayIsSelected] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpen = () => {
     setIsOpen((prev) => !prev);
   };
-  
-  
   
   const API_KEY = "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";
   async function callOpenAIAPI() {
@@ -67,9 +63,6 @@ const Code = () => {
           <Style.Wrapper>
             <Style.HeaderContainer>
               <Header />
-              <Style.Robot>
-                <img src={EASYBOT_NORMAL} alt="EasyBot normal" />
-              </Style.Robot>
               <Tabs>
                 <Tab />
               </Tabs>

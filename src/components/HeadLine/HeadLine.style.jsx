@@ -31,30 +31,3 @@ export const Texts = styled.div`
     line-height: 140%;
   }
 `;
-
-export const Robot = styled.div`
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: ping 3.5s ease infinite;
-  
-
-  img {
-    width: 58px;
-    height: 74px;
-    pointer-events: none;
-  }
-
-  @keyframes ping {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
-  
-`;

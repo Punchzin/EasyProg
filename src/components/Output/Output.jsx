@@ -1,5 +1,6 @@
 import React from "react";
 import * as Style from "./Output.style";  
+import EASYPROG_BRAND from "../../assets/images/easyprog-logo.svg";
 
 
 
@@ -14,7 +15,7 @@ const Output = ({ isOpen, handleOpen, hasContent = true }) => {
           <React.Fragment>
             <Style.OutputHeaderWrapper>
               <Style.OutputElement>
-                <i className="ri-trophy-line"></i>
+                  <img src={EASYPROG_BRAND}/>
                 <Style.WrapperOut>
                   <Style.OutHeader>Output</Style.OutHeader>
                   <Style.OutMid>Descrição do erro:</Style.OutMid>

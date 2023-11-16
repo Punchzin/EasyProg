@@ -9,6 +9,7 @@ export const Aside = styled.aside`
   border-right: 1px solid rgba(50, 59, 69, 0.8);
   background: #0f1923;
   position: relative;
+  align-items: center;
 `;
 
 export const AsideWrapper = styled.div`
@@ -32,9 +33,9 @@ export const AsideBrand = styled.button`
 export const ActionsWrapper = styled.div`
   min-height: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  flex-direction: column;
+  gap: 1.2rem;
   overflow-y: auto;
 `;
 
@@ -76,9 +77,18 @@ export const AsideAction = styled.button`
   &:hover i {
     color: #7b8998;
   }
+`;
 
-  &: [data-isActived= "true"] {
+export const LangPy = styled.button `
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  opacity: 0.8;
 
+  &:hover{
+    opacity: 1;
+    border: #fff;
   }
 `;
 

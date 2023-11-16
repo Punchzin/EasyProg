@@ -29,7 +29,7 @@ const Overview = () => {
               <Style.UseMode>Video</Style.UseMode>
             </Style.Wrapper>
           </Style.ContentBody>
-          <Output hasContent={false} />
+          <Output />
         </Style.Content>
       </Style.Container>
     </Style.Main>

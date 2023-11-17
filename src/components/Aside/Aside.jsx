@@ -3,6 +3,7 @@ import EASYPROG_BRAND from "../../assets/images/easyprog-logo.svg";
 import EASYBOT_SAD from "../../assets/images/easybot-sad.svg";
 import LANG_PY from "../../assets/images/langPy.svg";
 import AsideAction from "./AsideAction.jsx";
+import { logout } from "../../firebase/firebase.js"
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Dialog } from "@mui/material";
@@ -23,7 +24,7 @@ const Aside = () => {
   const [helpIsSelected, setHelpIsSelected] = useState(false);
   // eslint-disable-next-line no-unused-vars
   const [langSelect, setLangSelect] = useState(false);
-  const [logoutIsSelected, setLogoutIsSelected] = useState(false);
+  const [logoutIsSelected, setLogoutIsSelected] = useState(logout);
 
   const handleOpenTutorial = () =>
     window.open("https://www.youtube.com", "_blank");

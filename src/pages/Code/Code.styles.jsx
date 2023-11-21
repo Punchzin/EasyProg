@@ -87,24 +87,6 @@ export const ContentBody = styled.div`
 
 `;
 
-export const InputText = styled.textarea`
-  width: 100%;
-  height: 100%;
-  font-size: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: absolute;
-  resize: none;
-  margin: 2rem;
-
-  background: transparent;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  
-`;
-
 export const InputHeader = styled.div`
   display: flex;
   flex-direction: column;

@@ -6,6 +6,7 @@ import Tab from "../../components/Tab/";
 import Tabs from "../../components/Tabs/";
 import Output from "../../components/Output/";
 import CodeAction from "./CodeAction";
+import useReaderFile from "../../hooks/useReaderFile";
 import { useState, createContext } from "react";
 
 export const CodeContext = createContext();
@@ -15,8 +16,8 @@ const Code = () => {
   const [playIsSelected, setPlayIsSelected] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
-  // eslint-disable-next-line no-unused-vars
-  const [fileContent, setFileContent] = useState("");
+  const { fileContent } = useReaderFile();
+
 
 
   const handleOpen = () => {
@@ -96,7 +97,7 @@ const Code = () => {
                 </Style.WrapperItem>
                 <Style.ContentBody>
                   <Style.CodeSection
-                    value={inputText}
+                    value={fileContent}
                     language="python"
                     placeholder="Insira seu código Python."
                     onChange={(evn) => setInputText(evn.target.value)}

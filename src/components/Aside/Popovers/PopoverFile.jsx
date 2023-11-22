@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { Popover } from "@mui/material";
-
 import { useNavigate } from "react-router-dom";
 import AsideAction from "../AsideAction";
+import useReaderFile from '../../../hooks/useReaderFile';
 import * as Style from "./Popover.styles";
 import "./MUIReset.css";
 
 const PopoverFile = () => {
   const navigate = useNavigate();
+  const { fileContent, handleReaderFile } = useReaderFile();
+
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [isSelected, setIsSelected] = useState(false);
@@ -31,24 +33,10 @@ const PopoverFile = () => {
   }
 
   const handleSaveFile = () => {
-    const data = 'algo';
+    const data = fileContent;
     const filename = 'arquivo.txt';
     saveFile(data, filename);
   } 
-
-
-  const handleReaderFile = (event) => {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-
-    reader.onload = (e) => {
-      const content = e.target.result;
-      (content);
-    };
-
-    reader.readAsText(file);
-
-  }
 
 
   const handleOpen = (event) => {

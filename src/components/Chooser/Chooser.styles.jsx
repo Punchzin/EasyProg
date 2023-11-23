@@ -20,6 +20,8 @@ const PRESETS = {
 
 export const Choose = styled.div`
   width: 280px;
+  height: 100%;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -49,8 +51,8 @@ export const ChooseItem = styled.button`
 
   img {
     position: absolute;
-    top: -3.5rem;
-    right: -3.5rem;
+    top: -3.7rem;
+    right: -2.8rem;
     pointer-events: none;
   }
 

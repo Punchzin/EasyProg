@@ -7,9 +7,10 @@ export const Aside = styled.aside`
   height: 100vh;
   flex-direction: column;
   border-right: 1px solid rgba(50, 59, 69, 0.8);
-  background: #0f1923;
   position: relative;
   align-items: center;
+  background: rgba(15, 25, 35, .2);
+  backdrop-filter: blur(4px);
 `;
 
 export const AsideWrapper = styled.div`
@@ -31,7 +32,6 @@ export const AsideBrand = styled.button`
 `;
 
 export const ActionsWrapper = styled.div`
-  min-height: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;

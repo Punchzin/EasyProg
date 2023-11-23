@@ -2,42 +2,23 @@ import { useState } from "react";
 import { Popover } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import AsideAction from "../AsideAction";
-import useReaderFile from '../../../hooks/useReaderFile';
+import useReaderFile from "../../../hooks/useReaderFile";
 import * as Style from "./Popover.styles";
 import "./MUIReset.css";
 
+//função para salvar o arquivo
+//data = para ser introduzido o conteúdo, no caso a variavel do input
+//filename = nome padrão que terá(alteravel)
+//blob = para salvar os dados existentes
+//url = url para o blob usar, usando ela na interface em forma de btão ou link tb
+// a = criando um elemento
+
 const PopoverFile = () => {
   const navigate = useNavigate();
-  const { fileContent, handleReaderFile } = useReaderFile();
-
+  const { handleDownloadFile, handleReadFile } = useReaderFile();
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [isSelected, setIsSelected] = useState(false);
-
-
-  //função para salvar o arquivo
-  //data = para ser introduzido o conteúdo, no caso a variavel do input
-  //filename = nome padrão que terá(alteravel)
-  //blob = para salvar os dados existentes
-  //url = url para o blob usar, usando ela na interface em forma de btão ou link tb
-  // a = criando um elemento
-
-  const saveFile = (data, filename) => {
-    const blob = new Blob([data], { type: 'application/octet-stream' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = filename;
-    a.click();
-    URL.revokeObjectURL(url);
-  }
-
-  const handleSaveFile = () => {
-    const data = fileContent;
-    const filename = 'arquivo.txt';
-    saveFile(data, filename);
-  } 
-
 
   const handleOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -86,17 +67,18 @@ const PopoverFile = () => {
             </Style.HeaderAction>
           </Style.WrapperHeader>
           <Style.Buttons>
-            <Style.Button onClick={() => navigate('/code')}>Novo arquivo</Style.Button>
+            <Style.Button onClick={() => navigate("/code")}>
+              Novo arquivo
+            </Style.Button>
             <Style.Button>
-            <Style.ButtonUpload htmlFor="file-upload">Carregar arquivo</Style.ButtonUpload>
+              <Style.ButtonUpload type="file" onChange={(event) => handleReadFile(event)}/>
               <Style.InputUpload
                 id="file-upload"
                 type="file"
-                onChange={handleReaderFile}
                 style={{ display: "none" }}
               />
-              </Style.Button>
-            <Style.Button onClick={handleSaveFile}>Salvar arquivo</Style.Button>
+            </Style.Button>
+            <Style.Button onClick={handleDownloadFile}>Salvar arquivo</Style.Button>
           </Style.Buttons>
         </Style.WrapperButton>
       </Popover>

@@ -32,8 +32,8 @@ export const Box = styled.div`
   gap: 2rem;
 
   img {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 2rem;
+    height: 2rem;
     filter: drop-shadow(0px 5px 10px rgba(11, 240, 213, 0.3));
   }
 `;

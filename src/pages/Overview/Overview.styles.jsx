@@ -9,7 +9,6 @@ export const Main = styled.main`
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;
- 
 `;
 
 export const Container = styled.div`
@@ -29,6 +28,7 @@ export const Content = styled.section`
   flex-direction: column;
   height: 100%;
   gap: 1rem;
+  overflow: hidden;
 `;
 
 export const HeaderContainer = styled.div`
@@ -43,6 +43,7 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: stretch;
   gap: 1rem;
+  overflow: hidden;
 `;
 
 export const ContentBody = styled.div`
@@ -51,6 +52,7 @@ export const ContentBody = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  overflow: hidden;
 `;
 
 export const UseMode = styled.div`

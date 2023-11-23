@@ -9,8 +9,8 @@ export const Header = styled.header`
   align-items: center;
 
   border-bottom: 1px solid rgba(50, 59, 69, 0.8);
-  background: rgba(15, 25, 35, 0.8);
-  backdrop-filter: blur(8px);
+  background: rgba(15, 25, 35, .2);
+  backdrop-filter: blur(4px);
 `;
 
 export const HeaderBrand = styled.div`

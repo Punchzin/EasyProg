@@ -79,16 +79,16 @@ export const Button = styled.button`
 
   font-family: "Space Grotesk", sans-serif;
   font-size: 12px;
+  transition: all 0.3s;
 
   &:hover {
     color: #fff;
     border: 1px solid #0bf0d5;
     background: rgba(11, 240, 213, 0.2);
-    transition: all 0.3s;
   }
 `;
 
-export const ButtonUpload = styled.label`
+export const ButtonUpload = styled.input`
   display: flex;
   cursor: pointer;
   align-items: center;

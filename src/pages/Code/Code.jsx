@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import * as Style from "./Code.styles";
 import Aside from "../../components/Aside/";
 import Header from "../../components/Header/";
@@ -16,45 +16,54 @@ const Code = () => {
   const [playIsSelected, setPlayIsSelected] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
-  const { fileContent } = useReaderFile();
+  const { handleFileContent, fileContent } = useReaderFile();
 
-
-
+  useEffect(() => {
+    setInputText(fileContent);
+  }, [fileContent])
+  
   const handleOpen = () => {
     setIsOpen((prev) => !prev);
   };
 
-  const API_KEY = "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";
-  async function callOpenAIAPI() {
-    console.log("Calling the OpenAI API");
-
-    const APIBody = {
-      model: "text-davinci-003",
-      prompt:
-        "Explain the errors of this python code. If this is not a python code, just say: This is not a Python code. " +
-        inputText,
-      temperature: 0,
-      max_tokens: 60,
-      top_p: 1.0,
-      frequency_penalty: 0.0,
-      presence_penalty: 0.0,
-    };
-
-    await fetch("https://api.openai.com/v1/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + API_KEY,
-      },
-      body: JSON.stringify(APIBody),
-    })
-      .then((data) => {
-        return data.json();
-      })
-      .then((data) => {
-        console.log(data.choices[0].text);
-      });
+  const handleChangeText = (value) => {
+    handleFileContent(value);
+    setInputText(value);
   }
+
+  // const API_KEY = "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";
+  // async function callOpenAIAPI() {
+  //   console.log("Calling the OpenAI API");
+
+  //   const APIBody = {
+  //     model: "text-davinci-003",
+  //     prompt:
+  //       "Explain the errors of this python code. If this is not a python code, just say: This is not a Python code. " +
+  //       inputText,
+  //     temperature: 0,
+  //     max_tokens: 60,
+  //     top_p: 1.0,
+  //     frequency_penalty: 0.0,
+  //     presence_penalty: 0.0,
+  //   };
+
+  //   await fetch("https://api.openai.com/v1/completions", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: "Bearer " + API_KEY,
+  //     },
+  //     body: JSON.stringify(APIBody),
+  //   })
+  //     .then((data) => {
+  //       return data.json();
+  //     })
+  //     .then((data) => {
+  //       console.log(data.choices[0].text);
+  //     });
+  // }
+
+
 
   return (
     <CodeContext.Provider>
@@ -82,7 +91,7 @@ const Code = () => {
                     <Style.TextButton
                       onClick={() => {
                         setPlayIsSelected((prev) => !prev);
-                        callOpenAIAPI();
+                        // callOpenAIAPI();
                       }}
                     >
                       <CodeAction
@@ -97,10 +106,10 @@ const Code = () => {
                 </Style.WrapperItem>
                 <Style.ContentBody>
                   <Style.CodeSection
-                    value={fileContent}
+                    value={inputText}
                     language="python"
                     placeholder="Insira seu código Python."
-                    onChange={(evn) => setInputText(evn.target.value)}
+                    onChange={(event) => handleChangeText(event.target.value)}
                     padding={24}
                   />
                 </Style.ContentBody>

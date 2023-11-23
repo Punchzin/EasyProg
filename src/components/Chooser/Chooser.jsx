@@ -14,6 +14,7 @@ const Chooser = () => {
       initial="hidden"
       animate="visible"
       exit="exit"
+      style={{ height: "100%" }}
     >
       <Style.Choose>
         {ITEMS_CONFIG.map((item) => (

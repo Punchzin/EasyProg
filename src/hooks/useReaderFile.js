@@ -1,14 +1,13 @@
-import { useState } from 'react';
+import { useContext } from "react";
+import { ReaderFileContext } from "../contexts/ReaderFileContext";
 
 const useReaderFile = () => {
-  const [fileContent, setFileContent] = useState(''); 
+  const context = useContext(ReaderFileContext);
+  if (!context) {
+    throw new Error("useReaderFile must be used within a ReaderFileProvider");
+  }
 
-  const handleFileRead = (content) => {
-    setFileContent(content); 
-  };
-
-
-  return { fileContent, handleFileRead }; 
+  return context;
 };
 
 export default useReaderFile;

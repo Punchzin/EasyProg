@@ -26,7 +26,17 @@ const Overview = () => {
             />
             <Style.Wrapper>
               <Chooser />
-              <Style.UseMode>Video</Style.UseMode>
+              <Style.UseMode>
+                <iframe
+                  width='100%'
+                  height='100%'
+                  src="https://www.youtube.com/embed/zHcjYG3BRnc?autoplay=1&mute=1&controls=1&loop=1"
+                  title="Tutorial de Uso - EasyProg"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
+                ></iframe>
+              </Style.UseMode>
             </Style.Wrapper>
           </Style.ContentBody>
           <Output />

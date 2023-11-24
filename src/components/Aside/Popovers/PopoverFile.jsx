@@ -71,14 +71,22 @@ const PopoverFile = () => {
               Novo arquivo
             </Style.Button>
             <Style.Button>
-              <Style.ButtonUpload type="file" onChange={(event) => handleReadFile(event)}/>
+              <Style.ButtonContainer>
+                Carregar Arquivo
+                <Style.ButtonUpload
+                  type="file"
+                  onChange={(event) => handleReadFile(event)}
+                />
+              </Style.ButtonContainer>
               <Style.InputUpload
                 id="file-upload"
                 type="file"
                 style={{ display: "none" }}
               />
             </Style.Button>
-            <Style.Button onClick={handleDownloadFile}>Salvar arquivo</Style.Button>
+            <Style.Button onClick={handleDownloadFile}>
+              Salvar arquivo
+            </Style.Button>
           </Style.Buttons>
         </Style.WrapperButton>
       </Popover>

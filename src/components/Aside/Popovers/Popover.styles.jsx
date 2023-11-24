@@ -88,12 +88,25 @@ export const Button = styled.button`
   }
 `;
 
+export const ButtonContainer = styled.label`
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+`;
+
 export const ButtonUpload = styled.input`
   display: flex;
   cursor: pointer;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
 `;
+
 
 export const InputUpload = styled.input`
   display: flex;

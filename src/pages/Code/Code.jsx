@@ -31,38 +31,47 @@ const Code = () => {
     setInputText(value);
   }
 
-  // const API_KEY = "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";
-  // async function callOpenAIAPI() {
-  //   console.log("Calling the OpenAI API");
+ const API_KEY = "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";
+ async function callOpenAIAPI() {
+   console.log("Calling the OpenAI API");
 
-  //   const APIBody = {
-  //     model: "text-davinci-003",
-  //     prompt:
-  //       "Explain the errors of this python code. If this is not a python code, just say: This is not a Python code. " +
-  //       inputText,
-  //     temperature: 0,
-  //     max_tokens: 60,
-  //     top_p: 1.0,
-  //     frequency_penalty: 0.0,
-  //     presence_penalty: 0.0,
-  //   };
+   const APIBody = {
+     model: "gpt-3.5-turbo",
+     messages: [
+      {
+      role: "system",
+      content: "You will be provided with a python code.Explain the errors of this python code. If this is something beyond (like a text message or questions) a python code, just say: This is not a Python code. "
+    },
+    {
+      role:"user",
+      content: inputText
+    }
+     ],
+       
+     temperature: 1,
+     max_tokens: 260,
+     top_p: 1.0,
+     frequency_penalty: 0.0,
+     presence_penalty: 0.0,
+   };
 
-  //   await fetch("https://api.openai.com/v1/completions", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Authorization: "Bearer " + API_KEY,
-  //     },
-  //     body: JSON.stringify(APIBody),
-  //   })
-  //     .then((data) => {
-  //       return data.json();
-  //     })
-  //     .then((data) => {
-  //       console.log(data.choices[0].text);
-  //     });
-  // }
-
+   await fetch("https://api.openai.com/v1/chat/completions", {
+     method: "POST",
+     headers: {
+       "Content-Type": "application/json",
+       Authorization: "Bearer " + API_KEY,
+     },
+     body: JSON.stringify(APIBody),
+   })
+     .then((data) => {
+       return data.json();
+     })
+     .then((data) => {
+        console.log(data.choices[0].message.content);
+     });
+ }
+    // tem que criar um return fora to then pra poder gravar a resposta numa const e poder usar no codeContext
+    //se tentar usar const dentro do then, nao da pra usar fora dps
 
 
   return (
@@ -91,7 +100,7 @@ const Code = () => {
                     <Style.TextButton
                       onClick={() => {
                         setPlayIsSelected((prev) => !prev);
-                        // callOpenAIAPI();
+                        callOpenAIAPI();
                       }}
                     >
                       <CodeAction

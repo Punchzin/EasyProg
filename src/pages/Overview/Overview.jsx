@@ -30,12 +30,12 @@ const Overview = () => {
                 <iframe
                   width='100%'
                   height='100%'
-                  src="https://www.youtube.com/embed/zHcjYG3BRnc?autoplay=1&mute=1&controls=1&loop=1"
+                  src="https://www.youtube.com/embed/zHcjYG3BRnc?autoplay=1&mute=1&controls=1&loop=1&playlist=zHcjYG3BRnc"
                   title="Tutorial de Uso - EasyProg"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share;"
                   allowfullscreen
-                ></iframe>
+                  style={{ border: "none" }}
+                />
               </Style.UseMode>
             </Style.Wrapper>
           </Style.ContentBody>

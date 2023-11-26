@@ -100,7 +100,7 @@ export const OutputText = styled.div`
   align-items: flex-start;
   gap: 0.5rem;
   align-self: stretch;
-  background: #0F1923 !important;
+  
   border-radius: .25rem;
   flex: 1;    
   overflow-y: auto;

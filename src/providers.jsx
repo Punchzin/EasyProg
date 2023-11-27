@@ -2,12 +2,15 @@
 import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./contexts/Auth";
 import ReaderFileProvider from "./contexts/ReaderFileContext";
+import { OpenAiProvider } from "./contexts/OpenAIContext";
 
 const Providers = ({ children }) => {
   return (
     <AuthProvider>
       <BrowserRouter>
-        <ReaderFileProvider>{children}</ReaderFileProvider>
+        <OpenAiProvider>
+          <ReaderFileProvider>{children}</ReaderFileProvider>
+        </OpenAiProvider>
       </BrowserRouter>
     </AuthProvider>
   );

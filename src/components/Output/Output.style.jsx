@@ -107,6 +107,8 @@ export const OutputText = styled.div`
 
   position: relative;
 
+  white-space: break-spaces;
+
   p {
     margin: 12px;
   }

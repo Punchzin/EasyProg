@@ -5,10 +5,10 @@ import Header from "../../components/Header/";
 import Tab from "../../components/Tab/";
 import Tabs from "../../components/Tabs/";
 import Output from "../../components/Output/";
-import CodeAction from "./CodeAction";
 import useReaderFile from "../../hooks/useReaderFile";
-import useCallingAPI from "../../hooks/useCallingAPI";
+import useOpenAIContext from "../../hooks/useOpenAIContext";
 import { useState, createContext } from "react";
+import CircularProgress from "@mui/material/CircularProgress";
 
 export const CodeContext = createContext();
 
@@ -19,21 +19,26 @@ const Code = () => {
 
   const { handleFileContent, fileContent } = useReaderFile();
 
-  const { callOpenAIAPI } = useCallingAPI();
+  const { setCodeRequest, getCodeResponse, codeLoading } = useOpenAIContext();
 
   useEffect(() => {
     setInputText(fileContent);
-  }, [fileContent])
-  
+  }, [fileContent]);
+
   const handleOpen = () => {
     setIsOpen((prev) => !prev);
   };
 
   const handleChangeText = (value) => {
+    setCodeRequest(value);
     handleFileContent(value);
     setInputText(value);
-  }
+  };
 
+  const handleExecute = () => {
+    setPlayIsSelected((prev) => !prev);
+    getCodeResponse();
+  };
 
   return (
     <CodeContext.Provider>
@@ -59,18 +64,20 @@ const Code = () => {
                   </Style.InputHeader>
                   <Style.CodeActions>
                     <Style.TextButton
-                      onClick={() => {
-                        setPlayIsSelected((prev) => !prev);
-                        callOpenAIAPI();
-                      }}
+                      disabled={codeLoading}
+                      onClick={handleExecute}
                     >
-                      <CodeAction
-                        actionIcon="ri-play-fill"
-                        actionTitle="Iniciar"
-                        type="button"
-                        actionIsSelected={playIsSelected}
-                      />
-                      <p>Executar código</p>
+                      {!codeLoading ? (
+                        <React.Fragment>
+                          <i className="ri-play-fill"></i>
+                          <p>Executar código</p>
+                        </React.Fragment>
+                      ) : (
+                        <React.Fragment>
+                          <CircularProgress size={16} />
+                          <p>Executando código</p>
+                        </React.Fragment>
+                      )}
                     </Style.TextButton>
                   </Style.CodeActions>
                 </Style.WrapperItem>

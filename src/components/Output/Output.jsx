@@ -1,12 +1,11 @@
+/* eslint-disable react/prop-types */
 import React from "react";
-import * as Style from "./Output.style";  
+import * as Style from "./Output.style";
 import EASYPROG_BRAND from "../../assets/images/easyprog-logo.svg";
+import useOpenAIContext from "../../hooks/useOpenAIContext";
 
-
-
-
-// eslint-disable-next-line react/prop-types
 const Output = ({ isOpen, handleOpen, hasContent = true }) => {
+  const { codeResponse } = useOpenAIContext();
 
   return (
     <Style.OutputContainer>
@@ -15,7 +14,7 @@ const Output = ({ isOpen, handleOpen, hasContent = true }) => {
           <React.Fragment>
             <Style.OutputHeaderWrapper>
               <Style.OutputElement>
-                  <img src={EASYPROG_BRAND}/>
+                <img src={EASYPROG_BRAND} />
                 <Style.WrapperOut>
                   <Style.OutHeader>Output</Style.OutHeader>
                   <Style.OutMid>Descrição do erro:</Style.OutMid>
@@ -27,9 +26,7 @@ const Output = ({ isOpen, handleOpen, hasContent = true }) => {
               </Style.OutputButton>
             </Style.OutputHeaderWrapper>
             <Style.OutputText>
-              <p>
-                
-              </p>
+              <p>{codeResponse}</p>
             </Style.OutputText>
             <Style.OutputTextOverlay isOpen={isOpen} />
           </React.Fragment>

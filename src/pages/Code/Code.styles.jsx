@@ -144,10 +144,12 @@ export const CodeAction = styled.div`
 export const TextButton = styled.button`
   display: flex;
   align-items: center;
-  flex-shrink: 0;
-  gap: .2rem;
+  justify-content: center;
+  height: 35px;
+  min-width: 140px;
+  gap: .5rem;
   cursor: pointer;
-  padding: .25rem .4rem .25rem .2rem;
+  padding: .25rem .5rem;
   z-index: 99; 
   
   white-space: nowrap;
@@ -162,6 +164,11 @@ export const TextButton = styled.button`
 
   &:hover{
     opacity: 1;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
   }
 `;
 

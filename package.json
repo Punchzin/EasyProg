@@ -34,6 +34,7 @@
     "react-firebase-hooks": "^5.1.1",
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.17.0",
+    "react-syntax-highlighter": "^15.5.0",
     "remixicon": "^3.5.0",
     "styled-components": "^6.0.7"
   },

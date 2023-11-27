@@ -9,6 +9,8 @@ import useReaderFile from "../../hooks/useReaderFile";
 import useOpenAIContext from "../../hooks/useOpenAIContext";
 import { useState, createContext } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { okaidia } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export const CodeContext = createContext();
 
@@ -89,6 +91,13 @@ const Code = () => {
                     onChange={(event) => handleChangeText(event.target.value)}
                     padding={24}
                   />
+                    
+                    {
+                    // contador de linhas 
+                    //olhar a documentacao react-syntax-highlighter
+                    /* <SyntaxHighlighter language="python" style={okaidia} showLineNumbers>
+                      {inputText}
+                    </SyntaxHighlighter> */}
                 </Style.ContentBody>
               </Style.Container>
               <Output isOpen={isOpen} handleOpen={handleOpen} />

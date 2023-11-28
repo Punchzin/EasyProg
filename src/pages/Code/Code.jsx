@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import * as Style from "./Code.styles";
 import Aside from "../../components/Aside/";
 import Header from "../../components/Header/";
@@ -8,15 +8,12 @@ import Tabs from "../../components/Tabs/";
 import Output from "../../components/Output/";
 import useReaderFile from "../../hooks/useReaderFile";
 import useOpenAIContext from "../../hooks/useOpenAIContext";
-import { useState, createContext } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
-
-export const CodeContext = createContext();
 
 const Code = () => {
   const [inputText, setInputText] = useState("");
   const [playIsSelected, setPlayIsSelected] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  const [outputIsOpen, setOutputIsOpen] = useState(false);
 
   const { handleFileContent, fileContent } = useReaderFile();
 
@@ -27,7 +24,7 @@ const Code = () => {
   }, [fileContent]);
 
   const handleOpen = () => {
-    setIsOpen((prev) => !prev);
+    setOutputIsOpen((prev) => !prev);
   };
 
   const handleChangeText = (value) => {
@@ -42,7 +39,6 @@ const Code = () => {
   };
 
   return (
-    <CodeContext.Provider>
       <React.Fragment>
         <Style.GlobalStyles />
         <Style.Main>
@@ -55,7 +51,7 @@ const Code = () => {
               </Tabs>
             </Style.HeaderContainer>
             <Style.Content>
-              <Style.Container className={isOpen && "inputOpened"}>
+              <Style.Container className={outputIsOpen && "inputOpened"}>
                 <Style.WrapperItem>
                   <Style.InputHeader>
                     <p>
@@ -100,8 +96,8 @@ const Code = () => {
                 </Style.ContentBody>
               </Style.Container>
               <Output 
-                isOpen={isOpen} 
-                setIsOpen={setIsOpen} 
+                outputIsOpen={outputIsOpen} 
+                setOutputIsOpen={setOutputIsOpen} 
                 handleOpen={handleOpen} 
                 hasContent={true} 
               />
@@ -109,7 +105,6 @@ const Code = () => {
           </Style.Wrapper>
         </Style.Main>
       </React.Fragment>
-    </CodeContext.Provider>
   );
 };
 

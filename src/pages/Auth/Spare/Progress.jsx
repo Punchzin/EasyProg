@@ -12,8 +12,6 @@ const STEP_DICTIONARY = {
 };
 
 const Progress = ({ step }) => {
-  console.log(step);
-
   return (
     <Styles.ProgressWrapper as={motion.div} variants={Fade.ChildFade}>
       <Styles.ProgressBar currentStep={STEP_DICTIONARY[step]} />

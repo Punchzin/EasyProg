@@ -1,8 +1,8 @@
+/* eslint-disable react/prop-types */
 import { createContext } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useState } from "react";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import {
   auth,
   logInWithEmailAndPassword,
@@ -12,58 +12,50 @@ import {
 export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
+  const [form, setForm] = useState({});
   const [user, loading, error] = useAuthState(auth);
   const [isRegister, setIsRegister] = useState(false);
-  const [isLogged, setIsLogged] = useState(null);
+  const [isLogged, setIsLogged] = useState(false);
+  const [userdata, setUserdata] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    if (!user) {
+      return;
+    }
+
+    const dataFormatted = user.providerData[0];
+
+    setUserdata({ ...dataFormatted });
     setIsLogged(user ? true : false);
   }, [user]);
 
-  const [form, setForm] = useState({
-    email: "",
-    password: "",
-    passwordConfirm: "",
-    name: "",
-  });
-
-  const { email, password, passwordConfirm, name } = form;
+  const { email, password, confirmPassword } = form;
 
   const handleRegister = async () => {
-    await registerWithEmailAndPassword(name, email, password);
+    if (password.value !== confirmPassword.value) {
+      return;
+    }
+
+    await registerWithEmailAndPassword(email.value, password.value);
   };
 
   const handleLogin = async () => {
-    await logInWithEmailAndPassword(email, password);
+    await logInWithEmailAndPassword(email.value, password.value);
   };
-
-  const handleChangeForm = (field, valor) => {
-    setForm({ ...form, [field]: valor });
-  };
-
-  const CanLogin = form.email.length >= 1 && form.password.length >= 1;
-  const CanRegister =
-    form.name.length >= 1 &&
-    form.email.length >= 1 &&
-    form.password.length >= 1 &&
-    form.passwordConfirm.length >= 1 &&
-    form.password === form.passwordConfirm;
 
   return (
     <AuthContext.Provider
       value={{
         user,
+        setForm,
         isLogged,
-        handleLogin,
-        handleRegister,
-        handleChangeForm,
-        isLoading,
-        setIsLoading,
         isRegister,
+        handleLogin,
         setIsRegister,
-        CanLogin,
-        CanRegister
+        handleRegister,
+        userdata,
+        signed : !!user,
       }}
     >
       {children}

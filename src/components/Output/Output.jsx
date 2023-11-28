@@ -4,20 +4,24 @@ import * as Style from "./Output.style";
 import EASYPROG_BRAND from "../../assets/images/easyprog-logo.svg";
 import useOpenAIContext from "../../hooks/useOpenAIContext";
 
-const Output = ({ isOpen, handleOpen, hasContent = true, setIsOpen  }) => {
+const Output = ({ setOutputIsOpen, outputIsOpen, handleOpen, hasContent = true }) => {
   const { codeResponse } = useOpenAIContext();
 
   useEffect(() => {
-    if (codeResponse) {
-      setIsOpen(true);
-    } else {
-      setIsOpen(false);
+    if (!setOutputIsOpen) {
+      return;
     }
-  }, [codeResponse, setIsOpen]);
+
+    if (codeResponse) {
+      setOutputIsOpen(true);
+    } else {
+      setOutputIsOpen(false);
+    }
+  }, [codeResponse, setOutputIsOpen]);
 
   return (
     <Style.OutputContainer>
-      <Style.OutputWrapper style={{ height: isOpen ? "70vh" : "220px" }}>
+      <Style.OutputWrapper style={{ height: outputIsOpen ? "70vh" : "220px" }}>
         {hasContent && (
           <React.Fragment>
             <Style.OutputHeaderWrapper>
@@ -35,10 +39,10 @@ const Output = ({ isOpen, handleOpen, hasContent = true, setIsOpen  }) => {
             </Style.OutputHeaderWrapper>
             {codeResponse && (
               <React.Fragment>
-                <Style.OutputText>
+                <Style.OutputText outputIsOpen={outputIsOpen}>
                   <p>{codeResponse}</p>
                 </Style.OutputText>
-                <Style.OutputTextOverlay isOpen={isOpen} />
+                <Style.OutputTextOverlay outputIsOpen={outputIsOpen} />
               </React.Fragment>
             )}
           </React.Fragment>

@@ -6,13 +6,13 @@ import { OpenAiProvider } from "./contexts/OpenAIContext";
 
 const Providers = ({ children }) => {
   return (
-    <AuthProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <AuthProvider>
         <OpenAiProvider>
           <ReaderFileProvider>{children}</ReaderFileProvider>
         </OpenAiProvider>
-      </BrowserRouter>
-    </AuthProvider>
+      </AuthProvider>
+    </BrowserRouter>
   );
 };
 

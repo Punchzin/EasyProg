@@ -1,12 +1,13 @@
 import * as Styles from "./Auth.styles";
 import EASY_LOGO from "../../assets/images/easyprog-logo.svg";
 import Button from "../../components/Button/Button";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Input from "./Spare/Input";
 import useRegexForm from "../../hooks/useRegexForm";
 import { motion } from "framer-motion";
 import Fade from "../../global/Transitions/Fade";
 import Progress from "./Spare/Progress";
+import useAuthContext from "../../hooks/useAuthContext";
 
 const AUTH_DICTIONARY = {
   CHOOSE: 0,
@@ -21,12 +22,18 @@ const Auth = () => {
   const isRegister = currentAuth === AUTH_DICTIONARY.REGISTER;
 
   const {
-    handleCheckField,
     form,
     handleResetForm,
+    handleCheckField,
     currentPaswordStepSecurity,
   } = useRegexForm();
 
+  const { setForm, handleRegister, handleLogin } = useAuthContext();
+
+  useEffect(() => {
+    setForm(form);
+  }, [setForm, form])
+  
   const handleChoose = (auth) => {
     handleResetForm();
     setCurrentAuth(auth);
@@ -110,11 +117,14 @@ const Auth = () => {
                     }
                     completed={form.password.isValid}
                   />
-                  <Button
-                    label="Continue"
-                    fullyWidth
-                    isDisabled={!form.email.isValid || !form.password.isValid}
-                  />
+                  <Styles.FormFooter>
+                    <Button
+                      label="Continue"
+                      fullyWidth
+                      isDisabled={!form.email.isValid || !form.password.isValid}
+                      onClick={handleLogin}
+                    />
+                  </Styles.FormFooter>
                 </Styles.FormGroup>
               )}
 
@@ -160,15 +170,18 @@ const Auth = () => {
                     completed={form.confirmPassword.isValid}
                   />
                   <Progress step={currentPaswordStepSecurity} />
-                  <Button
-                    label="Continue"
-                    fullyWidth
-                    isDisabled={
-                      !form.email.isValid ||
-                      !form.password.isValid ||
-                      !form.confirmPassword.isValid
-                    }
-                  />
+                  <Styles.FormFooter>
+                    <Button
+                      label="Continue"
+                      fullyWidth
+                      isDisabled={
+                        !form.email.isValid ||
+                        !form.password.isValid ||
+                        !form.confirmPassword.isValid
+                      }
+                      onClick={handleRegister}
+                    />
+                  </Styles.FormFooter>
                 </Styles.FormGroup>
               )}
             </Styles.FormBody>

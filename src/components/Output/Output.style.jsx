@@ -95,26 +95,22 @@ export const OutputButton = styled.button`
 `;
   
 export const OutputText = styled.div`
+  flex: 1;    
   height: 100%;
   display: flex;
   align-items: flex-start;
   gap: 0.5rem;
-  align-self: stretch;
-  
   border-radius: .25rem;
-  flex: 1;    
   overflow-y: auto;
-
   position: relative;
-
   white-space: break-spaces;
+  transition: all .4s;
 
-  background-color: ${props => props.isOpen ? "#0F1923" : "#131E29"}
+  background: ${props => props.outputIsOpen ? '#0F1923' : '#19242f'};
 
   p {
     margin: 12px;
   }
-
 `;
 
 export const OutputTextOverlay = styled.div`
@@ -128,5 +124,5 @@ export const OutputTextOverlay = styled.div`
   -webkit-mask-image: linear-gradient(180deg, rgba(19, 30, 41, 0.00) 80%, #131E29 100%);
   pointer-events: none;
   transition: .5s all;
-  opacity: ${props => props.isOpen ? 0 : 1}
+  opacity: ${props => props.outputIsOpen ? 0 : 1}
 `;

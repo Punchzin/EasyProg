@@ -34,7 +34,7 @@ export const Box = styled.div`
   img {
     width: 2rem;
     height: 2rem;
-    filter: drop-shadow(0px 5px 10px rgba(11, 240, 213, 0.3));
+    filter: drop-shadow(0px 5px 10px rgba(11, 240, 213, .3));
   }
 `;
 
@@ -130,6 +130,11 @@ export const FormGroup = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+`;
+
+export const FormFooter = styled.div`
+  width: 100%;
+  margin-top: .5rem;
 `;
 
 // Spare input

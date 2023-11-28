@@ -93,14 +93,14 @@ const Aside = () => {
           <p>Você realmente deseja sair da conta?</p>
           <Style.ButtonsConfirm>
             <Style.ButtonClose
-              onClick={() => (
-                setLogoutIsSelected((prev) => !prev), navigate("/auth")
-              )}
+              onClick={handleClose}
             >
-              Sim
-            </Style.ButtonClose>
-            <Style.ButtonContinue onClick={handleClose}>
               Não
+            </Style.ButtonClose>
+            <Style.ButtonContinue onClick={() => (
+                setLogoutIsSelected((prev) => !prev), navigate("/auth")
+              )} >
+              Sim
             </Style.ButtonContinue>
           </Style.ButtonsConfirm>
         </Style.ExitConfirm>

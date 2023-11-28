@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect } from "react";
 import * as Style from "./Code.styles";
 import Aside from "../../components/Aside/";
@@ -9,8 +10,6 @@ import useReaderFile from "../../hooks/useReaderFile";
 import useOpenAIContext from "../../hooks/useOpenAIContext";
 import { useState, createContext } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { okaidia } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export const CodeContext = createContext();
 
@@ -100,7 +99,12 @@ const Code = () => {
                     </SyntaxHighlighter> */}
                 </Style.ContentBody>
               </Style.Container>
-              <Output isOpen={isOpen} handleOpen={handleOpen} />
+              <Output 
+                isOpen={isOpen} 
+                setIsOpen={setIsOpen} 
+                handleOpen={handleOpen} 
+                hasContent={true} 
+              />
             </Style.Content>
           </Style.Wrapper>
         </Style.Main>

@@ -1,11 +1,19 @@
 /* eslint-disable react/prop-types */
-import React from "react";
+import React, { useEffect } from "react";
 import * as Style from "./Output.style";
 import EASYPROG_BRAND from "../../assets/images/easyprog-logo.svg";
 import useOpenAIContext from "../../hooks/useOpenAIContext";
 
-const Output = ({ isOpen, handleOpen, hasContent = true }) => {
+const Output = ({ isOpen, handleOpen, hasContent = true, setIsOpen  }) => {
   const { codeResponse } = useOpenAIContext();
+
+  useEffect(() => {
+    if (codeResponse) {
+      setIsOpen(true);
+    } else {
+      setIsOpen(false);
+    }
+  }, [codeResponse, setIsOpen]);
 
   return (
     <Style.OutputContainer>
@@ -25,10 +33,14 @@ const Output = ({ isOpen, handleOpen, hasContent = true }) => {
                 Ver detalhes
               </Style.OutputButton>
             </Style.OutputHeaderWrapper>
-            <Style.OutputText>
-              <p>{codeResponse}</p>
-            </Style.OutputText>
-            <Style.OutputTextOverlay isOpen={isOpen} />
+            {codeResponse && (
+              <React.Fragment>
+                <Style.OutputText>
+                  <p>{codeResponse}</p>
+                </Style.OutputText>
+                <Style.OutputTextOverlay isOpen={isOpen} />
+              </React.Fragment>
+            )}
           </React.Fragment>
         )}
       </Style.OutputWrapper>

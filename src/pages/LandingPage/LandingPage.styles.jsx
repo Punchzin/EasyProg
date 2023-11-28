@@ -4,6 +4,7 @@ import LANDING_BACKGROUND from "../../assets/images/landingpage-background.svg";
 export const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
+  overflow: hidden;
 
   background-image: url(${LANDING_BACKGROUND});
   background-repeat: no-repeat;

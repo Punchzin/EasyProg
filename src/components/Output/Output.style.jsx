@@ -109,9 +109,12 @@ export const OutputText = styled.div`
 
   white-space: break-spaces;
 
+  background-color: ${props => props.isOpen ? "#0F1923" : "#131E29"}
+
   p {
     margin: 12px;
   }
+
 `;
 
 export const OutputTextOverlay = styled.div`

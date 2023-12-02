@@ -1,61 +1,117 @@
 /* eslint-disable react/prop-types */
-import { createContext } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { useState } from "react";
-import { useEffect } from "react";
+import { initializeApp } from "firebase/app";
+import { createContext, useEffect } from "react";
+import firebaseConfig from "../config/firebase-config";
+import { toast } from "react-toastify";
 import {
-  auth,
-  logInWithEmailAndPassword,
-  registerWithEmailAndPassword,
-} from "../firebase/firebase";
+  signOut,
+  getAuth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
 
-export const AuthContext = createContext({});
+export const AuthContext = createContext({
+  setForm: () => {},
+  userdata: {},
+  isLoading: false,
+  isRegister: false,
+  handleLogin: () => {},
+  setIsRegister: () => {},
+  handleRegister: () => {},
+  handleSignOut: () => {},
+  signed: false,
+});
+
+const ERROR_CODES = ['auth/wrong-password', 'auth/invalid-login-credentials', 'auth/user-not-found'];
 
 export const AuthProvider = ({ children }) => {
   const [form, setForm] = useState({});
-  const [user, loading, error] = useAuthState(auth);
   const [isRegister, setIsRegister] = useState(false);
-  const [isLogged, setIsLogged] = useState(false);
-  const [userdata, setUserdata] = useState({});
+  const [userData, setUserData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    if (!user) {
-      return;
-    }
-
-    const dataFormatted = user.providerData[0];
-
-    setUserdata({ ...dataFormatted });
-    setIsLogged(user ? true : false);
-  }, [user]);
+  const [isSigned, setIsSigned] = useState(false);
 
   const { email, password, confirmPassword } = form;
 
-  const handleRegister = async () => {
-    if (password.value !== confirmPassword.value) {
-      return;
-    }
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
 
-    await registerWithEmailAndPassword(email.value, password.value);
-  };
-
+  // EXP:
   const handleLogin = async () => {
-    await logInWithEmailAndPassword(email.value, password.value);
+    if (!email.value || !password.value) return;
+
+    try {
+      setIsLoading(true);
+      const userCredentials = await signInWithEmailAndPassword(
+        auth,
+        email.value,
+        password.value
+      );
+      setUserData(userCredentials.user);
+      sessionStorage.setItem("Auth Token", userCredentials?.user?.refreshToken);
+      alert("Usuário logado com sucesso!");
+    } catch (error) {
+      if (ERROR_CODES.includes(error.code)) {
+        toast.error("Falha na autenticação", {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
+      }
+    } finally {
+      setIsLoading(false);
+    }
   };
+
+  const handleRegister = async () => {
+    if (!email.value || !password.value || !confirmPassword.value) return;
+    if (password.value !== confirmPassword.value) return;
+
+    try {
+      setIsLoading(true);
+      const userCredentials = await createUserWithEmailAndPassword(
+        auth,
+        email.value,
+        password.value
+      );
+      setUserData(userCredentials.user);
+      alert("Usuário criado com sucesso!");
+    } catch (error) {
+      console.log(error);
+      alert(error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+      setUserData({});
+      setIsSigned(false);
+      sessionStorage.removeItem("Auth Token");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    const authToken = sessionStorage.getItem("Auth Token");
+    if (!authToken) return;
+    setIsSigned(true);
+  }, []);
 
   return (
     <AuthContext.Provider
       value={{
-        user,
         setForm,
-        isLogged,
+        userData,
+        isLoading,
         isRegister,
         handleLogin,
         setIsRegister,
+        handleSignOut,
         handleRegister,
-        userdata,
-        signed : !!user,
+        signed: isSigned,
       }}
     >
       {children}

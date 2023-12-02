@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import axios from "axios";
 import { createContext, useState } from "react";
-import getOpenAIBody from "../utils/openai";
+import getOpenAIBody from "../config/openai-config";
 
 const API_KEY = "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";
 const API_ROUTE = "https://api.openai.com/v1/chat/completions";

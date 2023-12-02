@@ -32,8 +32,8 @@ const Auth = () => {
 
   useEffect(() => {
     setForm(form);
-  }, [setForm, form])
-  
+  }, [setForm, form]);
+
   const handleChoose = (auth) => {
     handleResetForm();
     setCurrentAuth(auth);

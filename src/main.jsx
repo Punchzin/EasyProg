@@ -5,6 +5,7 @@ import "remixicon/fonts/remixicon.css";
 import RoutesApp from "./routes/routes";
 import Providers from "./providers";
 
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Providers>

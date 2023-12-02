@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
-import { Route, Routes } from "react-router-dom";
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Overview from "../pages/Overview";
 import Auth from "../pages/Auth";
 import Code from "../pages/Code/Code";
@@ -8,30 +9,30 @@ import NotFound from "../pages/NotFound";
 import useAuthContext from "../hooks/useAuthContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import React from "react";
 
 const RoutesApp = () => {
   const { signed, isLoading } = useAuthContext();
 
   const RouterAuth = ({ Item }) => {
-    if (isLoading) return <h1>Loading...</h1>;
+    if (isLoading) return;
 
-    if (!signed) return window.location.replace("/auth");
-
-    return <Item />;
+    if (!signed) window.location.replace("/auth");
+    return signed ? <Item /> : null;
   };
 
   return (
-    <React.Fragment>
-      <ToastContainer />
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/auth" element={<Auth />} />
-        <Route path="/overview" element={<RouterAuth Item={Overview} />} />
-        <Route path="/code" element={<RouterAuth Item={Code} />} />
-        <Route path="/*" element={<NotFound />} />
-      </Routes>
-    </React.Fragment>
+    <BrowserRouter>
+      <React.Fragment>
+        <ToastContainer />
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/overview" element={<RouterAuth Item={Overview} />} />
+          <Route path="/code" element={<RouterAuth Item={Code} />} />
+          <Route path="/*" element={<NotFound />} />
+        </Routes>
+      </React.Fragment>
+    </BrowserRouter>
   );
 };
 

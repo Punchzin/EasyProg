@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { initializeApp } from "firebase/app";
-import { createContext, useEffect } from "react";
+import { createContext } from "react";
 import firebaseConfig from "../config/firebase-config";
 import { toast } from "react-toastify";
 import {
@@ -10,6 +10,7 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
+import Cookies from "js-cookie";
 
 export const AuthContext = createContext({
   setForm: () => {},
@@ -23,21 +24,27 @@ export const AuthContext = createContext({
   signed: false,
 });
 
-const ERROR_CODES = ['auth/wrong-password', 'auth/invalid-login-credentials', 'auth/user-not-found'];
+const ERROR_CODES = [
+  "auth/wrong-password",
+  "auth/invalid-login-credentials",
+  "auth/user-not-found",
+];
 
 export const AuthProvider = ({ children }) => {
   const [form, setForm] = useState({});
   const [isRegister, setIsRegister] = useState(false);
-  const [userData, setUserData] = useState({});
+  const [userData, setUserData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [isSigned, setIsSigned] = useState(false);
 
   const { email, password, confirmPassword } = form;
 
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
 
-  // EXP:
+  // EXP: get access token from cookies
+  const accessToken = Cookies.get("access-token");
+
+  // EXP: login with email and password
   const handleLogin = async () => {
     if (!email.value || !password.value) return;
 
@@ -49,7 +56,9 @@ export const AuthProvider = ({ children }) => {
         password.value
       );
       setUserData(userCredentials.user);
-      sessionStorage.setItem("Auth Token", userCredentials?.user?.refreshToken);
+      Cookies.set("access-token", userCredentials?.user?.refreshToken, {
+        expires: 1,
+      });
       alert("Usuário logado com sucesso!");
     } catch (error) {
       if (ERROR_CODES.includes(error.code)) {
@@ -62,6 +71,7 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  // EXP: register with email and password
   const handleRegister = async () => {
     if (!email.value || !password.value || !confirmPassword.value) return;
     if (password.value !== confirmPassword.value) return;
@@ -83,22 +93,16 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  // EXP: sign out
   const handleSignOut = async () => {
     try {
       await signOut(auth);
       setUserData({});
-      setIsSigned(false);
-      sessionStorage.removeItem("Auth Token");
+      Cookies.remove("access-token");
     } catch (error) {
       console.log(error);
     }
   };
-
-  useEffect(() => {
-    const authToken = sessionStorage.getItem("Auth Token");
-    if (!authToken) return;
-    setIsSigned(true);
-  }, []);
 
   return (
     <AuthContext.Provider
@@ -111,7 +115,7 @@ export const AuthProvider = ({ children }) => {
         setIsRegister,
         handleSignOut,
         handleRegister,
-        signed: isSigned,
+        signed: !!accessToken,
       }}
     >
       {children}

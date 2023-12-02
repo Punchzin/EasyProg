@@ -1,15 +1,6 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import "./global/styles.global.css";
-import "remixicon/fonts/remixicon.css";
-import RoutesApp from "./routes/routes";
-import Providers from "./providers";
 
+import { createRoot } from 'react-dom/client';
+import App from './App';
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <Providers>
-      <RoutesApp />
-    </Providers>
-  </React.StrictMode>
-);
+const root = createRoot(document.getElementById('root'));
+root.render(<App />);

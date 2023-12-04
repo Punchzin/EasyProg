@@ -107,6 +107,7 @@ export const OutputText = styled.div`
   transition: all .4s;
 
   background: ${props => props.outputIsOpen ? '#0F1923' : '#19242f'};
+  
 
   p {
     margin: 12px;

@@ -19,6 +19,11 @@ const Code = () => {
 
   const { setCodeRequest, getCodeResponse, codeLoading } = useOpenAIContext();
 
+  const contarLinhas = () => {
+    const linhas = inputText.split("\n");
+    return linhas.length;
+  };
+
   useEffect(() => {
     setInputText(fileContent);
   }, [fileContent]);
@@ -39,46 +44,56 @@ const Code = () => {
   };
 
   return (
-      <React.Fragment>
-        <Style.GlobalStyles />
-        <Style.Main>
-          <Aside />
-          <Style.Wrapper>
-            <Style.HeaderContainer>
-              <Header />
-              <Tabs>
-                <Tab />
-              </Tabs>
-            </Style.HeaderContainer>
-            <Style.Content>
-              <Style.Container className={outputIsOpen && "inputOpened"}>
-                <Style.WrapperItem>
-                  <Style.InputHeader>
-                    <p>
-                      Linguagem escolhida: <span>Python</span>
-                    </p>
-                    <h1>Análises de Códigos</h1>
-                  </Style.InputHeader>
-                  <Style.CodeActions>
-                    <Style.TextButton
-                      disabled={codeLoading}
-                      onClick={handleExecute}
-                    >
-                      {!codeLoading ? (
-                        <React.Fragment>
-                          <i className="ri-play-fill"></i>
-                          <p>Executar código</p>
-                        </React.Fragment>
-                      ) : (
-                        <React.Fragment>
-                          <CircularProgress size={16} />
-                          <p>Executando código</p>
-                        </React.Fragment>
-                      )}
-                    </Style.TextButton>
-                  </Style.CodeActions>
-                </Style.WrapperItem>
-                <Style.ContentBody>
+    <React.Fragment>
+      <Style.GlobalStyles />
+      <Style.Main>
+        <Aside />
+        <Style.Wrapper>
+          <Style.HeaderContainer>
+            <Header />
+            <Tabs>
+              <Tab />
+            </Tabs>
+          </Style.HeaderContainer>
+          <Style.Content>
+            <Style.Container className={outputIsOpen && "inputOpened"}>
+              <Style.WrapperItem>
+                <Style.InputHeader>
+                  <p>
+                    Linguagem escolhida: <span>Python</span>
+                  </p>
+                  <h1>Análises de Códigos</h1>
+                </Style.InputHeader>
+                <Style.CodeActions>
+                  <Style.TextButton
+                    disabled={codeLoading}
+                    onClick={handleExecute}
+                  >
+                    {!codeLoading ? (
+                      <React.Fragment>
+                        <i className="ri-play-fill"></i>
+                        <p>Executar código</p>
+                      </React.Fragment>
+                    ) : (
+                      <React.Fragment>
+                        <CircularProgress size={16} />
+                        <p>Executando código</p>
+                      </React.Fragment>
+                    )}
+                  </Style.TextButton>
+                </Style.CodeActions>
+              </Style.WrapperItem>
+
+              <Style.ContentBody>
+                <Style.LineNumbers>
+                  {Array.from({ length: contarLinhas() }, (_, index) => (
+                    <Style.LineNumber key={index + 1}>
+                      {index + 1}
+                    </Style.LineNumber>
+                  ))}
+                </Style.LineNumbers>
+
+                <Style.CodeContainer>
                   <Style.CodeSection
                     value={inputText}
                     language="python"
@@ -86,25 +101,19 @@ const Code = () => {
                     onChange={(event) => handleChangeText(event.target.value)}
                     padding={24}
                   />
-                    
-                    {
-                    // contador de linhas 
-                    //olhar a documentacao react-syntax-highlighter
-                    /* <SyntaxHighlighter language="python" style={okaidia} showLineNumbers>
-                      {inputText}
-                    </SyntaxHighlighter> */}
-                </Style.ContentBody>
-              </Style.Container>
-              <Output 
-                outputIsOpen={outputIsOpen} 
-                setOutputIsOpen={setOutputIsOpen} 
-                handleOpen={handleOpen} 
-                hasContent={true} 
-              />
-            </Style.Content>
-          </Style.Wrapper>
-        </Style.Main>
-      </React.Fragment>
+                </Style.CodeContainer>
+              </Style.ContentBody>
+            </Style.Container>
+            <Output
+              outputIsOpen={outputIsOpen}
+              setOutputIsOpen={setOutputIsOpen}
+              handleOpen={handleOpen}
+              hasContent={true}
+            />
+          </Style.Content>
+        </Style.Wrapper>
+      </Style.Main>
+    </React.Fragment>
   );
 };
 

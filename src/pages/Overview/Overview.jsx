@@ -30,7 +30,7 @@ const Overview = () => {
                 <iframe
                   width="100%"
                   height="100%"
-                  src="https://www.youtube.com/embed/zHcjYG3BRnc?autoplay=1&mute=1&controls=0&loop=1&playlist=zHcjYG3BRnc"
+                  src="https://www.youtube.com/embed/zHcjYG3BRnc?autoplay=0&mute=1&controls=0&loop=1&playlist=zHcjYG3BRnc"
                   title="Tutorial de Uso - EasyProg"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share;"
                   allowfullscreen

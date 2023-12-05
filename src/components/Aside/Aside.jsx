@@ -2,29 +2,35 @@
 import EASYPROG_BRAND from "../../assets/images/easyprog-logo.svg";
 import EASYBOT_SAD from "../../assets/images/easybot-sad.svg";
 import LANG_PY from "../../assets/images/langPy.svg";
+import LANG_CS from "../../assets/images/langCs.svg";
+import LANG_JS from "../../assets/images/langJs.svg";
+import LANG_JV from "../../assets/images/langJv.svg";
 import AsideAction from "./AsideAction.jsx";
-import { logout } from "../../firebase/firebase.js"
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Dialog } from "@mui/material";
-// import { motion } from "framer-motion";
 import * as Style from "./Aside.styles";
 import PopoverFile from "./Popovers/PopoverFile";
 import "./styles.css";
-// import Fade from "../../global/Transitions/Fade";
-// Importing an axios instance or the direct axios library itself
-//import axios from 'axios';
-//import { useContext } from 'react';
-//import { CodeContext } from '../../pages/Code/Code';
+import useAuthContext from "../../hooks/useAuthContext.js";
+import useCodeContext from "../../hooks/useCodeContext.js";
+import { LANGUAGES_AVAILABLE } from "../../config/language-config.js";
 
 const Aside = () => {
+  const { handleSignOut } = useAuthContext();
+  const { handleChangeLanguage } = useCodeContext();
+
+  const handleSelectLanguage = (language) => {
+    handleChangeLanguage(language);
+    navigate("/code");
+  };
+
   const navigate = useNavigate();
 
   //const [formValue, setFormValue] = useState('');
   const [helpIsSelected, setHelpIsSelected] = useState(false);
   // eslint-disable-next-line no-unused-vars
   const [langSelect, setLangSelect] = useState(false);
-  const [logoutIsSelected, setLogoutIsSelected] = useState(logout);
 
   const handleOpenTutorial = () =>
     window.open("https://www.youtube.com", "_blank");
@@ -65,10 +71,39 @@ const Aside = () => {
           </Style.AsideActions>
           <Style.AsideDivider />
           <Style.AsideActions>
-            <Style.LangPy>
-              <img src={LANG_PY} alt="Linguagem Python" 
-              onClick={() => (setLangSelect((prev) => !prev), 
-              navigate("/code"))}/>
+            <Style.LangPy
+              onClick={() =>
+                handleSelectLanguage(LANGUAGES_AVAILABLE.python.language)
+              }
+            >
+              <img src={LANG_PY} alt="Linguagem Python" />
+            </Style.LangPy>
+          </Style.AsideActions>
+          <Style.AsideActions>
+            <Style.LangPy
+              onClick={() =>
+                handleSelectLanguage(LANGUAGES_AVAILABLE.csharp.language)
+              }
+            >
+              <img src={LANG_CS} alt="Linguagem Csharp" />
+            </Style.LangPy>
+          </Style.AsideActions>
+          <Style.AsideActions>
+            <Style.LangPy
+              onClick={() =>
+                handleSelectLanguage(LANGUAGES_AVAILABLE.java.language)
+              }
+            >
+              <img src={LANG_JV} alt="Linguagem Java" />
+            </Style.LangPy>
+          </Style.AsideActions>
+          <Style.AsideActions>
+            <Style.LangPy
+              onClick={() =>
+                handleSelectLanguage(LANGUAGES_AVAILABLE.javascript.language)
+              }
+            >
+              <img src={LANG_JS} alt="Linguagem JavaScript" />
             </Style.LangPy>
           </Style.AsideActions>
           <Style.AsideDivider />
@@ -79,7 +114,6 @@ const Aside = () => {
         actionIcon="ri-logout-box-r-line"
         actionTitle="Desconectar"
         onClick={handleOpen}
-        actionIsSelected={logoutIsSelected}
       />
       <Dialog
         onClose={handleClose}
@@ -92,14 +126,10 @@ const Aside = () => {
           </Style.Robot>
           <p>Você realmente deseja sair da conta?</p>
           <Style.ButtonsConfirm>
-            <Style.ButtonClose
-              onClick={handleClose}
+            <Style.ButtonClose onClick={handleClose}>Não</Style.ButtonClose>
+            <Style.ButtonContinue
+              onClick={() => (handleSignOut(), navigate("/auth"))}
             >
-              Não
-            </Style.ButtonClose>
-            <Style.ButtonContinue onClick={() => (
-                setLogoutIsSelected((prev) => !prev), navigate("/auth")
-              )} >
               Sim
             </Style.ButtonContinue>
           </Style.ButtonsConfirm>

@@ -4,10 +4,17 @@ import { ITEMS_CONFIG } from "./Chooser.constansts";
 import * as Style from "./Chooser.styles";
 import { motion } from "framer-motion";
 import Fade from "../../global/Transitions/Fade";
+import useCodeContext from "../../hooks/useCodeContext";
 
 const Chooser = () => {
   const navigate = useNavigate();
+  const { handleChangeLanguage } = useCodeContext();
 
+  const handleSelectLanguage = (language) => {
+    handleChangeLanguage(language);
+    navigate("/code");
+  }
+  
   return (
     <motion.div
       variants={Fade.ParentFade}
@@ -21,7 +28,7 @@ const Chooser = () => {
           <motion.div key={item.id} variants={Fade.ChildFade}>
             <Style.ChooseItem
               preset={item.preset}
-              onClick={item.id === 0 ? () => navigate("/code") : null}
+              onClick={() => handleSelectLanguage(item.preset)}
             >
               <Style.ChooseBody>
                 <Style.Lang>{item.type}</Style.Lang>

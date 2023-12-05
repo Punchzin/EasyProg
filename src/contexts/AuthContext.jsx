@@ -11,6 +11,7 @@ import {
   createUserWithEmailAndPassword,
 } from "firebase/auth";
 import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext({
   setForm: () => {},
@@ -31,6 +32,8 @@ const ERROR_CODES = [
 ];
 
 export const AuthProvider = ({ children }) => {
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({});
   const [isRegister, setIsRegister] = useState(false);
   const [userData, setUserData] = useState(null);
@@ -55,11 +58,12 @@ export const AuthProvider = ({ children }) => {
         email.value,
         password.value
       );
-      setUserData(userCredentials.user);
+      setUserData(userCredentials?.user);
       Cookies.set("access-token", userCredentials?.user?.refreshToken, {
         expires: 1,
       });
-      alert("Usuário logado com sucesso!");
+      alert("Usuário logado com sucesso!"); // Trocar pelo toastify
+      navigate("/overview")
     } catch (error) {
       if (ERROR_CODES.includes(error.code)) {
         toast.error("Falha na autenticação", {

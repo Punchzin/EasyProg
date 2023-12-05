@@ -1,11 +1,11 @@
-const getOpenAIBody = (prompt) => {
+const getOpenAIBody = (prompt, language) => {
     const body = {
         model: "gpt-3.5-turbo",
         messages: [
             {
                 role: "system",
                 content:
-                    "Você receberá um código python. Explique os erros deste código python. Se isso for algo além (como uma mensagem de texto ou perguntas) de um código Python, basta dizer: Este não é um código Python.",
+                    `Você receberá um código ${language}. Explique os erros deste código ${language}. Se isso for algo além (como uma mensagem de texto ou perguntas) de um código ${language}, basta dizer: Este não é um código ${language}.`,
             },
             {
                 role: "user",

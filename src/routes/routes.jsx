@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Overview from "../pages/Overview";
 import Auth from "../pages/Auth";
 import Code from "../pages/Code/Code";
@@ -21,7 +21,6 @@ const RoutesApp = () => {
   };
 
   return (
-    <BrowserRouter>
       <React.Fragment>
         <ToastContainer />
         <Routes>
@@ -32,7 +31,6 @@ const RoutesApp = () => {
           <Route path="/*" element={<NotFound />} />
         </Routes>
       </React.Fragment>
-    </BrowserRouter>
   );
 };
 

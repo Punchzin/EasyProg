@@ -49,7 +49,6 @@ export const Content = styled.section`
   width: 100%;
   height: 100%;
   margin: 0 auto;
-  margin-top: 2rem;
   padding: 0 1.5rem;
   display: flex;
   flex-direction: column;
@@ -99,6 +98,7 @@ export const InputHeader = styled.div`
 
     span {
       color: rgba(11, 240, 213, 1);
+      text-transform: capitalize;
     }
   }
 

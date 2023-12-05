@@ -7,8 +7,9 @@ import Tab from "../../components/Tab/";
 import Tabs from "../../components/Tabs/";
 import Output from "../../components/Output/";
 import useReaderFile from "../../hooks/useReaderFile";
-import useOpenAIContext from "../../hooks/useOpenAIContext";
+import useCodeContext from "../../hooks/useCodeContext";
 import CircularProgress from "@mui/material/CircularProgress";
+import language from "react-syntax-highlighter/dist/esm/languages/hljs/1c";
 
 const Code = () => {
   const [inputText, setInputText] = useState("");
@@ -17,7 +18,8 @@ const Code = () => {
 
   const { handleFileContent, fileContent } = useReaderFile();
 
-  const { setCodeRequest, getCodeResponse, codeLoading } = useOpenAIContext();
+  const { setCodeRequest, getCodeResponse, codeLoading, languageData } =
+    useCodeContext();
 
   const contarLinhas = () => {
     const linhas = inputText.split("\n");
@@ -60,7 +62,10 @@ const Code = () => {
               <Style.WrapperItem>
                 <Style.InputHeader>
                   <p>
-                    Linguagem escolhida: <span>Python</span>
+                    Linguagem escolhida:{" "}
+                    <span style={{ color: languageData?.color ?? "#0BF0D5" }}>
+                      {languageData?.language}
+                    </span>
                   </p>
                   <h1>Análises de Códigos</h1>
                 </Style.InputHeader>
@@ -96,8 +101,8 @@ const Code = () => {
                 <Style.CodeContainer>
                   <Style.CodeSection
                     value={inputText}
-                    language="python"
-                    placeholder="Insira seu código Python."
+                    language={languageData?.language}
+                    placeholder={`Insira seu código ${languageData?.language}.`}
                     onChange={(event) => handleChangeText(event.target.value)}
                     padding={24}
                   />

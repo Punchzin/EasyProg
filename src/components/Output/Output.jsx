@@ -2,10 +2,10 @@
 import React, { useEffect } from "react";
 import * as Style from "./Output.style";
 import EASYPROG_BRAND from "../../assets/images/easyprog-logo.svg";
-import useOpenAIContext from "../../hooks/useOpenAIContext";
+import useCodeContext from "../../hooks/useCodeContext";
 
 const Output = ({ setOutputIsOpen, outputIsOpen, handleOpen, hasContent = true }) => {
-  const { codeResponse } = useOpenAIContext();
+  const { codeResponse } = useCodeContext();
 
   useEffect(() => {
     if (!setOutputIsOpen) {

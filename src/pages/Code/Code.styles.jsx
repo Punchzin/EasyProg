@@ -1,6 +1,7 @@
 import { createGlobalStyle, styled } from "styled-components";
 import BACKGROUND_LINES from "../../assets/images/background-lines.svg";
-import CodeEditor from "@uiw/react-textarea-code-editor";
+
+import ReactCodeMirror from "@uiw/react-codemirror";
 
 export const GlobalStyles = createGlobalStyle`
   .w-tc-editor-text {
@@ -49,11 +50,12 @@ export const Content = styled.section`
   width: 100%;
   height: 100%;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 2rem 1.5rem 0 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
   position: relative;
+  overflow: hidden;
 `;
 
 export const Container = styled.div`
@@ -62,6 +64,7 @@ export const Container = styled.div`
   height: 100%;
   gap: 0.5rem;
   transition: all 0.3s;
+  overflow: hidden;
 `;
 
 export const WrapperItem = styled.div`
@@ -83,6 +86,7 @@ export const ContentBody = styled.div`
   position: relative;
   transition: all 0.5s;
   opacity: 1;
+  overflow-y: auto;
 `;
 
 export const InputHeader = styled.div`
@@ -170,39 +174,24 @@ export const TextButton = styled.button`
   }
 `;
 
-export const CodeSection = styled(CodeEditor)`
-  width: 100% !important;
-  height: 100% !important;
-  background-color: transparent !important;
-  font-size: 18px !important;
-  font-family: "Space Grotesk", sans-serif !important;
-  caret-color: #0bf0d5;
-`;
+export const CodeMirror = styled(ReactCodeMirror)`
+  color: #515c67;
 
-export const LineNumbers = styled.div`
-  height: 100%;
-  font-size: 18px;
-  color: #555;
-  white-space: pre-wrap;
-  user-select: none;
+  .ͼ1n,
+  .ͼ15 {
+    background: transparent;
+  }
 
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  padding-left: 1.2rem;
-  padding-top: 1.6rem;
-`;
+  .cm-gutters {
+    background: rgba(0, 0, 0, 0.2);
+    border-right: 1px solid rgba(50, 59, 69, 0.8);
+  }
 
-export const LineNumber = styled.span`
-  margin-bottom: 8px;
-  font-size: 14px;
-  font-family: "Space Grotesk", sans-serif;
-`;
+  .ͼ2 .cm-activeLineGutter {
+    background: rgba(0, 0, 0, 0.2);
+  }
 
-export const CodeContainer = styled.div`
-  flex-grow: 1;
-  position: relative;
+  .cm-activeLine {
+    background: rgba(0, 0, 0, 0.2);
+  }
 `;

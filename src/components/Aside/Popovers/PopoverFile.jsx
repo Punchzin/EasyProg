@@ -15,7 +15,8 @@ import "./MUIReset.css";
 
 const PopoverFile = () => {
   const navigate = useNavigate();
-  const { handleDownloadFile, handleReadFile } = useReaderFile();
+  const { handleDownloadFile, handleReadFile, handleClearFile } =
+    useReaderFile();
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [isSelected, setIsSelected] = useState(false);
@@ -28,6 +29,11 @@ const PopoverFile = () => {
   const handleClose = () => {
     setAnchorEl(null);
     setIsSelected(false);
+  };
+
+  const handleNewFile = () => {
+    handleClearFile();
+    navigate("/code");
   };
 
   const open = Boolean(anchorEl);
@@ -67,7 +73,7 @@ const PopoverFile = () => {
             </Style.HeaderAction>
           </Style.WrapperHeader>
           <Style.Buttons>
-            <Style.Button onClick={() => navigate("/code")}>
+            <Style.Button onClick={() => handleNewFile()}>
               Novo arquivo
             </Style.Button>
             <Style.Button>

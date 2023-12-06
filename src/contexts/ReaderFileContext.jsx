@@ -1,10 +1,12 @@
 /* eslint-disable react/prop-types */
 import { createContext, useState } from "react";
+import useCodeContext from "../hooks/useCodeContext";
 
 export const ReaderFileContext = createContext();
 
 const ReaderFileProvider = ({ children }) => {
   const [fileContent, setFileContent] = useState("");
+  const { setCodeRequest, setCodeResponse } = useCodeContext();
 
   // Função que manipula o conteúdo do arquivo
   const handleFileContent = (content) => {
@@ -18,12 +20,12 @@ const ReaderFileProvider = ({ children }) => {
 
     reader.onload = (event) => {
       handleFileContent(event.target.result);
-    }
+      setCodeRequest(event.target.result);
+    };
 
     if (file) {
       reader.readAsText(file);
     }
-
   };
 
   // Função que salva o arquivo
@@ -37,23 +39,32 @@ const ReaderFileProvider = ({ children }) => {
     URL.revokeObjectURL(url);
   };
 
+  const handleClearFile = () => {
+    setCodeRequest("");
+    setCodeResponse("");
+    setFileContent("");
+  };
+
   // Função que faz o download do arquivo
   const handleDownloadFile = () => {
-    const fileType = '.py';
+    const fileType = ".py";
     const generateUUID = crypto.randomUUID();
-    
+
     const data = fileContent;
     const filename = `${generateUUID}${fileType}`;
     handleSaveFile(data, filename);
   };
 
   return (
-    <ReaderFileContext.Provider value={{
+    <ReaderFileContext.Provider
+      value={{
         fileContent,
         handleReadFile,
         handleFileContent,
         handleDownloadFile,
-    }}>
+        handleClearFile,
+      }}
+    >
       {children}
     </ReaderFileContext.Provider>
   );

@@ -4,19 +4,20 @@ import * as Style from "./Output.style";
 import EASYPROG_BRAND from "../../assets/images/easyprog-logo.svg";
 import useCodeContext from "../../hooks/useCodeContext";
 
-const Output = ({ setOutputIsOpen, outputIsOpen, handleOpen, hasContent = true }) => {
+const Output = ({
+  setOutputIsOpen,
+  outputIsOpen,
+  handleOpen,
+  hasContent = true,
+}) => {
   const { codeResponse } = useCodeContext();
 
   useEffect(() => {
-    if (!setOutputIsOpen) {
+    if (!codeResponse) {
       return;
     }
 
-    if (codeResponse) {
-      setOutputIsOpen(true);
-    } else {
-      setOutputIsOpen(false);
-    }
+    setOutputIsOpen(true);
   }, [codeResponse, setOutputIsOpen]);
 
   return (

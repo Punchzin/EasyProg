@@ -9,7 +9,9 @@ import Output from "../../components/Output/";
 import useReaderFile from "../../hooks/useReaderFile";
 import useCodeContext from "../../hooks/useCodeContext";
 import CircularProgress from "@mui/material/CircularProgress";
-import language from "react-syntax-highlighter/dist/esm/languages/hljs/1c";
+import { vscodeDark, vscodeDarkInit } from "@uiw/codemirror-theme-vscode";
+import ReactCodeMirror from "@uiw/react-codemirror";
+import { tokyoNight, tokyoNightInit } from "@uiw/codemirror-theme-tokyo-night";
 
 const Code = () => {
   const [inputText, setInputText] = useState("");
@@ -20,11 +22,6 @@ const Code = () => {
 
   const { setCodeRequest, getCodeResponse, codeLoading, languageData } =
     useCodeContext();
-
-  const contarLinhas = () => {
-    const linhas = inputText.split("\n");
-    return linhas.length;
-  };
 
   useEffect(() => {
     setInputText(fileContent);
@@ -88,25 +85,14 @@ const Code = () => {
                   </Style.TextButton>
                 </Style.CodeActions>
               </Style.WrapperItem>
-
               <Style.ContentBody>
-                <Style.LineNumbers>
-                  {Array.from({ length: contarLinhas() }, (_, index) => (
-                    <Style.LineNumber key={index + 1}>
-                      {index + 1}
-                    </Style.LineNumber>
-                  ))}
-                </Style.LineNumbers>
-
-                <Style.CodeContainer>
-                  <Style.CodeSection
-                    value={inputText}
-                    language={languageData?.language}
-                    placeholder={`Insira seu código ${languageData?.language}.`}
-                    onChange={(event) => handleChangeText(event.target.value)}
-                    padding={24}
-                  />
-                </Style.CodeContainer>
+                <Style.CodeMirror
+                  value={inputText}
+                  style={{ width: "100%" }}
+                  height="100%"
+                  theme={tokyoNight}
+                  onChange={(value) => handleChangeText(value)}
+                />
               </Style.ContentBody>
             </Style.Container>
             <Output

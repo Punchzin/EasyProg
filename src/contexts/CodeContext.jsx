@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import getOpenAIBody from "../config/openai-config";
 import {
   LANGUAGE_CONFIG,
@@ -33,7 +34,9 @@ export const CodeProvider = ({ children }) => {
 
   const handleChangeLanguage = (currLanguage) => {
     if (!verifyLanguage(language) || verifyLanguage(language) === undefined) {
-      alert("Linguagem não suportada, tente novamente outro dia.");
+      toast.warn("Linguagem não suportada, tente novamente outro dia.", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
       return;
     }
 
@@ -45,11 +48,17 @@ export const CodeProvider = ({ children }) => {
     try {
       if (!codeRequest) return;
       if (!verifyLanguage(language) || verifyLanguage(language) === undefined) {
-        alert("Linguagem não suportada, tente novamente outro dia.");
+        toast.warn("Linguagem não suportada, tente novamente outro dia.", {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
         return;
       }
 
       setCodeLoading(true);
+
+      toast.info("Procurando por possíveis correções.", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
 
       const response = await axios.post(
         API_ROUTE,
@@ -64,7 +73,15 @@ export const CodeProvider = ({ children }) => {
 
       setCodeResponse(response.data.choices[0].message.content);
     } catch (error) {
-      console.log(error);
+      toast.error(
+        "Ocorreu um erro ao tentar procurar possíveis soluções, tente novamente.",
+        {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        }
+      );
+      console.error(
+        "An unexpected error occurred when searching for possible solutions to the code."
+      );
     } finally {
       setCodeLoading(false);
     }

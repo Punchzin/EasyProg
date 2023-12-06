@@ -22,7 +22,7 @@ export const Content = styled.section`
   max-width: 1440px;
   width: 100%;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 2rem 1.5rem 0 1.5rem;
   display: flex;
   flex-direction: column;
   height: 100%;

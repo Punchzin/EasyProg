@@ -21,16 +21,16 @@ const RoutesApp = () => {
   };
 
   return (
-      <React.Fragment>
-        <ToastContainer />
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/auth" element={<Auth />} />
-          <Route path="/overview" element={<RouterAuth Item={Overview} />} />
-          <Route path="/code" element={<RouterAuth Item={Code} />} />
-          <Route path="/*" element={<NotFound />} />
-        </Routes>
-      </React.Fragment>
+    <React.Fragment>
+      <ToastContainer toastClassName={"toastfy"} autoClose={2000} />
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/auth" element={<Auth />} />
+        <Route path="/overview" element={<RouterAuth Item={Overview} />} />
+        <Route path="/code" element={<RouterAuth Item={Code} />} />
+        <Route path="/*" element={<NotFound />} />
+      </Routes>
+    </React.Fragment>
   );
 };
 

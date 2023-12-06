@@ -1,4 +1,6 @@
 //import React, {useState} from 'react';
+import "./styles.css";
+import * as Style from "./Aside.styles";
 import EASYPROG_BRAND from "../../assets/images/easyprog-logo.svg";
 import EASYBOT_SAD from "../../assets/images/easybot-sad.svg";
 import LANG_PY from "../../assets/images/langPy.svg";
@@ -6,28 +8,30 @@ import LANG_CS from "../../assets/images/langCs.svg";
 import LANG_JS from "../../assets/images/langJs.svg";
 import LANG_JV from "../../assets/images/langJv.svg";
 import AsideAction from "./AsideAction.jsx";
+import PopoverFile from "./Popovers/PopoverFile";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Dialog } from "@mui/material";
-import * as Style from "./Aside.styles";
-import PopoverFile from "./Popovers/PopoverFile";
-import "./styles.css";
+import { LANGUAGES_AVAILABLE } from "../../config/language-config.js";
 import useAuthContext from "../../hooks/useAuthContext.js";
 import useCodeContext from "../../hooks/useCodeContext.js";
-import { LANGUAGES_AVAILABLE } from "../../config/language-config.js";
+import useReaderFile from "../../hooks/useReaderFile.js";
 
 const Aside = () => {
   const { handleSignOut } = useAuthContext();
   const { handleChangeLanguage } = useCodeContext();
 
+  const { handleClearFile } =
+    useReaderFile();
+
   const handleSelectLanguage = (language) => {
     handleChangeLanguage(language);
+    handleClearFile();
     navigate("/code");
   };
 
   const navigate = useNavigate();
 
-  //const [formValue, setFormValue] = useState('');
   const [helpIsSelected, setHelpIsSelected] = useState(false);
   // eslint-disable-next-line no-unused-vars
   const [langSelect, setLangSelect] = useState(false);
@@ -71,40 +75,40 @@ const Aside = () => {
           </Style.AsideActions>
           <Style.AsideDivider />
           <Style.AsideActions>
-            <Style.LangPy
+            <Style.Lang
               onClick={() =>
                 handleSelectLanguage(LANGUAGES_AVAILABLE.python.language)
               }
             >
               <img src={LANG_PY} alt="Linguagem Python" />
-            </Style.LangPy>
+            </Style.Lang>
           </Style.AsideActions>
           <Style.AsideActions>
-            <Style.LangPy
+            <Style.Lang
               onClick={() =>
                 handleSelectLanguage(LANGUAGES_AVAILABLE.csharp.language)
               }
             >
               <img src={LANG_CS} alt="Linguagem Csharp" />
-            </Style.LangPy>
+            </Style.Lang>
           </Style.AsideActions>
           <Style.AsideActions>
-            <Style.LangPy
+            <Style.Lang
               onClick={() =>
                 handleSelectLanguage(LANGUAGES_AVAILABLE.java.language)
               }
             >
               <img src={LANG_JV} alt="Linguagem Java" />
-            </Style.LangPy>
+            </Style.Lang>
           </Style.AsideActions>
           <Style.AsideActions>
-            <Style.LangPy
+            <Style.Lang
               onClick={() =>
                 handleSelectLanguage(LANGUAGES_AVAILABLE.javascript.language)
               }
             >
               <img src={LANG_JS} alt="Linguagem JavaScript" />
-            </Style.LangPy>
+            </Style.Lang>
           </Style.AsideActions>
           <Style.AsideDivider />
         </Style.ActionsWrapper>

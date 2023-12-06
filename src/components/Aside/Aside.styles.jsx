@@ -79,7 +79,7 @@ export const AsideAction = styled.button`
   }
 `;
 
-export const LangPy = styled.button `
+export const Lang = styled.button `
   display: flex;
   justify-content: center;
   align-items: center;

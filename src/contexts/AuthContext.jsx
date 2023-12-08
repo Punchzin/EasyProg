@@ -66,7 +66,7 @@ export const AuthProvider = ({ children }) => {
         expires: 1,
       });
       toast.success("Logado com sucesso!", {
-        position: toast.POSITION.TOP_CENTER,
+        position: toast.POSITION.BOTTOM_RIGHT,
       });
       setTimeout(() => {
         navigate("/overview");

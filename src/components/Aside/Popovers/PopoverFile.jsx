@@ -1,12 +1,22 @@
 import { useState } from "react";
-import AsideAction from "../AsideAction";
 import { Popover } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import AsideAction from "../AsideAction";
+import useReaderFile from "../../../hooks/useReaderFile";
 import * as Style from "./Popover.styles";
 import "./MUIReset.css";
 
+//função para salvar o arquivo
+//data = para ser introduzido o conteúdo, no caso a variavel do input
+//filename = nome padrão que terá(alteravel)
+//blob = para salvar os dados existentes
+//url = url para o blob usar, usando ela na interface em forma de btão ou link tb
+// a = criando um elemento
+
 const PopoverFile = () => {
   const navigate = useNavigate();
+  const { handleDownloadFile, handleReadFile, handleClearFile } =
+    useReaderFile();
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [isSelected, setIsSelected] = useState(false);
@@ -19,6 +29,11 @@ const PopoverFile = () => {
   const handleClose = () => {
     setAnchorEl(null);
     setIsSelected(false);
+  };
+
+  const handleNewFile = () => {
+    handleClearFile();
+    navigate("/code");
   };
 
   const open = Boolean(anchorEl);
@@ -58,16 +73,26 @@ const PopoverFile = () => {
             </Style.HeaderAction>
           </Style.WrapperHeader>
           <Style.Buttons>
-            <Style.Button onClick={() => navigate('/code')}>Novo arquivo</Style.Button>
+            <Style.Button onClick={() => handleNewFile()}>
+              Novo arquivo
+            </Style.Button>
             <Style.Button>
-            <Style.ButtonUpload htmlFor="file-upload">Carregar arquivo</Style.ButtonUpload>
+              <Style.ButtonContainer>
+                Carregar Arquivo
+                <Style.ButtonUpload
+                  type="file"
+                  onChange={(event) => handleReadFile(event)}
+                />
+              </Style.ButtonContainer>
               <Style.InputUpload
                 id="file-upload"
                 type="file"
                 style={{ display: "none" }}
               />
-              </Style.Button>
-            <Style.Button>Salvar arquivo</Style.Button>
+            </Style.Button>
+            <Style.Button onClick={handleDownloadFile}>
+              Salvar arquivo
+            </Style.Button>
           </Style.Buttons>
         </Style.WrapperButton>
       </Popover>

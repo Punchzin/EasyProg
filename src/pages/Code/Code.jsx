@@ -1,70 +1,48 @@
-
-import React from 'react';
+/* eslint-disable no-unused-vars */
+import React, { useEffect, useState } from "react";
 import * as Style from "./Code.styles";
 import Aside from "../../components/Aside/";
 import Header from "../../components/Header/";
 import Tab from "../../components/Tab/";
 import Tabs from "../../components/Tabs/";
 import Output from "../../components/Output/";
-import CodeAction from "./CodeAction";
-import EASYBOT_NORMAL from "../../assets/images/easybot-normal.svg";
-import { useState, createContext, useContext } from "react";
-import Constants from './Code.constants';
-import { OpenAI } from 'openai';
-// import correctCode from './CodeCorrect';
-
-
-
-export const CodeContext = createContext();
+import useReaderFile from "../../hooks/useReaderFile";
+import useCodeContext from "../../hooks/useCodeContext";
+import CircularProgress from "@mui/material/CircularProgress";
+import { vscodeDark, vscodeDarkInit } from "@uiw/codemirror-theme-vscode";
+import ReactCodeMirror from "@uiw/react-codemirror";
+import { tokyoNight, tokyoNightInit } from "@uiw/codemirror-theme-tokyo-night";
 
 const Code = () => {
-  const [inputText, setInputText] = useState(Constants.FakeCode);
+  const [inputText, setInputText] = useState("");
   const [playIsSelected, setPlayIsSelected] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  const [outputIsOpen, setOutputIsOpen] = useState(false);
+
+  const { handleFileContent, fileContent } = useReaderFile();
+
+  const { setCodeRequest, getCodeResponse, codeLoading, languageData } =
+    useCodeContext();
+
+  useEffect(() => {
+    setInputText(fileContent);
+  }, [fileContent]);
 
   const handleOpen = () => {
-    setIsOpen((prev) => !prev);
-  }
-
-  function useVentilador(data) {
-    const [ventilador, setVentilador] = useState(data);
-    return [ventilador, setVentilador];
+    setOutputIsOpen((prev) => !prev);
   };
 
-  const API_KEY = "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";
-  async function callOpenAIAPI() {
-    console.log("Calling the OpenAI API");
+  const handleChangeText = (value) => {
+    setCodeRequest(value);
+    handleFileContent(value);
+    setInputText(value);
+  };
 
-      
-
-    const APIBody = {
-      "model": "text-davinci-003",
-      "prompt": "Explain the errors of this python code. If this is not a python code, just say: This is not a Python code. " + inputText,
-      "temperature": 0,
-      "max_tokens": 60,
-      "top_p": 1.0,
-      "frequency_penalty": 0.0,
-      "presence_penalty": 0.0
-    }
-
-    await fetch("https://api.openai.com/v1/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer " + API_KEY
-      },
-      body: JSON.stringify(APIBody)
-    }).then((data) => {
-      return data.json();
-    }).then((data) => {
-      console.log(data.choices[0].text);
-    });
-
-  }
-  const ventilador = "a";
+  const handleExecute = () => {
+    setPlayIsSelected((prev) => !prev);
+    getCodeResponse();
+  };
 
   return (
-    <CodeContext.Provider value={{ ventilador }}>
     <React.Fragment>
       <Style.GlobalStyles />
       <Style.Main>
@@ -72,55 +50,62 @@ const Code = () => {
         <Style.Wrapper>
           <Style.HeaderContainer>
             <Header />
-            <Style.Robot>
-              <img src={EASYBOT_NORMAL} alt="EasyBot normal" />
-            </Style.Robot>
             <Tabs>
               <Tab />
             </Tabs>
           </Style.HeaderContainer>
           <Style.Content>
-            <Style.Container className={isOpen && 'inputOpened'}>
+            <Style.Container className={outputIsOpen && "inputOpened"}>
               <Style.WrapperItem>
                 <Style.InputHeader>
-                  <p>Linguagem escolhida: <span>Python</span></p>
-                  <h1>
-                    Análises de Códigos
-                  </h1>
+                  <p>
+                    Linguagem escolhida:{" "}
+                    <span style={{ color: languageData?.color ?? "#0BF0D5" }}>
+                      {languageData?.language}
+                    </span>
+                  </p>
+                  <h1>Análises de Códigos</h1>
                 </Style.InputHeader>
                 <Style.CodeActions>
-                  <Style.TextButton>
-                    <CodeAction
-                      actionIcon="ri-play-fill"
-                      actionTitle="Iniciar"
-                      type="button"
-                      onClick={() => {
-                        setPlayIsSelected((prev) => !prev);
-                        callOpenAIAPI();
-                      }}
-                      actionIsSelected={playIsSelected}
-                    />
-                    <p>Executar código</p>
+                  <Style.TextButton
+                    disabled={codeLoading}
+                    onClick={handleExecute}
+                  >
+                    {!codeLoading ? (
+                      <React.Fragment>
+                        <i className="ri-play-fill"></i>
+                        <p>Executar código</p>
+                      </React.Fragment>
+                    ) : (
+                      <React.Fragment>
+                        <CircularProgress size={16} />
+                        <p>Executando código</p>
+                      </React.Fragment>
+                    )}
                   </Style.TextButton>
                 </Style.CodeActions>
               </Style.WrapperItem>
               <Style.ContentBody>
-                <Style.CodeSection
+                <Style.CodeMirror
                   value={inputText}
-                  language="python"
-                  placeholder="Insira seu código Python."
-                  onChange={(evn) => setInputText(evn.target.value)}
-                  padding={24}
+                  style={{ width: "100%" }}
+                  height="100%"
+                  theme={tokyoNight}
+                  onChange={(value) => handleChangeText(value)}
                 />
               </Style.ContentBody>
             </Style.Container>
-            <Output isOpen={isOpen} handleOpen={handleOpen} />
+            <Output
+              outputIsOpen={outputIsOpen}
+              setOutputIsOpen={setOutputIsOpen}
+              handleOpen={handleOpen}
+              hasContent={true}
+            />
           </Style.Content>
         </Style.Wrapper>
       </Style.Main>
     </React.Fragment>
-    </CodeContext.Provider>
   );
 };
-// Create a custom hook to access the inputText variable from other components
+
 export default Code;

@@ -11,15 +11,23 @@ const PRESETS = {
     languageColor: "#9B4F96",
     languageBackgroundColor: "rgba(155, 79, 150, 0.20)",
   },
+  java: {
+    gradient: "linear-gradient(-45deg, #290203, #ED272C)",
+    languageColor: "	#290203",
+    languageBackgroundColor: "#C5696B",
+  },
   javascript: {
     gradient: "linear-gradient(-45deg, #312905, #596036)",
     languageColor: "	#000000",
     languageBackgroundColor: "#B8AB3D",
   },
+  
 };
 
 export const Choose = styled.div`
   width: 280px;
+  height: 100%;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -49,8 +57,8 @@ export const ChooseItem = styled.button`
 
   img {
     position: absolute;
-    top: -3.5rem;
-    right: -3.5rem;
+    bottom: 0rem;
+    right: -3rem;
     pointer-events: none;
   }
 

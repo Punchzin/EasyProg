@@ -16,7 +16,8 @@ export const TabWrapper = styled.div`
   border-radius: 0px 0px 8px 0px;
   border-right: 1px solid #323b45;
   border-bottom: 1px solid #323b45;
-  background: #0f1923;
+  background: rgba(15, 25, 35, .2);
+  backdrop-filter: blur(4px);
   color: #fff;
 
   p {
@@ -32,7 +33,7 @@ export const CloseConfirm = styled.div`
   width: 20rem;
   border-radius: 0.75rem;
   border: 1px solid #323b45;
-  background: #0F1923;
+  background: #0f1923;
   display: flex;
   flex-direction: column;
   align-items: center;

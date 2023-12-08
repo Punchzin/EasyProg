@@ -9,8 +9,8 @@ export const Header = styled.header`
   align-items: center;
 
   border-bottom: 1px solid rgba(50, 59, 69, 0.8);
-  background: rgba(15, 25, 35, 0.8);
-  backdrop-filter: blur(8px);
+  background: rgba(15, 25, 35, .2);
+  backdrop-filter: blur(4px);
 `;
 
 export const HeaderBrand = styled.div`
@@ -53,4 +53,32 @@ export const Login = styled.button`
   &:hover {
     opacity: 1;
   }
+`;
+
+export const Robot = styled.div`
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: ping 3.2s ease infinite;
+
+  z-index: 1;
+  
+  img {
+    width: 48px;
+    height: 50px;
+    pointer-events: none;
+  }
+  
+  @keyframes ping {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
 `;

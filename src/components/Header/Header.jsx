@@ -1,11 +1,7 @@
-import { useNavigate } from "react-router-dom";
 import * as Style from "./Header.styles";
-import { useState } from "react";
+import EASYBOT_NORMAL from "../../assets/images/easybot-normal.svg";
 
 const Header = () => {
-  const [themeSelected, setThemeSelected] = useState("");
-
-  const navigate = useNavigate();
 
   return (
     <Style.Header>
@@ -13,10 +9,9 @@ const Header = () => {
         <h2>EASYPROG</h2>
       </Style.HeaderBrand>
       <Style.HeaderActions>
-        <Style.InputIconButton
-          onClick={() => setThemeSelected((prev) => !prev)}
-        >
-        </Style.InputIconButton>
+        <Style.Robot>
+          <img src={EASYBOT_NORMAL} alt="EasyBot normal" />
+        </Style.Robot>
       </Style.HeaderActions>
     </Style.Header>
   );

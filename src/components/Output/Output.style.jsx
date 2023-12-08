@@ -38,10 +38,10 @@ export const OutputElement = styled.div`
   align-items: center;
   gap: 0.5rem;
   
-  i {
+  img {
     display: flex;
-    width: 48px;
-    height: 48px;
+    width: 38px;
+    height: 38px;
     padding: 8px;
     justify-content: center;
     align-items: center;
@@ -95,17 +95,19 @@ export const OutputButton = styled.button`
 `;
   
 export const OutputText = styled.div`
+  flex: 1;    
   height: 100%;
   display: flex;
   align-items: flex-start;
   gap: 0.5rem;
-  align-self: stretch;
-  background: #0F1923 !important;
   border-radius: .25rem;
-  flex: 1;    
   overflow-y: auto;
-
   position: relative;
+  white-space: break-spaces;
+  transition: all .4s;
+
+  background: ${props => props.outputIsOpen ? '#0F1923' : '#19242f'};
+  
 
   p {
     margin: 12px;
@@ -123,5 +125,5 @@ export const OutputTextOverlay = styled.div`
   -webkit-mask-image: linear-gradient(180deg, rgba(19, 30, 41, 0.00) 80%, #131E29 100%);
   pointer-events: none;
   transition: .5s all;
-  opacity: ${props => props.isOpen ? 0 : 1}
+  opacity: ${props => props.outputIsOpen ? 0 : 1}
 `;

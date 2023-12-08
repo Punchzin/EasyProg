@@ -3,6 +3,7 @@ import * as Style from "./Tab.styles";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import EASYBOT_NORMAL from "../../assets/images/easybot-normal.svg";
+import Chooser from "../Chooser/Chooser";
 
 const Tab = () => {
   const navigate = useNavigate();
@@ -30,8 +31,8 @@ const Tab = () => {
           </Style.Robot>
           <p>Você realmente deseja fechar o arquivo?</p>
           <Style.ButtonsConfirm>
-            <Style.ButtonClose onClick={handleClose}>Fechar</Style.ButtonClose>
-            <Style.ButtonContinue onClick={() => navigate("/overview")}>Continuar</Style.ButtonContinue>
+            <Style.ButtonClose onClick={handleClose}>Não</Style.ButtonClose>
+            <Style.ButtonContinue onClick={() => navigate("/overview")}>Sim</Style.ButtonContinue>
           </Style.ButtonsConfirm>
         </Style.CloseConfirm>
       </Dialog>

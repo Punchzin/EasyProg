@@ -7,8 +7,10 @@ export const Aside = styled.aside`
   height: 100vh;
   flex-direction: column;
   border-right: 1px solid rgba(50, 59, 69, 0.8);
-  background: #0f1923;
   position: relative;
+  align-items: center;
+  background: rgba(15, 25, 35, .2);
+  backdrop-filter: blur(4px);
 `;
 
 export const AsideWrapper = styled.div`
@@ -30,11 +32,10 @@ export const AsideBrand = styled.button`
 `;
 
 export const ActionsWrapper = styled.div`
-  min-height: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  flex-direction: column;
+  gap: 1.2rem;
   overflow-y: auto;
 `;
 
@@ -76,9 +77,18 @@ export const AsideAction = styled.button`
   &:hover i {
     color: #7b8998;
   }
+`;
 
-  &: [data-isActived= "true"] {
+export const Lang = styled.button `
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  opacity: 0.8;
 
+  &:hover{
+    opacity: 1;
+    border: #fff;
   }
 `;
 
@@ -98,4 +108,86 @@ export const AsideActionSelected = styled.button`
     font-size: 1.3rem;
     color: white;
   }
+`;
+
+export const ExitConfirm = styled.div` 
+  width: 20rem;
+  border-radius: 0.75rem;
+  border: 1px solid #323b45;
+  background: #0F1923;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  gap: 1rem;
+
+  p {
+    line-height: 140%;
+    text-align: center;
+    max-width: 200px;
+    color: #fff;
+  }
+`;
+
+export const Robot = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+
+animation: ping 3.2s ease infinite;
+
+z-index: 1;
+
+img {
+  width: 4.5rem;
+  height: 5.75rem;
+
+  pointer-events: none;
+}
+
+@keyframes ping {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+`;
+
+export const ButtonsConfirm = styled.div`
+  width: 100%;
+  height: 35px;
+  gap: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const ButtonClose = styled.button`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+
+  border-radius: 0.75rem;
+  border: 1px solid #323b45;
+  background: rgba(50, 59, 69, 0.2);
+`;
+
+export const ButtonContinue = styled.button`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+
+  border-radius: 0.75rem;
+  background: #2ae2cd;
+  color: #000;
 `;

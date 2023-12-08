@@ -1,92 +1,145 @@
 //import React, {useState} from 'react';
+import "./styles.css";
+import * as Style from "./Aside.styles";
 import EASYPROG_BRAND from "../../assets/images/easyprog-logo.svg";
+import EASYBOT_SAD from "../../assets/images/easybot-sad.svg";
+import LANG_PY from "../../assets/images/langPy.svg";
+import LANG_CS from "../../assets/images/langCs.svg";
+import LANG_JS from "../../assets/images/langJs.svg";
+import LANG_JV from "../../assets/images/langJv.svg";
 import AsideAction from "./AsideAction.jsx";
+import PopoverFile from "./Popovers/PopoverFile";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import * as Style from "./Aside.styles";
-import PopoverFile from "./Popovers/PopoverFile";
-import "./styles.css";
-import { motion } from "framer-motion";
-import Fade from "../../global/Transitions/Fade";
-// Importing an axios instance or the direct axios library itself
-//import axios from 'axios';
-//import { useContext } from 'react';
-//import { CodeContext } from '../../pages/Code/Code';
+import { Dialog } from "@mui/material";
+import { LANGUAGES_AVAILABLE } from "../../config/language-config.js";
+import useAuthContext from "../../hooks/useAuthContext.js";
+import useCodeContext from "../../hooks/useCodeContext.js";
+import useReaderFile from "../../hooks/useReaderFile.js";
 
 const Aside = () => {
+  const { handleSignOut } = useAuthContext();
+  const { handleChangeLanguage } = useCodeContext();
+
+  const { handleClearFile } =
+    useReaderFile();
+
+  const handleSelectLanguage = (language) => {
+    handleChangeLanguage(language);
+    handleClearFile();
+    navigate("/code");
+  };
+
   const navigate = useNavigate();
 
-  //const [formValue, setFormValue] = useState('');
   const [helpIsSelected, setHelpIsSelected] = useState(false);
-  const [logoutIsSelected, setLogoutIsSelected] = useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const [langSelect, setLangSelect] = useState(false);
 
   const handleOpenTutorial = () =>
     window.open("https://www.youtube.com", "_blank");
 
-  return (
-    <motion.div
-      variants={Fade.ParentFade}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-    >
-      <Style.Aside>
-        <Style.AsideWrapper>
-          <motion.div
-            variants={Fade.ParentFade}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-          >
-            <motion.div variants={Fade.ChildFade}>
-              <Style.AsideBrand title="Página inicial">
-                <img
-                  src={EASYPROG_BRAND}
-                  alt="LogoTipo EasyPog"
-                  onClick={() => navigate("/overview")}
-                />
-              </Style.AsideBrand>
-            </motion.div>
-          </motion.div>
-          <Style.ActionsWrapper>
-            <motion.div variants={Fade.ChildFade}>
-              <Style.AsideDivider />
-            </motion.div>
-            <Style.AsideActions>
-              <motion.div variants={Fade.ChildFade}>
-                <PopoverFile />
-              </motion.div>
+  const [open, setOpen] = useState(false);
 
-              <motion.div variants={Fade.ChildFade}>
-                <AsideAction
-                  actionIcon="ri-question-line"
-                  actionTitle="Ajuda"
-                  onClick={() => [
-                    setHelpIsSelected((prev) => !prev),
-                    handleOpenTutorial(),
-                  ]}
-                  actionIsSelected={helpIsSelected}
-                />
-              </motion.div>
-            </Style.AsideActions>
-            <motion.div variants={Fade.ChildFade}>
-              <Style.AsideDivider />
-            </motion.div>
-          </Style.ActionsWrapper>
-        </Style.AsideWrapper>
-        <motion.div variants={Fade.ChildFade}>
-          <AsideAction
-            actionIcon="ri-logout-box-r-line"
-            actionTitle="Desconectar"
-            onClick={() => [
-              setLogoutIsSelected((prev) => !prev),
-              navigate("/login"),
-            ]}
-            actionIsSelected={logoutIsSelected}
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <Style.Aside>
+      <Style.AsideWrapper>
+        <Style.AsideBrand title="Página inicial">
+          <img
+            src={EASYPROG_BRAND}
+            alt="LogoTipo EasyPog"
+            onClick={() => navigate("/overview")}
           />
-        </motion.div>
-      </Style.Aside>
-    </motion.div>
+        </Style.AsideBrand>
+        <Style.ActionsWrapper>
+          <Style.AsideDivider />
+          <Style.AsideActions>
+            <PopoverFile />
+            <AsideAction
+              actionIcon="ri-question-line"
+              actionTitle="Ajuda"
+              onClick={() => [
+                setHelpIsSelected((prev) => !prev),
+                handleOpenTutorial(),
+              ]}
+              actionIsSelected={helpIsSelected}
+            />
+          </Style.AsideActions>
+          <Style.AsideDivider />
+          <Style.AsideActions>
+            <Style.Lang
+              onClick={() =>
+                handleSelectLanguage(LANGUAGES_AVAILABLE.python.language)
+              }
+            >
+              <img src={LANG_PY} alt="Linguagem Python" />
+            </Style.Lang>
+          </Style.AsideActions>
+          <Style.AsideActions>
+            <Style.Lang
+              onClick={() =>
+                handleSelectLanguage(LANGUAGES_AVAILABLE.csharp.language)
+              }
+            >
+              <img src={LANG_CS} alt="Linguagem Csharp" />
+            </Style.Lang>
+          </Style.AsideActions>
+          <Style.AsideActions>
+            <Style.Lang
+              onClick={() =>
+                handleSelectLanguage(LANGUAGES_AVAILABLE.java.language)
+              }
+            >
+              <img src={LANG_JV} alt="Linguagem Java" />
+            </Style.Lang>
+          </Style.AsideActions>
+          <Style.AsideActions>
+            <Style.Lang
+              onClick={() =>
+                handleSelectLanguage(LANGUAGES_AVAILABLE.javascript.language)
+              }
+            >
+              <img src={LANG_JS} alt="Linguagem JavaScript" />
+            </Style.Lang>
+          </Style.AsideActions>
+          <Style.AsideDivider />
+        </Style.ActionsWrapper>
+      </Style.AsideWrapper>
+
+      <AsideAction
+        actionIcon="ri-logout-box-r-line"
+        actionTitle="Desconectar"
+        onClick={handleOpen}
+      />
+      <Dialog
+        onClose={handleClose}
+        open={open}
+        classes={{ paper: "ResetMUIPaper" }}
+      >
+        <Style.ExitConfirm>
+          <Style.Robot>
+            <img src={EASYBOT_SAD} alt="EasyBot normal" />
+          </Style.Robot>
+          <p>Você realmente deseja sair da conta?</p>
+          <Style.ButtonsConfirm>
+            <Style.ButtonClose onClick={handleClose}>Não</Style.ButtonClose>
+            <Style.ButtonContinue
+              onClick={() => (handleSignOut(), navigate("/auth"))}
+            >
+              Sim
+            </Style.ButtonContinue>
+          </Style.ButtonsConfirm>
+        </Style.ExitConfirm>
+      </Dialog>
+    </Style.Aside>
   );
 };
 

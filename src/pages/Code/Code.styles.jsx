@@ -1,6 +1,7 @@
 import { createGlobalStyle, styled } from "styled-components";
-import BACKGROUND_LINES from "../../assets/images/background-lines.svg"
-import CodeEditor from '@uiw/react-textarea-code-editor';
+import BACKGROUND_LINES from "../../assets/images/background-lines.svg";
+
+import ReactCodeMirror from "@uiw/react-codemirror";
 
 export const GlobalStyles = createGlobalStyle`
   .w-tc-editor-text {
@@ -44,53 +45,26 @@ export const HeaderContainer = styled.div`
   position: relative;
 `;
 
-export const Robot = styled.div`
-  position: absolute;
-  right: 9rem;
-  top: 6rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: ping 3.2s ease infinite;
-
-  z-index: 1;
-  
-  img {
-    width: 58px;
-    height: 74px;
-    pointer-events: none;
-  }
-  
-  @keyframes ping {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
-  
-`;
-
 export const Content = styled.section`
   max-width: 1440px;
   width: 100%;
   height: 100%;
   margin: 0 auto;
-  margin-top: 2rem;
-  padding: 0 1.5rem;
+  padding: 2rem 1.5rem 0 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
   position: relative;
+  overflow: hidden;
 `;
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  gap: .5rem;
-  transition: all .3s;
+  gap: 0.5rem;
+  transition: all 0.3s;
+  overflow: hidden;
 `;
 
 export const WrapperItem = styled.div`
@@ -104,40 +78,22 @@ export const ContentBody = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 0.2rem;
   background: #19242f;
   border: 1px solid rgba(50, 59, 69, 0.8);
   border-radius: 4px;
   position: relative;
-  transition: all .5s;
+  transition: all 0.5s;
   opacity: 1;
-
-`;
-
-export const InputText = styled.textarea`
-  width: 100%;
-  height: 100%;
-  font-size: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: absolute;
-  resize: none;
-  margin: 2rem;
-
-  background: transparent;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  
+  overflow-y: auto;
 `;
 
 export const InputHeader = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: .2rem;
+  gap: 0.2rem;
 
   p {
     font-size: 12px;
@@ -145,24 +101,25 @@ export const InputHeader = styled.div`
     color: #9e9ea0;
 
     span {
-      color: rgba(11, 240, 213, 1)
+      color: rgba(11, 240, 213, 1);
+      text-transform: capitalize;
     }
   }
 
   h1 {
-    font-size: 22px
+    font-size: 22px;
   }
 `;
 
 export const DescriCode = styled.div`
-  color: #FFF;
+  color: #fff;
   font-size: 14px;
   display: flex;
 `;
 
 export const CodeActions = styled.div`
   display: flex;
-  gap: .1rem;
+  gap: 0.1rem;
 `;
 
 export const CodeAction = styled.div`
@@ -171,7 +128,7 @@ export const CodeAction = styled.div`
   border: none;
   outline: none;
   background: transparent;
-  
+
   display: flex;
   width: 100%;
   justify-content: center;
@@ -181,24 +138,25 @@ export const CodeAction = styled.div`
 
   i {
     font-size: 1.4rem;
-    color: #FFF;
+    color: #fff;
     transition: all 0.3s;
   }
-
 `;
 
 export const TextButton = styled.button`
   display: flex;
   align-items: center;
-  flex-shrink: 0;
-  gap: .2rem;
+  justify-content: center;
+  height: 35px;
+  min-width: 140px;
+  gap: 0.5rem;
   cursor: pointer;
-  padding: .25rem .4rem .25rem .2rem;
-  z-index: 99; 
-  
+  padding: 0.25rem 0.5rem;
+  z-index: 99;
+
   white-space: nowrap;
-  transition: all .3s;
-  
+  transition: all 0.3s;
+
   opacity: 0.6;
   border-radius: 4px;
   border: 1px solid #0bf0d5;
@@ -206,16 +164,34 @@ export const TextButton = styled.button`
   background: rgba(11, 240, 213, 0.2);
   transition: all 0.3s;
 
-  &:hover{
+  &:hover {
     opacity: 1;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
   }
 `;
 
-export const CodeSection = styled(CodeEditor)`
-  width: 100% !important;
-  height: 100% !important;
-  background-color: transparent !important;
-  font-size: 14px !important;
-  font-family: "Space Grotesk", sans-serif !important;
-  caret-color: #0BF0D5;
+export const CodeMirror = styled(ReactCodeMirror)`
+  color: #515c67;
+
+  .ͼ1n,
+  .ͼ15 {
+    background: transparent;
+  }
+
+  .cm-gutters {
+    background: rgba(0, 0, 0, 0.2);
+    border-right: 1px solid rgba(50, 59, 69, 0.8);
+  }
+
+  .ͼ2 .cm-activeLineGutter {
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .cm-activeLine {
+    background: rgba(0, 0, 0, 0.2);
+  }
 `;

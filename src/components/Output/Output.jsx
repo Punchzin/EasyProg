@@ -1,22 +1,33 @@
-import React from "react";
-import * as Style from "./Output.style";  
-import { CodeContext } from "../../pages/Code/Code";
-import { useResponse } from "../../pages/Code/useInputText";
+/* eslint-disable react/prop-types */
+import React, { useEffect } from "react";
+import * as Style from "./Output.style";
+import EASYPROG_BRAND from "../../assets/images/easyprog-logo.svg";
+import useCodeContext from "../../hooks/useCodeContext";
 
+const Output = ({
+  setOutputIsOpen,
+  outputIsOpen,
+  handleOpen,
+  hasContent = true,
+}) => {
+  const { codeResponse } = useCodeContext();
 
-// eslint-disable-next-line react/prop-types
-const Output = ({ isOpen, handleOpen, hasContent = true }) => {
+  useEffect(() => {
+    if (!codeResponse) {
+      return;
+    }
 
-  const ventilador = useResponse
+    setOutputIsOpen(true);
+  }, [codeResponse, setOutputIsOpen]);
 
   return (
     <Style.OutputContainer>
-      <Style.OutputWrapper style={{ height: isOpen ? "70vh" : "220px" }}>
+      <Style.OutputWrapper style={{ height: outputIsOpen ? "70vh" : "220px" }}>
         {hasContent && (
           <React.Fragment>
             <Style.OutputHeaderWrapper>
               <Style.OutputElement>
-                <i className="ri-trophy-line"></i>
+                <img src={EASYPROG_BRAND} />
                 <Style.WrapperOut>
                   <Style.OutHeader>Output</Style.OutHeader>
                   <Style.OutMid>Descrição do erro:</Style.OutMid>
@@ -27,124 +38,14 @@ const Output = ({ isOpen, handleOpen, hasContent = true }) => {
                 Ver detalhes
               </Style.OutputButton>
             </Style.OutputHeaderWrapper>
-            <Style.OutputText>
-              <p>
-                {ventilador}
-                <br />
-                módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />
-                módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />
-                módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />
-                módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />
-                módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />
-                módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />
-                módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />
-                módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />
-                módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />
-                módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />
-                módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />
-                módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />
-                módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />
-                módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />
-                módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />módulo requests esteja instalado corretamente antes de
-                importá-lo.
-                <br />  
-              </p>
-            </Style.OutputText>
-            <Style.OutputTextOverlay isOpen={isOpen} />
+            {codeResponse && (
+              <React.Fragment>
+                <Style.OutputText outputIsOpen={outputIsOpen}>
+                  <p>{codeResponse}</p>
+                </Style.OutputText>
+                <Style.OutputTextOverlay outputIsOpen={outputIsOpen} />
+              </React.Fragment>
+            )}
           </React.Fragment>
         )}
       </Style.OutputWrapper>

@@ -1,39 +1,36 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import Apresentation from "../pages/Apresentation";
-import Authentication from "../pages/Authentication";
+/* eslint-disable react/prop-types */
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import Overview from "../pages/Overview";
+import Auth from "../pages/Auth";
 import Code from "../pages/Code/Code";
-import useAuth from "../hooks/useAuth";
-import { auth } from "../firebase/firebase";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { useState } from "react";
-import { useEffect } from "react";
-
-const Privated = ({ Item }) => {
-  const [user, loading, error] = useAuthState(auth);
-  const [userReady, setUserReady] = useState(false);
-  const { isLogged } = useAuth();
-
-  useEffect(() => {
-    if (!loading) {
-      setUserReady(true);
-    }
-  }, [loading]);
-
-  if (!userReady) {
-    return null;
-  }
-
-  return isLogged ? <Item /> : <Navigate to="/login" />;
-};
+import LandingPage from "../pages/LandingPage";
+import NotFound from "../pages/NotFound";
+import useAuthContext from "../hooks/useAuthContext";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const RoutesApp = () => {
+  const { signed, isLoading } = useAuthContext();
+
+  const RouterAuth = ({ Item }) => {
+    if (isLoading) return;
+
+    if (!signed) window.location.replace("/auth");
+    return signed ? <Item /> : null;
+  };
+
   return (
+    <React.Fragment>
+      <ToastContainer toastClassName={"toastfy"} autoClose={2000} />
       <Routes>
-        <Route path="/" element={<Navigate to="/overview" />} />
-        <Route path="/login" element={<Authentication />} />
-        <Route path="/overview" element={<Privated Item={Apresentation} />} />
-        <Route path="/code" element={<Privated Item={Code} />} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/auth" element={<Auth />} />
+        <Route path="/overview" element={<RouterAuth Item={Overview} />} />
+        <Route path="/code" element={<RouterAuth Item={Code} />} />
+        <Route path="/*" element={<NotFound />} />
       </Routes>
+    </React.Fragment>
   );
 };
 

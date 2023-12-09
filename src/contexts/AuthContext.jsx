@@ -128,9 +128,10 @@ export const AuthProvider = ({ children }) => {
       setUserData({});
       Cookies.remove("access-token");
     } catch (error) {
-      console.error(
-        "An unexpected error occurred while exiting. Try again later."
-      );
+      toast.error("Ocorreu um erro inesperado ao sair. Tente mais tarde.", {
+        position: toast.POSITION_RIGHT,
+      });
+      
     }
   };
 

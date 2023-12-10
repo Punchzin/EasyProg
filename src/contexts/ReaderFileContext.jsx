@@ -6,7 +6,9 @@ export const ReaderFileContext = createContext();
 
 const ReaderFileProvider = ({ children }) => {
   const [fileContent, setFileContent] = useState("");
-  const { setCodeRequest, setCodeResponse } = useCodeContext();
+  const { setCodeRequest, setCodeResponse, languageData } = useCodeContext();
+
+  console.log(languageData)
 
   // Função que manipula o conteúdo do arquivo
   const handleFileContent = (content) => {
@@ -47,11 +49,11 @@ const ReaderFileProvider = ({ children }) => {
 
   // Função que faz o download do arquivo
   const handleDownloadFile = () => {
-    const fileType = ".py";
+    const fileType = languageData?.extension ?? 'py';
     const generateUUID = crypto.randomUUID();
 
     const data = fileContent;
-    const filename = `${generateUUID}${fileType}`;
+    const filename = `${generateUUID}.${fileType}`;
     handleSaveFile(data, filename);
   };
 

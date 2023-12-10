@@ -11,7 +11,19 @@ import {
 const API_KEY = "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";
 const API_ROUTE = "https://api.openai.com/v1/chat/completions";
 
-export const CodeContext = createContext();
+export const CodeContext = createContext({
+  language: "",
+  languageData: {},
+  codeLoading: false,
+  codeRequest: "",
+  codeResponse: "",
+  codeLanguages: [],
+  setCodeRequest: () => {},
+  setCodeResponse: () => {},
+  getCodeResponse: () => {},
+  handleChangeLanguage: () => {},
+  verifyLanguage: () => {},
+});
 
 export const CodeProvider = ({ children }) => {
   const [language, setLanguage] = useState(LANGUAGES_AVAILABLE.python.language);

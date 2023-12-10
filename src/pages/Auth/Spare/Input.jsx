@@ -15,6 +15,7 @@ const Input = ({
   required,
   hasCheck,
   completed = false,
+  ...rest
 }) => {
   const [viewPassword, setViewPassword] = useState(false);
 
@@ -35,6 +36,7 @@ const Input = ({
         onChange={onChange}
         placeholder={placeholder}
         required={required}
+        {...rest}
       />
       <Styles.InputSide>
         {hasPasswordView && (

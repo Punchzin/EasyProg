@@ -42,7 +42,7 @@ const Aside = () => {
   const [langSelect, setLangSelect] = useState(false);
 
   const handleOpenTutorial = () =>
-    window.open("https://www.youtube.com", "_blank");
+    window.open("https://youtu.be/JCVbpKzVvRI", "_blank");
 
   const [open, setOpen] = useState(false);
 

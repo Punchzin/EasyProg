@@ -30,6 +30,7 @@ const ERROR_CODES = [
   "auth/invalid-login-credentials",
   "auth/user-not-found",
   "auth/too-many-requests",
+  "auth/email-already-in-use",
 ];
 
 const TIMOUT_REDIRECT = 2000;
@@ -104,18 +105,24 @@ export const AuthProvider = ({ children }) => {
       toast.success("Usuário criado com sucesso!", {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
-       setTimeout(() => {
-         navigate("/overview");
-       }, TIMOUT_REDIRECT);
+      setTimeout(() => {
+        navigate("/overview");
+      }, TIMOUT_REDIRECT);
     } catch (error) {
+      console.error(
+        "An unexpected error occurred while authenticating, please try again later."
+      );
+      if (ERROR_CODES.find((code) => code === error.code)) {
+        toast.error("Esse e-mail já está em uso.", {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
+        return;
+      }
       if (ERROR_CODES.includes(error.code)) {
         toast.error("Falha na autenticação", {
           position: toast.POSITION.BOTTOM_RIGHT,
         });
       }
-      console.error(
-        "An unexpected error occurred while authenticating, please try again later."
-      );
     } finally {
       setIsLoading(false);
     }
@@ -131,7 +138,6 @@ export const AuthProvider = ({ children }) => {
       toast.error("Ocorreu um erro inesperado ao sair. Tente mais tarde.", {
         position: toast.POSITION_RIGHT,
       });
-      
     }
   };
 

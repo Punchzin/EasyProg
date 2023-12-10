@@ -98,12 +98,15 @@ export const AuthProvider = ({ children }) => {
         password?.value
       );
       setUserData(userCredentials?.user);
+      Cookies.set("access-token", userCredentials?.user?.refreshToken, {
+        expires: 1,
+      });
       toast.success("Usuário criado com sucesso!", {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
-      setTimeout(() => {
-        navigate("/overview");
-      }, TIMOUT_REDIRECT);
+       setTimeout(() => {
+         navigate("/overview");
+       }, TIMOUT_REDIRECT);
     } catch (error) {
       if (ERROR_CODES.includes(error.code)) {
         toast.error("Falha na autenticação", {
@@ -125,9 +128,10 @@ export const AuthProvider = ({ children }) => {
       setUserData({});
       Cookies.remove("access-token");
     } catch (error) {
-      console.error(
-        "An unexpected error occurred while exiting. Try again later."
-      );
+      toast.error("Ocorreu um erro inesperado ao sair. Tente mais tarde.", {
+        position: toast.POSITION_RIGHT,
+      });
+      
     }
   };
 

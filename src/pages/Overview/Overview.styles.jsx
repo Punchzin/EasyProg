@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import BACKGROUND_LINES from "../../assets/images/background-lines.svg"
+import BACKGROUND_LINES from "../../assets/images/background-lines.svg";
 
 export const Main = styled.main`
   width: 100%;

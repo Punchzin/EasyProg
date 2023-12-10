@@ -30,6 +30,11 @@ const Aside = () => {
     navigate("/code");
   };
 
+  const handleHome = () => {
+    handleClearFile();
+    navigate("/overview");
+  }
+
   const navigate = useNavigate();
 
   const [helpIsSelected, setHelpIsSelected] = useState(false);
@@ -56,7 +61,7 @@ const Aside = () => {
           <img
             src={EASYPROG_BRAND}
             alt="LogoTipo EasyPog"
-            onClick={() => navigate("/overview")}
+            onClick={handleHome}
           />
         </Style.AsideBrand>
         <Style.ActionsWrapper>

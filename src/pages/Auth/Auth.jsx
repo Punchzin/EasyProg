@@ -28,7 +28,7 @@ const Auth = () => {
     currentPaswordStepSecurity,
   } = useRegexForm();
 
-  const { setForm, handleRegister, handleLogin } = useAuthContext();
+  const { setForm, handleRegister, handleLogin, isLoading } = useAuthContext();
 
   useEffect(() => {
     setForm(form);
@@ -115,14 +115,25 @@ const Auth = () => {
                     onChange={(e) =>
                       handleCheckField("password", e.target.value)
                     }
+                    onKeyPress={(e) => {
+                      if (e.key === "Enter") {
+                        handleLogin();
+                      }
+                    }}
                     completed={form.password.isValid}
                   />
                   <Styles.FormFooter>
                     <Button
+                      isLoading={isLoading}
                       label="Continue"
                       fullyWidth
                       isDisabled={!form.email.isValid || !form.password.isValid}
                       onClick={handleLogin}
+                      onKeyPress={(e) => {
+                        if (e.key === "Enter") {
+                          handleLogin();
+                        }
+                      }}
                     />
                   </Styles.FormFooter>
                 </Styles.FormGroup>
@@ -167,11 +178,17 @@ const Auth = () => {
                     onChange={(e) =>
                       handleCheckField("confirmPassword", e.target.value)
                     }
+                    onKeyPress={(e) => {
+                      if (e.key === "Enter") {
+                        handleRegister();
+                      }
+                    }}
                     completed={form.confirmPassword.isValid}
                   />
                   <Progress step={currentPaswordStepSecurity} />
                   <Styles.FormFooter>
                     <Button
+                      isLoading={isLoading}
                       label="Continue"
                       fullyWidth
                       isDisabled={

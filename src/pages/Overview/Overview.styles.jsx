@@ -67,4 +67,11 @@ export const UseMode = styled.div`
   border: 2px dashed rgba(50, 59, 69, 0.5);
   background: rgba(26, 39, 52, 0.3);
   backdrop-filter: blur(4px);
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+  }
 `;

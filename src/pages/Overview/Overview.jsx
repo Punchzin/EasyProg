@@ -6,6 +6,7 @@ import Tabs from "../../components/Tabs/";
 import HeadLine from "../../components/HeadLine/";
 import Chooser from "../../components/Chooser/";
 import Output from "../../components/Output/";
+import EASY_TUTORIAL from "../../assets/videos/EasyProg-Tutorial.mp4";
 
 const Overview = () => {
   return (
@@ -27,7 +28,12 @@ const Overview = () => {
             <Style.Wrapper>
               <Chooser />
               <Style.UseMode>
-                
+                <iframe
+                  src={EASY_TUTORIAL}
+                  title="Tutorial de Uso EasyProg."
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscop; web-share"
+                  allowfullscreen
+                />
               </Style.UseMode>
             </Style.Wrapper>
           </Style.ContentBody>

@@ -8,7 +8,7 @@ import {
   LANGUAGES_AVAILABLE,
 } from "../config/language-config";
 
-const API_KEY = "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";
+const API_KEY = "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";
 const API_ROUTE = "https://api.openai.com/v1/chat/completions";
 
 export const CodeContext = createContext({
